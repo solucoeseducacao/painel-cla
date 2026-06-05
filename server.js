@@ -91,7 +91,8 @@ function httpsGet(url, token) {
 
 // ── Anthropic ──────────────────────────────────────────────────────────────
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-const MODEL  = 'claude-sonnet-4-6';
+const MODEL       = 'claude-sonnet-4-6';
+const MODEL_FAST  = 'claude-haiku-4-5';
 
 // ── BUDGET ─────────────────────────────────────────────────────────────────
 const BUDGET = {
@@ -439,14 +440,14 @@ async function gerarDPM(inp, files, tipo) {
 }
 async function gerarQuizDoc(inp, files) {
   const res = await client.messages.create({
-    model: MODEL, max_tokens: 1200, system: SYS_A,
+    model: MODEL_FAST, max_tokens: 1200, system: SYS_A,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text: promptQuiz(inp) }] }]
   });
   return Packer.toBase64String(makeDoc([makeHeader(inp.disciplina, inp.semana, 'QUIZ DE 10 MINUTOS'), p(''), ...mdToDocx(res.content[0].text)]));
 }
 async function gerarBimestralDoc(inp, files) {
   const res = await client.messages.create({
-    model: MODEL, max_tokens: 800, system: SYS_A,
+    model: MODEL_FAST, max_tokens: 800, system: SYS_A,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text: promptBimestral(inp) }] }]
   });
   return Packer.toBase64String(makeDoc([faixaConfidencial('QUESTÕES BIMESTRAIS — VERSÃO PROFESSOR — NÃO DISTRIBUIR AOS ALUNOS'), p(''), ...mdToDocx(res.content[0].text)]));
