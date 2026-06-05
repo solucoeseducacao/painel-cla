@@ -415,7 +415,7 @@ function toFileContent(files) {
 async function gerarDPM(inp, files, tipo) {
   const prompt = tipo === 'teorico' ? promptDPMTeorico(inp) : promptDPMLiterario(inp);
   const res    = await client.messages.create({
-    model: MODEL, max_tokens: 4096, system: SYS_A,
+    model: MODEL, max_tokens: 3000, system: SYS_A,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text: prompt }] }]
   });
   const text      = res.content[0].text;
@@ -439,21 +439,21 @@ async function gerarDPM(inp, files, tipo) {
 }
 async function gerarQuizDoc(inp, files) {
   const res = await client.messages.create({
-    model: MODEL, max_tokens: 2048, system: SYS_A,
+    model: MODEL, max_tokens: 1200, system: SYS_A,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text: promptQuiz(inp) }] }]
   });
   return Packer.toBase64String(makeDoc([makeHeader(inp.disciplina, inp.semana, 'QUIZ DE 10 MINUTOS'), p(''), ...mdToDocx(res.content[0].text)]));
 }
 async function gerarBimestralDoc(inp, files) {
   const res = await client.messages.create({
-    model: MODEL, max_tokens: 1024, system: SYS_A,
+    model: MODEL, max_tokens: 800, system: SYS_A,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text: promptBimestral(inp) }] }]
   });
   return Packer.toBase64String(makeDoc([faixaConfidencial('QUESTÕES BIMESTRAIS — VERSÃO PROFESSOR — NÃO DISTRIBUIR AOS ALUNOS'), p(''), ...mdToDocx(res.content[0].text)]));
 }
 async function gerarOtimizador(inp) {
   const res = await client.messages.create({
-    model: MODEL, max_tokens: 2048, system: SYS_B,
+    model: MODEL, max_tokens: 1500, system: SYS_B,
     messages: [{ role: 'user', content: `${inp.origem === 'painel' ? 'Material do Painel CLA.\n' : ''}Queixa/objetivo: ${inp.queixa || 'não especificado'}\n\n${inp.prompt}\n\nEntregar: 1) DIAGNÓSTICO 2) VERSÃO OTIMIZADA 3) O QUE MUDOU E POR QUÊ` }]
   });
   return res.content[0].text;
@@ -463,7 +463,7 @@ async function gerarDevolutiva(inp, files) {
   const fase  = { inicio: 'início', andamento: 'andamento', concluido: 'concluído (pré-banca)' }[inp.fase] || '';
   const nivel = { artigo: 'artigo/TCC', dissertacao: 'dissertação', tese: 'tese' }[inp.nivel] || inp.nivel;
   const res   = await client.messages.create({
-    model: MODEL, max_tokens: 3000, system: SYS_C,
+    model: MODEL, max_tokens: 2500, system: SYS_C,
     messages: [{ role: 'user', content: [...toFileContent(files), { type: 'text', text:
 `Papel: ${papel}${inp.papel !== 'banca' ? ' · Fase: ' + fase : ''} · Nível: ${nivel}
 ${inp.foco ? 'Foco: ' + inp.foco : ''}
