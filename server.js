@@ -133,18 +133,18 @@ function makeHeader(disc, semana, docName) {
     rows: [
       new TableRow({ children: [
         tc([
-          new Paragraph({ children: [new TextRun({ text: 'INSTITUTO FEDERAL FLUMINENSE', bold: true, size: 18, font: 'Arial' })] }),
-          new Paragraph({ children: [new TextRun({ text: 'Campus Campos Centro · Licenciatura em Letras — Português e Literaturas', size: 17, font: 'Arial' })] }),
-          new Paragraph({ children: [new TextRun({ text: `Disciplina: ${disc || ''}`, size: 17, font: 'Arial' })] }),
-          new Paragraph({ children: [new TextRun({ text: `Professor: Felipe Vigneron Azevedo  |  Semana: ${semana || ''}`, size: 17, font: 'Arial' })] })
+          new Paragraph({ children: [new TextRun({ text: 'INSTITUTO FEDERAL FLUMINENSE', bold: true, size: 22, font: 'Arial' })] }),
+          new Paragraph({ children: [new TextRun({ text: 'Campus Campos Centro · Licenciatura em Letras — Português e Literaturas', size: 21, font: 'Arial' })] }),
+          new Paragraph({ children: [new TextRun({ text: `Disciplina: ${disc || ''}`, size: 21, font: 'Arial' })] }),
+          new Paragraph({ children: [new TextRun({ text: `Professor: Felipe Vigneron Azevedo  |  Semana: ${semana || ''}`, size: 21, font: 'Arial' })] })
         ], { fill: 'B3E5A0', w: W1 }),
         tc([
-          new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docName || '', bold: true, size: 18, font: 'Arial' })] })
+          new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: docName || '', bold: true, size: 22, font: 'Arial' })] })
         ], { fill: 'FFFFFF', w: W2 })
       ]}),
       new TableRow({ children: [
-        tc([new Paragraph({ children: [new TextRun({ text: 'Nome do(a) Estudante: _______________________________________________', size: 18, font: 'Arial' })] })], { w: W1 }),
-        tc([new Paragraph({ children: [new TextRun({ text: 'Data: ___/___/______', size: 18, font: 'Arial' })] })], { w: W2 })
+        tc([new Paragraph({ children: [new TextRun({ text: 'Nome do(a) Estudante: _______________________________________________', size: 22, font: 'Arial' })] })], { w: W1 }),
+        tc([new Paragraph({ children: [new TextRun({ text: 'Data: ___/___/______', size: 22, font: 'Arial' })] })], { w: W2 })
       ]})
     ]
   });
@@ -154,7 +154,7 @@ function faixaConfidencial(txt) {
   return new Table({
     width: { size: 9026, type: WidthType.DXA }, columnWidths: [9026],
     rows: [new TableRow({ children: [
-      tc([new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: label, bold: true, color: 'FFFFFF', size: 20, font: 'Arial' })] })],
+      tc([new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: label, bold: true, color: 'FFFFFF', size: 24, font: 'Arial' })] })],
         { fill: '8B0000', w: 9026 })
     ]})]
   });
@@ -172,7 +172,7 @@ function p(text, opts = {}) {
     spacing:   { before: opts.sb ?? 120, after: opts.sa ?? 80 },
     border:    opts.borderTop ? { top: { style: BorderStyle.SINGLE, size: 6, color: opts.borderColor || '000000' } } : undefined,
     children:  [new TextRun({ text: text || '', bold: !!opts.bold, italic: !!opts.italic,
-      size: opts.size || 20, font: 'Arial', color: opts.color || '000000',
+      size: opts.size || 24, font: 'Arial', color: opts.color || '000000',
       underline: opts.underline ? {} : undefined })]
   });
 }
@@ -181,11 +181,11 @@ function parseInlineRuns(text) {
   const rx = /\*\*(.+?)\*\*|\*(.+?)\*|([^*]+)/g;
   let m;
   while ((m = rx.exec(text)) !== null) {
-    if (m[1])      runs.push(new TextRun({ text: m[1], bold: true,   size: 20, font: 'Arial' }));
-    else if (m[2]) runs.push(new TextRun({ text: m[2], italic: true, size: 20, font: 'Arial' }));
-    else if (m[3]) runs.push(new TextRun({ text: m[3],               size: 20, font: 'Arial' }));
+    if (m[1])      runs.push(new TextRun({ text: m[1], bold: true,   size: 24, font: 'Arial' }));
+    else if (m[2]) runs.push(new TextRun({ text: m[2], italic: true, size: 24, font: 'Arial' }));
+    else if (m[3]) runs.push(new TextRun({ text: m[3],               size: 24, font: 'Arial' }));
   }
-  return runs.length ? runs : [new TextRun({ text, size: 20, font: 'Arial' })];
+  return runs.length ? runs : [new TextRun({ text, size: 24, font: 'Arial' })];
 }
 
 function makeTableFromMd(rows) {
@@ -209,7 +209,7 @@ function makeTableFromMd(rows) {
         children: [new Paragraph({
           spacing: { before: 60, after: 60 },
           children: ri === 0
-            ? [new TextRun({ text: cell.trim(), bold: true, size: 19, font: 'Arial', color: '1B5E20' })]
+            ? [new TextRun({ text: cell.trim(), bold: true, size: 23, font: 'Arial', color: '1B5E20' })]
             : parseInlineRuns(cell.trim())
         })]
       }))
@@ -229,9 +229,9 @@ function mdToDocx(text) {
     // Linha vazia
     if (!line.trim()) { out.push(p('')); i++; continue; }
     // Cabeçalhos
-    if (line.startsWith('### ')) { out.push(p(line.slice(4), { bold: true, size: 20, sb: 200, sa: 80  })); i++; continue; }
-    if (line.startsWith('## '))  { out.push(p(line.slice(3), { bold: true, size: 22, sb: 240, sa: 100, color: '2E6B3E' })); i++; continue; }
-    if (line.startsWith('# '))   { out.push(p(line.slice(2), { bold: true, size: 26, sb: 280, sa: 120 })); i++; continue; }
+    if (line.startsWith('### ')) { out.push(p(line.slice(4), { bold: true, size: 28, sb: 200, sa: 80  })); i++; continue; }
+    if (line.startsWith('## '))  { out.push(p(line.slice(3), { bold: true, size: 26, sb: 240, sa: 100, color: '2E6B3E' })); i++; continue; }
+    if (line.startsWith('# '))   { out.push(p(line.slice(2), { bold: true, size: 30, sb: 280, sa: 120 })); i++; continue; }
     // Tabela markdown — detectar bloco
     if (line.startsWith('|')) {
       const tableLines = [];
@@ -264,7 +264,7 @@ function mdToDocx(text) {
 }
 function makeDoc(children) {
   return new Document({
-    styles:   { default: { document: { run: { font: 'Arial', size: 20 } } } },
+    styles:   { default: { document: { run: { font: 'Arial', size: 24 } } } },
     sections: [{ properties: { page: A4_PAGE }, children }]
   });
 }
@@ -431,7 +431,7 @@ async function gerarDPM(inp, files, tipo) {
   const label = tipo === 'teorico' ? 'DPM TEÓRICO' : isMeto ? 'DPM DEMONSTRATIVO' : 'DPM LITERÁRIO';
   const children = [
     makeHeader(inp.disciplina, inp.semana, docName),
-    p(''), p(`${label} — VERSÃO ALUNOS`, { bold: true, size: 24, sb: 200 }), p(''),
+    p(''), p(`${label} — VERSÃO ALUNOS`, { bold: true, size: 28, sb: 200 }), p(''),
     ...mdToDocx(alunosText)
   ];
   if (profText) children.push(...separador(), faixaConfidencial(), p(''), ...mdToDocx(profText));
