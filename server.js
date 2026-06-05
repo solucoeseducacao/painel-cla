@@ -172,32 +172,93 @@ function p(text, opts = {}) {
     spacing:   { before: opts.sb ?? 120, after: opts.sa ?? 80 },
     border:    opts.borderTop ? { top: { style: BorderStyle.SINGLE, size: 6, color: opts.borderColor || '000000' } } : undefined,
     children:  [new TextRun({ text: text || '', bold: !!opts.bold, italic: !!opts.italic,
-      size: opts.size || 20, font: 'Arial', color: opts.color || '000000' })]
+      size: opts.size || 20, font: 'Arial', color: opts.color || '000000',
+      underline: opts.underline ? {} : undefined })]
   });
 }
+function parseInlineRuns(text) {
+  const runs = [];
+  const rx = /\*\*(.+?)\*\*|\*(.+?)\*|([^*]+)/g;
+  let m;
+  while ((m = rx.exec(text)) !== null) {
+    if (m[1])      runs.push(new TextRun({ text: m[1], bold: true,   size: 20, font: 'Arial' }));
+    else if (m[2]) runs.push(new TextRun({ text: m[2], italic: true, size: 20, font: 'Arial' }));
+    else if (m[3]) runs.push(new TextRun({ text: m[3],               size: 20, font: 'Arial' }));
+  }
+  return runs.length ? runs : [new TextRun({ text, size: 20, font: 'Arial' })];
+}
+
+function makeTableFromMd(rows) {
+  // rows: array de arrays de strings (células)
+  const BDR_T = { style: BorderStyle.SINGLE, size: 4, color: '2E6B3E' };
+  const BDR_L = { style: BorderStyle.SINGLE, size: 2, color: '999999' };
+  const BORDERS_HEAD = { top: BDR_T, bottom: BDR_T, left: BDR_L, right: BDR_L };
+  const BORDERS_CELL = { top: BDR_L, bottom: BDR_L, left: BDR_L, right: BDR_L };
+  const colCount = rows[0].length;
+  const colWidth = Math.floor(9026 / colCount);
+
+  return new Table({
+    width: { size: 9026, type: WidthType.DXA },
+    columnWidths: Array(colCount).fill(colWidth),
+    rows: rows.map((row, ri) => new TableRow({
+      children: row.map(cell => new TableCell({
+        borders: ri === 0 ? BORDERS_HEAD : BORDERS_CELL,
+        shading: { fill: ri === 0 ? 'E8F5E9' : 'FFFFFF', type: ShadingType.CLEAR },
+        margins: { top: 80, bottom: 80, left: 120, right: 120 },
+        width: { size: colWidth, type: WidthType.DXA },
+        children: [new Paragraph({
+          spacing: { before: 60, after: 60 },
+          children: ri === 0
+            ? [new TextRun({ text: cell.trim(), bold: true, size: 19, font: 'Arial', color: '1B5E20' })]
+            : parseInlineRuns(cell.trim())
+        })]
+      }))
+    }))
+  });
+}
+
 function mdToDocx(text) {
   if (!text) return [];
-  const out = [];
-  for (const line of text.split('\n')) {
-    if (!line.trim()) { out.push(p('')); continue; }
-    if (line.startsWith('### ')) { out.push(p(line.slice(4), { bold: true, size: 20, sb: 160, sa: 80  })); continue; }
-    if (line.startsWith('## '))  { out.push(p(line.slice(3), { bold: true, size: 22, sb: 200, sa: 100 })); continue; }
-    if (line.startsWith('# '))   { out.push(p(line.slice(2), { bold: true, size: 26, sb: 240, sa: 120 })); continue; }
+  const out   = [];
+  const lines = text.split('\n');
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    // Separador --- → ignorar
+    if (/^-{3,}$/.test(line.trim())) { i++; continue; }
+    // Linha vazia
+    if (!line.trim()) { out.push(p('')); i++; continue; }
+    // Cabeçalhos
+    if (line.startsWith('### ')) { out.push(p(line.slice(4), { bold: true, size: 20, sb: 200, sa: 80  })); i++; continue; }
+    if (line.startsWith('## '))  { out.push(p(line.slice(3), { bold: true, size: 22, sb: 240, sa: 100, color: '2E6B3E' })); i++; continue; }
+    if (line.startsWith('# '))   { out.push(p(line.slice(2), { bold: true, size: 26, sb: 280, sa: 120 })); i++; continue; }
+    // Tabela markdown — detectar bloco
+    if (line.startsWith('|')) {
+      const tableLines = [];
+      while (i < lines.length && lines[i].startsWith('|')) {
+        // Ignorar linha separadora |---|---|
+        if (!/^\|[-:| ]+\|$/.test(lines[i])) {
+          const cells = lines[i].split('|').slice(1, -1);
+          tableLines.push(cells);
+        }
+        i++;
+      }
+      if (tableLines.length > 0) {
+        out.push(p(''));
+        out.push(makeTableFromMd(tableLines));
+        out.push(p(''));
+      }
+      continue;
+    }
+    // Lista
     const indent = line.startsWith('- ');
     const rest   = indent ? line.slice(2) : line;
-    const runs   = [];
-    const rx     = /\*\*(.+?)\*\*|\*(.+?)\*|([^*]+)/g;
-    let m;
-    while ((m = rx.exec(rest)) !== null) {
-      if (m[1])      runs.push(new TextRun({ text: m[1], bold: true,   size: 20, font: 'Arial' }));
-      else if (m[2]) runs.push(new TextRun({ text: m[2], italic: true, size: 20, font: 'Arial' }));
-      else if (m[3]) runs.push(new TextRun({ text: m[3],               size: 20, font: 'Arial' }));
-    }
     out.push(new Paragraph({
       spacing: { before: 80, after: 80 },
       indent:  indent ? { left: 360 } : undefined,
-      children: runs.length ? runs : [new TextRun({ text: rest, size: 20, font: 'Arial' })]
+      children: parseInlineRuns(rest)
     }));
+    i++;
   }
   return out;
 }
@@ -551,4 +612,3 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Painel CLA rodando na porta ${PORT}`));
-
