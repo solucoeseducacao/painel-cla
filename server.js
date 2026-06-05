@@ -538,6 +538,17 @@ app.post('/cla-api', requireSession, upload.array('files'), async (req, res) => 
 });
 
 // ── Servir frontend ────────────────────────────────────────────────────────
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/', (req, res) => {
+  const indexPath = path.join(__dirname, 'index.html');
+  console.log('Serving index.html from:', indexPath);
+  res.sendFile(indexPath);
+});
+
+// Fallback para qualquer rota não encontrada
+app.use((req, res) => {
+  console.log('404:', req.url);
+  res.status(404).send('Not found: ' + req.url);
+});
 
 app.listen(PORT, () => console.log(`Painel CLA rodando na porta ${PORT}`));
+
