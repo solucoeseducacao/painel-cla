@@ -21,11 +21,9 @@ function parseInlineRuns(text){const r=[],rx=/\*\*(.+?)\*\*|\*(.+?)\*|([^*]+)/g;
 function makeTableFromMd(rows){const colC=rows[0].length,colW=Math.floor(9026/colC);return new Table({width:{size:9026,type:WidthType.DXA},columnWidths:Array(colC).fill(colW),rows:rows.map((row,ri)=>new TableRow({children:row.map(cell=>new TableCell({borders:ri===0?{top:{style:BorderStyle.SINGLE,size:4,color:'2E6B3E'},bottom:{style:BorderStyle.SINGLE,size:4,color:'2E6B3E'},left:{style:BorderStyle.SINGLE,size:2,color:'999999'},right:{style:BorderStyle.SINGLE,size:2,color:'999999'}}:{top:{style:BorderStyle.SINGLE,size:2,color:'999999'},bottom:{style:BorderStyle.SINGLE,size:2,color:'999999'},left:{style:BorderStyle.SINGLE,size:2,color:'999999'},right:{style:BorderStyle.SINGLE,size:2,color:'999999'}},shading:{fill:ri===0?'E8F5E9':'FFFFFF',type:ShadingType.CLEAR},margins:{top:80,bottom:80,left:120,right:120},width:{size:colW,type:WidthType.DXA},children:[new Paragraph({spacing:{before:60,after:60},children:ri===0?[new TextRun({text:cell.trim(),bold:true,size:23,font:'Arial',color:'1B5E20'})]:parseInlineRuns(cell.trim())})]}))}))})}
 function mdToDocx(text){if(!text)return[];const out=[],lines=text.split('\n');let i=0;while(i<lines.length){const line=lines[i];if(/^-{3,}$/.test(line.trim())){i++;continue}if(!line.trim()){out.push(p(''));i++;continue}if(line.startsWith('### ')){out.push(p(line.slice(4),{bold:true,size:28,sb:200,sa:80}));i++;continue}if(line.startsWith('## ')){out.push(p(line.slice(3),{bold:true,size:26,sb:240,sa:100,color:'2E6B3E'}));i++;continue}if(line.startsWith('# ')){out.push(p(line.slice(2),{bold:true,size:30,sb:280,sa:120}));i++;continue}if(line.startsWith('|')){const tbl=[];while(i<lines.length&&lines[i].startsWith('|')){if(!/^\|[-:| ]+\|$/.test(lines[i])){const cells=lines[i].split('|').slice(1,-1);tbl.push(cells)}i++}if(tbl.length>0){out.push(p(''));out.push(makeTableFromMd(tbl));out.push(p(''))}continue}const indent=line.startsWith('- '),rest=indent?line.slice(2):line;out.push(new Paragraph({spacing:{before:80,after:80},indent:indent?{left:360}:undefined,children:parseInlineRuns(rest)}));i++}return out}
 function makeDoc(children){return new Document({styles:{default:{document:{run:{font:'Arial',size:24}}}},sections:[{properties:{page:A4},children}]})}
-const SYS_A=`Assistente pedagógico — IFF Campos Centro, Prof. Felipe Vigneron Azevedo. Método: CLA.
-Língua: PT-BR em todas as entregas. Tom: professor experiente, sem marcadores de IA.
-Restrições inegociáveis: nunca inventar citações, páginas, datas, títulos ou autores; ancorar cada afirmação no texto; seguir estrutura e ordem pedidas à risca.`;
-const SYS_B=SYS_A+'\nModo: engenheiro de prompts — não gera aula. Preservar intenção e tom do autor. Sem inflação de tokens. Apontar explicitamente a melhor alternativa e por quê.';
-const SYS_C=SYS_A+'\nModo: orientador/banca acadêmico. Devolutiva em 2ª pessoa, sem nota. Rigoroso, propositivo, distância orientador-orientando. Nomear problemas com termo exato. Sem elogio protocolar.';
+const SYS_A=`IFF Campos Centro · Prof. Felipe Vigneron Azevedo · CLA. PT-BR. Tom: professor experiente, sem IA. Nunca inventar citações, páginas, datas ou autores — usar [a confirmar] ou omitir. Seguir estrutura pedida à risca.`;
+const SYS_B=SYS_A+'\nModo: engenheiro de prompts. Preservar intenção do autor. Apontar a melhor alternativa e por quê.';
+const SYS_C=SYS_A+'\nModo: orientador/banca. Devolutiva em 2ª pessoa, sem nota. Rigoroso, propositivo. Nomear problemas com termo exato.';
 const GRUPOS_A_FMT_C='G4 Aplicação (Formato C): articular argumento teórico com o texto literário do DPM Literário desta semana.';
 function inferirNivel(disc){if(!disc)return'intermediario';const d=disc.toLowerCase();if(d.includes('teoria liter')&&!d.includes('ii'))return'iniciante';if(d.includes('metodologia'))return'avancado';return'intermediario'}
 function promptDPMTeorico(inp){const nd={iniciante:'iniciante (1º per.)',intermediario:'intermediária',avancado:'avançada/pós'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),ti=f==='B'?`leitura+discussão ${b.leit||'—'}min`:`conversa ${b.conv||'—'}min`,g4=f==='C'?'\nG4 Aplicação (Fmt C): articular com texto literário do DPM Literário desta semana.':'';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Aulas:** ${inp.nAulas||''} | **Fmt:** ${f} | ${nd}
@@ -50,18 +48,11 @@ Tabela: Conceito (termo + pág.) | Explicação (2–3 frases). 3–7 itens, só
 3–6 citações diretas integrais com página. Não parafrasear.
 
 ## S5 — Perguntas de Grupo
-G1 Tese: argumento em ≥3 pontos encadeados.
-G2 Mecanismo: como o texto constrói o argumento (recursos e função).
-G3 Tensão: onde hesita ou contradiz premissa própria.
-G4 Aplicação: transposição didática com 2 conceitos do DPM para aula no EM.${g4}
-G5 Implicação: o que se segue do argumento para o campo ou prática docente.
+G1 Tese: ≥3 pontos encadeados. G2 Mecanismo: recursos e função. G3 Tensão: onde hesita ou contradiz. G4 Aplicação: 2 conceitos do DPM → aula no EM.${g4} G5 Implicação: o que se segue para o campo ou prática docente.
 
 == VERSÃO PROFESSOR ==
-## SP1 — Questão-Norteadora
-Oral antes do DPM, retomada ao final. Questão + resposta sugerida + páginas. Diferente das perguntas de grupo.
-
-## SP2 — Respostas Esperadas
-Tabela: Grupo | Resposta | Páginas. Omitir equívocos, refs. complementares e perguntas extras.`}
+SP1 — Questão-Norteadora: oral antes do DPM, retomada ao final. Questão + resposta + páginas. ≠ perguntas de grupo.
+SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.`}
 function promptDPMLiterario(inp){const nd={iniciante:'iniciante',intermediario:'intermediária',avancado:'avançada'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),tipo=isM?'demonstrativo':'literário',g4=f==='C'?'G4 Aplicação: articular com DPM Teórico desta semana.':'G4 Intertexto: relações com outros textos evidenciadas pelo próprio texto.';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Fmt:** ${f} | ${nd}
 **Tema:** ${inp.tema||''} | **Texto:** ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
 Tempos: discussão ${b.lit||b.leit||'—'}min · grupo ${b.grp||'—'}min · saída ${b.cpd||'—'}min
@@ -90,16 +81,11 @@ Relações com outros textos evidenciadas pelo próprio texto.
 3–5 citações diretas integrais com página. Não parafrasear.
 
 ## S7 — Perguntas de Grupo
-G1 Forma · G2 Conteúdo · G3 Contexto
-${g4}
-G5 Lacuna: o que o DPM não cobre; orientar a consultar o original.
+G1 Forma · G2 Conteúdo · G3 Contexto · ${g4} · G5 Lacuna: o que o DPM não cobre.
 
 == VERSÃO PROFESSOR ==
-## SP1 — Questão-Norteadora
-Oral antes do DPM, retomada ao final. Questão + resposta sugerida + páginas.
-
-## SP2 — Respostas Esperadas
-Tabela: Grupo | Resposta | Páginas. Omitir equívocos, refs. complementares e perguntas extras.`}
+SP1 — Questão-Norteadora: oral antes do DPM. Questão + resposta + páginas.
+SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.`}
 function promptQuiz(inp){const b=inp.budget;return`Quiz — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.tema||''} | ${inp.referencias||''}
 
 5 questões A–D, sem cabeçalho. Formato: nº + enunciado → A/B/C/D → linha em branco.
@@ -109,10 +95,17 @@ function promptBimestral(inp){return`Bimestral — ${inp.disciplina||''} | Sem $
 
 2 questões A–D, sem cabeçalho. Q1 (compreensão) · Q2 (interpretação). Formato: enunciado → A/B/C/D → linha em branco.
 Após Q2: linha divisória + GABARITO PROFESSOR: nº · resposta · comentário · (SOBRENOME, ano, p. X).`}
-function toFileContent(files){return(files||[]).map(f=>({type:'document',source:{type:'base64',media_type:f.media_type,data:f.data}}))}
+function toFileContent(files){return(files||[]).map(f=>{
+  // Normalizar media_type para tipos aceitos pela Anthropic
+  let mt=f.media_type||'application/pdf';
+  if(mt==='application/octet-stream'||mt==='application/msword'){
+    if(f.name&&f.name.match(/\.docx?$/i))mt='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  }
+  return{type:'document',source:{type:'base64',media_type:mt,data:f.data}};
+})}
 async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({model:MODEL,max_tokens:3000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=res.content[0].text,si=text.indexOf('## SP1'),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/^==\s*VERS[ÃA]O ALUNOS\s*==\s*/im,'').trim(),pT=pR.replace(/^##\s*SP1\s*/m,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
-async function gerarQuizDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:1200,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc([makeHeader(inp.disciplina,inp.semana,'QUIZ DE 10 MINUTOS'),p(''),...mdToDocx(res.content[0].text)]))}
-async function gerarBimestralDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:800,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptBimestral(inp)}]}]});return Packer.toBase64String(makeDoc([faixaConf('QUESTÕES BIMESTRAIS — VERSÃO PROFESSOR — NÃO DISTRIBUIR AOS ALUNOS'),p(''),...mdToDocx(res.content[0].text)]))}
+async function gerarQuizDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:1200,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(res.content[0].text)]))}
+async function gerarBimestralDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:800,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptBimestral(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(res.content[0].text)]))}
 async function gerarOtimizador(inp){const res=await client.messages.create({model:MODEL,max_tokens:1500,system:SYS_B,messages:[{role:'user',content:`${inp.origem==='painel'?'Material do Painel CLA.\n':''}Queixa/objetivo: ${inp.queixa||'não especificado'}\n\n${inp.prompt}\n\nEntregar: 1) DIAGNÓSTICO 2) VERSÃO OTIMIZADA 3) O QUE MUDOU E POR QUÊ`}]});return res.content[0].text}
 async function gerarDevolutiva(inp,files){const papel=inp.papel==='banca'?'banca (avaliativa)':'orientador (formativa)',fase={inicio:'início',andamento:'andamento',concluido:'concluído (pré-banca)'}[inp.fase]||'',nivel={artigo:'artigo/TCC',dissertacao:'dissertação',tese:'tese'}[inp.nivel]||inp.nivel;const res=await client.messages.create({model:MODEL,max_tokens:2500,system:SYS_C,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:`Papel: ${papel}${inp.papel!=='banca'?' · Fase: '+fase:''} · Nível: ${nivel}\n${inp.foco?'Foco: '+inp.foco:''}\n${inp.contexto?'Contexto/trechos:\n'+inp.contexto:''}\n${files&&files.length?'Trabalho anexado acima.':'Usar contexto/trechos fornecidos.'}\n\nCritérios (por peso): 1) Cumprimento dos objetivos 2) Originalidade 3) Fundamentação teórica 4) Correção conceitual · Clareza · Consistência · ABNT\n\nEstrutura:\n1 — Leitura geral (2–4 frases)\n2 — Pontos por critério (só onde há algo a dizer)\n3 — Apontamentos cirúrgicos: trecho → problema → sugestão → fonte\n4 — Prioridades (2–3 providências)\n5 — Próximo passo`}]}]});return res.content[0].text}
 async function gerarDevolutivaDoc(inp,files){const text=await gerarDevolutiva(inp,files),papel=inp.papel==='banca'?'Banca':'Orientador',fase={inicio:'Início',andamento:'Andamento',concluido:'Concluído'}[inp.fase]||'',nivel={artigo:'Artigo/TCC',dissertacao:'Dissertação',tese:'Tese'}[inp.nivel]||inp.nivel;return Packer.toBase64String(makeDoc([p(`Devolutiva · ${papel}${fase?' · '+fase:''} · ${nivel}`,{size:18,color:'555555',sb:0}),p(''),...mdToDocx(text)]))}
