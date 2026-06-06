@@ -26,104 +26,89 @@ Língua: PT-BR em todas as entregas. Tom: professor experiente, sem marcadores d
 Restrições inegociáveis: nunca inventar citações, páginas, datas, títulos ou autores; ancorar cada afirmação no texto; seguir estrutura e ordem pedidas à risca.`;
 const SYS_B=SYS_A+'\nModo: engenheiro de prompts — não gera aula. Preservar intenção e tom do autor. Sem inflação de tokens. Apontar explicitamente a melhor alternativa e por quê.';
 const SYS_C=SYS_A+'\nModo: orientador/banca acadêmico. Devolutiva em 2ª pessoa, sem nota. Rigoroso, propositivo, distância orientador-orientando. Nomear problemas com termo exato. Sem elogio protocolar.';
-const GRUPOS_A=`Grupo 1 — Tese: reconstituir o argumento central em mínimo 3 pontos encadeados. Não respondível em uma linha.
-Grupo 2 — Mecanismo: identificar COMO o texto constrói o argumento — recursos usados e função de cada um.
-Grupo 3 — Tensão: identificar onde o argumento hesita, contradiz premissa ou deixa afirmação sem sustentação.
-Grupo 4 — Aplicação: transposição didática a partir dos conceitos do DPM. Modelo: "A partir dos conceitos X e Y, como você organizaria uma aula de literatura no EM que levasse os alunos a perceber essas categorias em obras conhecidas? Cite ao menos dois conceitos."
-Grupo 5 — Implicação: projetar o que se segue do argumento para o campo literário ou prática docente.`;
-const GRUPOS_A_FMT_C='Grupo 4 (Formato C — substituir): articular o argumento teórico com o texto literário transcrito no DPM Literário desta semana.';
-const VERSAO_PROF=`## SP1
-## Seção 1 — Questão-Norteadora
-Diferente das perguntas de grupo — não aceita respostas iguais. Apresentada oralmente antes da leitura do DPM e retomada ao final. Incluir: texto da questão + sugestão de resposta + páginas.
-
-## Seção 2 — Respostas Esperadas das Questões de Grupos
-Tabela: Grupo | Resposta esperada (ancorada no texto com páginas). Uma resposta por grupo.
-SUPRIMIR SEMPRE: Equívocos Esperados · Referências Complementares · Perguntas para Aprofundamento · Referência bibliográfica.`;
+const GRUPOS_A_FMT_C='G4 Aplicação (Formato C): articular argumento teórico com o texto literário do DPM Literário desta semana.';
 function inferirNivel(disc){if(!disc)return'intermediario';const d=disc.toLowerCase();if(d.includes('teoria liter')&&!d.includes('ii'))return'iniciante';if(d.includes('metodologia'))return'avancado';return'intermediario'}
-function promptDPMTeorico(inp){const nd={iniciante:'turma iniciante (1º período)',intermediario:'turma intermediária',avancado:'turma avançada/pós-graduação'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),ti=f==='B'?`leitura+discussão ${b.leit||'—'}min`:`conversa norteadora ${b.conv||'—'}min`,g4=f==='C'?'\n'+GRUPOS_A_FMT_C:'';return`DPM Teórico — ${inp.disciplina||''} | Semana ${inp.semana||''} | Formato ${f} | ${inp.nAulas||''} aulas | ${nd}
-Tema: ${inp.tema||''} | Textos: ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
+function promptDPMTeorico(inp){const nd={iniciante:'iniciante (1º per.)',intermediario:'intermediária',avancado:'avançada/pós'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),ti=f==='B'?`leitura+discussão ${b.leit||'—'}min`:`conversa ${b.conv||'—'}min`,g4=f==='C'?'\nG4 Aplicação (Fmt C): articular com texto literário do DPM Literário desta semana.':'';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Aulas:** ${inp.nAulas||''} | **Fmt:** ${f} | ${nd}
+**Tema:** ${inp.tema||''} | **Texto:** ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
 Tempos: ${ti} · grupo ${b.grp||'—'}min · saída ${b.cpd||'—'}min
 
-Gere APENAS o texto do DPM — sem introduções, sem comentários. Estrutura exata:
+Gere o DPM sem introduções. PT-BR. Nunca inventar citações/páginas — usar [a confirmar] ou omitir.
 
 == VERSÃO ALUNOS ==
-[Referência ABNT completa — antes de qualquer seção numerada.]
+[Ref. ABNT antes das seções]
 
-## Seção 1 — Corrente Teórica e Contextualização
-Com que correntes dialoga, que problema responde, qual método usa. Máx. 3–6 linhas.
+## S1 — Corrente Teórica
+Tradição, problema central, método. 3–6 linhas.
 
-## Seção 2 — Tese Central
-2–4 frases. ≥1 citação direta com página (ABNT).
+## S2 — Tese Central
+2–4 frases + ≥1 citação direta (SOBRENOME, ano, p. X).
 
-## Seção 3 — Conceitos-Chave
-Tabela: Conceito (termo exato + página) | Explicação didática (2–3 frases).
-3–7 conceitos em ordem de aparição. Apenas conceitos que o próprio texto define.
+## S3 — Conceitos-Chave
+Tabela: Conceito (termo + pág.) | Explicação (2–3 frases). 3–7 itens, só do próprio texto.
 
-## Seção 4 — Parágrafos Centrais do Texto
-3–6 citações diretas integrais com ABNT e página.
-Cobrir: conceitos centrais · argumento principal · tensões · diálogo com outros autores · conclusão.
-NÃO parafrasear.
+## S4 — Parágrafos Centrais
+3–6 citações diretas integrais com página. Não parafrasear.
 
-## Seção 5 — Perguntas de Grupo
-${GRUPOS_A}${g4}
+## S5 — Perguntas de Grupo
+G1 Tese: argumento em ≥3 pontos encadeados.
+G2 Mecanismo: como o texto constrói o argumento (recursos e função).
+G3 Tensão: onde hesita ou contradiz premissa própria.
+G4 Aplicação: transposição didática com 2 conceitos do DPM para aula no EM.${g4}
+G5 Implicação: o que se segue do argumento para o campo ou prática docente.
 
-${VERSAO_PROF}`}
-function promptDPMLiterario(inp){const nd={iniciante:'turma iniciante',intermediario:'turma intermediária',avancado:'turma avançada'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),tipo=isM?'texto demonstrativo (não literário)':'texto literário',g4=f==='C'?'Grupo 4 — Aplicação: articular com o DPM Teórico desta semana.':'Grupo 4 — Intertexto: relações com outros textos evidenciadas pelo próprio texto.';return`DPM ${isM?'Demonstrativo':'Literário'} — ${inp.disciplina||''} | Semana ${inp.semana||''} | Formato ${f} | ${nd}
-Tema: ${inp.tema||''} | Textos: ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
+== VERSÃO PROFESSOR ==
+## SP1 — Questão-Norteadora
+Oral antes do DPM, retomada ao final. Questão + resposta sugerida + páginas. Diferente das perguntas de grupo.
+
+## SP2 — Respostas Esperadas
+Tabela: Grupo | Resposta | Páginas. Omitir equívocos, refs. complementares e perguntas extras.`}
+function promptDPMLiterario(inp){const nd={iniciante:'iniciante',intermediario:'intermediária',avancado:'avançada'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),tipo=isM?'demonstrativo':'literário',g4=f==='C'?'G4 Aplicação: articular com DPM Teórico desta semana.':'G4 Intertexto: relações com outros textos evidenciadas pelo próprio texto.';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Fmt:** ${f} | ${nd}
+**Tema:** ${inp.tema||''} | **Texto:** ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
 Tempos: discussão ${b.lit||b.leit||'—'}min · grupo ${b.grp||'—'}min · saída ${b.cpd||'—'}min
 
-Gere APENAS o texto do DPM — sem introduções. Estrutura exata:
+Gere o DPM sem introduções. PT-BR. Nunca inventar citações/páginas.
 
 == VERSÃO ALUNOS ==
-[Referência ABNT completa — antes de qualquer seção numerada.]
+[Ref. ABNT antes das seções]
 
-## Seção 1 — Tese Central do ${tipo}
-2–4 frases com o argumento central.
+## S1 — Tese Central
+2–4 frases com o argumento central do texto ${tipo}.
 
-## Seção 2 — Forma
-Gênero · estrutura · narrador/voz · tempo · espaço · dicção${isM?' · tipo de argumento · metodologia demonstrada':''}.
+## S2 — Forma
+Gênero · estrutura · narrador/voz · tempo · espaço · dicção${isM?' · argumento · metodologia demonstrada':''}.
 
-## Seção 3 — Conteúdo
-Temas · personagens/agentes · conflito central · desfecho.
+## S3 — Conteúdo
+Temas · personagens/agentes · conflito · desfecho.
 
-## Seção 4 — Contexto
+## S4 — Contexto
 Contexto histórico-literário${isM?'/acadêmico':''} · autor · período.
 
-## Seção 5 — Intertexto
+## S5 — Intertexto
 Relações com outros textos evidenciadas pelo próprio texto.
 
-## Seção 6 — Parágrafos Centrais do Texto
-3–5 citações diretas integrais com ABNT e página.
+## S6 — Parágrafos Centrais
+3–5 citações diretas integrais com página. Não parafrasear.
 
-## Seção 7 — Perguntas de Grupo
-Grupo 1 — Forma · Grupo 2 — Conteúdo · Grupo 3 — Contexto histórico-literário
+## S7 — Perguntas de Grupo
+G1 Forma · G2 Conteúdo · G3 Contexto
 ${g4}
-Grupo 5 — Lacuna: indicar o que o DPM não cobre e orientar a consultar o texto original.
+G5 Lacuna: o que o DPM não cobre; orientar a consultar o original.
 
-${VERSAO_PROF}`}
-function promptQuiz(inp){const b=inp.budget;return`Quiz de 10 min — ${inp.disciplina||''} | Semana ${inp.semana||''} | Tema: ${inp.tema||''}
-Textos: ${inp.referencias||''} | Tempo na aula: ${b.quiz||10}min
+== VERSÃO PROFESSOR ==
+## SP1 — Questão-Norteadora
+Oral antes do DPM, retomada ao final. Questão + resposta sugerida + páginas.
 
-Gere APENAS as 5 questões e o gabarito — sem cabeçalho, sem faixa.
+## SP2 — Respostas Esperadas
+Tabela: Grupo | Resposta | Páginas. Omitir equívocos, refs. complementares e perguntas extras.`}
+function promptQuiz(inp){const b=inp.budget;return`Quiz — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.tema||''} | ${inp.referencias||''}
 
-5 questões de múltipla escolha (A–D).
-Formato: número + enunciado em negrito → alternativas A/B/C/D → linha em branco.
-Q1: reformulação da questão-norteadora do DPM (mesma temática, formulação diferente).
-Q2–Q5: baseadas no texto e no DPM, sem coincidir com perguntas dos grupos.
+5 questões A–D, sem cabeçalho. Formato: nº + enunciado → A/B/C/D → linha em branco.
+Q1: reformulação da questão-norteadora. Q2–5: baseadas no texto, sem repetir perguntas de grupo.
+Após Q5: linha divisória + GABARITO PROFESSOR: nº · resposta · comentário · (SOBRENOME, ano, p. X).`}
+function promptBimestral(inp){return`Bimestral — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.referencias||''}
 
-Linha divisória, depois:
-GABARITO — VERSÃO PROFESSOR — NÃO DISTRIBUIR AOS ALUNOS
-Uma linha por questão: número · resposta · comentário breve · (SOBRENOME, ano, p. X).`}
-function promptBimestral(inp){return`Questões Bimestrais — ${inp.disciplina||''} | Semana ${inp.semana||''} | Textos: ${inp.referencias||''}
-
-Gere APENAS as 2 questões e o gabarito — sem cabeçalho.
-
-Q1: indicação "(nível: compreensão)" → enunciado em negrito → alternativas A/B/C/D → linha em branco.
-Q2: indicação "(nível: interpretação)" → enunciado em negrito → alternativas A/B/C/D → linha em branco.
-
-Linha divisória, depois:
-GABARITO — VERSÃO PROFESSOR
-Uma linha por questão: número · resposta · comentário breve · (SOBRENOME, ano, p. X).`}
+2 questões A–D, sem cabeçalho. Q1 (compreensão) · Q2 (interpretação). Formato: enunciado → A/B/C/D → linha em branco.
+Após Q2: linha divisória + GABARITO PROFESSOR: nº · resposta · comentário · (SOBRENOME, ano, p. X).`}
 function toFileContent(files){return(files||[]).map(f=>({type:'document',source:{type:'base64',media_type:f.media_type,data:f.data}}))}
 async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({model:MODEL,max_tokens:3000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=res.content[0].text,si=text.indexOf('## SP1'),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/^==\s*VERS[ÃA]O ALUNOS\s*==\s*/im,'').trim(),pT=pR.replace(/^##\s*SP1\s*/m,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
 async function gerarQuizDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:1200,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc([makeHeader(inp.disciplina,inp.semana,'QUIZ DE 10 MINUTOS'),p(''),...mdToDocx(res.content[0].text)]))}
