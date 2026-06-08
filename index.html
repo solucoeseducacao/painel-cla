@@ -24,17 +24,15 @@ input[type=text],textarea{width:100%;border:1.5px solid var(--bd);border-radius:
 input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .row112{display:grid;grid-template-columns:1fr 1fr 2fr;gap:16px}
+/* formato */
 .fmt-group{display:flex;gap:10px}
 .fmt-btn{flex:1;padding:10px 8px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#2a4a2a;cursor:pointer;transition:all .18s;font-family:'Crimson Pro',serif;text-align:center}
 .fmt-btn:hover{border-color:var(--mg);background:#f0faf0}
 .fmt-btn.active{border:2px solid var(--dg);background:var(--dg);color:#fff}
 .fmt-letter{font-size:22px;font-weight:800;line-height:1}
 .fmt-desc{font-size:11px;margin-top:3px;opacity:.88}
-.budget{display:none;margin-top:10px;background:#f0faf0;border:1px solid var(--bd);border-radius:8px;padding:10px 14px}
-.budget.on{display:block}
-.budget table{width:100%;border-collapse:collapse}
-.budget td{padding:2px 8px;font-size:11.5px}
-.budget td:first-child{color:var(--dg);font-weight:700;width:200px}
+
+/* drop zone */
 .drop-zone{border:2px dashed var(--bd);border-radius:8px;padding:18px 16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:10px;user-select:none}
 .drop-zone:hover,.drop-zone.over{border-color:var(--mg);background:#edf7ed}
 .drop-icon{font-size:26px;color:var(--mg);line-height:1;margin-bottom:4px}
@@ -44,6 +42,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .chip{display:inline-flex;align-items:center;gap:6px;background:#f0faf0;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);margin:3px 4px 3px 0;font-family:'EB Garamond',serif}
 .chip-x{cursor:pointer;color:#999;font-size:14px;line-height:1}
 .chip-x:hover{color:#c00}
+/* tarefas */
 .tb{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .tb span{font-size:12px;color:#888;font-style:italic}
 .btn-all{font-size:11px;padding:3px 10px;background:transparent;border:1px solid var(--mg);border-radius:4px;color:var(--dg);cursor:pointer;font-family:'EB Garamond',serif;transition:all .15s}
@@ -59,11 +58,13 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .ts{font-size:11.5px;color:#667;font-style:italic;margin-top:2px}
 .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:var(--lg);color:var(--dg);font-weight:700;margin-left:6px;vertical-align:middle;font-style:normal;letter-spacing:.04em}
 .sep{border:none;border-top:1px dashed #d0e8d0;margin:22px 0 18px}
+/* buttons */
 .btn-row{display:flex;gap:12px;margin-top:8px}
 .btn-go{flex:1;background:var(--dg);color:#fff;border:none;border-radius:8px;padding:13px 0;font-size:15px;font-weight:700;font-family:'Crimson Pro',serif;letter-spacing:.04em;cursor:pointer;transition:background .2s;box-shadow:0 2px 10px rgba(46,107,62,.25)}
 .btn-go:hover{background:var(--dg2)}
 .btn-cl{padding:13px 20px;background:transparent;border:1.5px solid var(--bd);border-radius:8px;font-size:13px;color:#667;cursor:pointer;font-family:'EB Garamond',serif;transition:all .15s}
 .btn-cl:hover{border-color:#aaa;color:#444}
+/* output */
 #out{display:none}
 #out.on{display:block}
 .conv-tabs{background:var(--dg);border-radius:10px 10px 0 0;padding:12px 18px;display:flex;align-items:center;gap:8px}
@@ -86,6 +87,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .btn-cp{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:5px;color:#fff;font-size:11px;padding:4px 10px;cursor:pointer;font-family:'EB Garamond',serif;transition:all .2s}
 .btn-cp:hover,.btn-cp.done{background:var(--mg)}
 .out-hint{background:#0e1e0e;border-top:1px solid #1a3a1a;border-radius:0 0 10px 10px;padding:8px 18px;font-size:11.5px;color:rgba(179,229,160,.6);font-style:italic}
+/* modal */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:16px}
 .modal-bg.on{display:flex}
 .modal{background:#fff;border-radius:14px;padding:28px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.25)}
@@ -111,6 +113,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .btn-confirm{width:100%;background:var(--dg);color:#fff;border:none;border-radius:8px;padding:12px 0;font-size:15px;font-weight:700;font-family:'Crimson Pro',serif;cursor:pointer;transition:background .2s}
 .btn-confirm:hover{background:var(--dg2)}
 .msec{display:none}.msec.on{display:block}
+/* ── seletor de modos ── */
 .modebar{display:flex;gap:8px;margin-bottom:22px}
 .mode-btn{flex:1;padding:13px 10px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;cursor:pointer;transition:all .18s;font-family:'Crimson Pro',serif;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,.04)}
 .mode-btn:hover{border-color:var(--mg);background:#f4faf4}
@@ -119,6 +122,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .mode-sub{font-size:10.5px;margin-top:3px;opacity:.82;letter-spacing:.02em}
 .mode-panel{display:none}
 .mode-panel.on{display:block}
+/* ── seletor de opções (tags PAPEL/FASE/NÍVEL) ── */
 .opt-group{display:flex;gap:8px;flex-wrap:wrap}
 .opt-btn{flex:1;min-width:96px;padding:9px 10px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#2a4a2a;cursor:pointer;transition:all .16s;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;text-align:center}
 .opt-btn:hover{border-color:var(--mg);background:#f0faf0}
@@ -127,6 +131,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .opt-disabled{opacity:.4;pointer-events:none}
 .warn{display:none;background:#fff4f4;border:1px solid #e7b8b8;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12.5px;color:#8B0000;font-family:'EB Garamond',serif}
 .warn.on{display:block}
+/* ── API ── */
 .api-bar{margin-top:14px;padding-top:14px;border-top:1px solid #e2ece2;display:flex;flex-direction:column;gap:6px}
 .btn-api{align-self:flex-start;padding:10px 18px;border:2px solid var(--dg);border-radius:9px;background:#fff;color:var(--dg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;transition:all .18s}
 .btn-api:hover{background:var(--dg);color:#fff}
@@ -138,31 +143,9 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .api-upload{border:1.5px dashed var(--mg);border-radius:8px;padding:10px 14px;cursor:pointer;text-align:center;font-family:'EB Garamond';font-size:13px;color:#559;transition:border-color .15s;background:#fafffe}
 .api-upload:hover{border-color:var(--dg);color:var(--dg)}
 @media(max-width:520px){.row2,.row112,.mrow2,.mrow3{grid-template-columns:1fr}.card{padding:20px 16px}.type-tabs,.fmt-group,.modebar,.opt-group{flex-direction:column}}
-#loginOverlay{display:none;position:fixed;inset:0;background:linear-gradient(160deg,#f0faf0,#e8f5e8);z-index:9999;align-items:center;justify-content:center}
-#loginOverlay.on{display:flex}
-.login-box{background:#fff;border-radius:16px;padding:40px 36px;max-width:380px;width:100%;box-shadow:0 8px 40px rgba(46,107,62,.18);text-align:center;border:1px solid #d8ecd8}
-.login-logo{font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5FAD6E;margin-bottom:8px}
-.login-title{font-family:'Crimson Pro',serif;font-size:22px;font-weight:800;color:#2E6B3E;margin-bottom:6px}
-.login-sub{font-size:13px;color:#778;font-family:'EB Garamond',serif;margin-bottom:28px}
-.btn-google{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #d0d0d0;border-radius:8px;padding:11px 22px;font-family:'Crimson Pro',serif;font-size:15px;font-weight:700;color:#333;cursor:pointer;transition:all .18s;text-decoration:none}
-.btn-google:hover{border-color:#2E6B3E;background:#f7fdf7;color:#2E6B3E}
-.btn-google svg{width:20px;height:20px;flex-shrink:0}
 </style>
 </head>
 <body>
-
-<div id="loginOverlay">
-  <div class="login-box">
-    <div class="login-logo">Instituto Federal Fluminense</div>
-    <div class="login-title">Painel Docente</div>
-    <div class="login-sub">Ciclo de Leitura Ativa · Campus Campos Centro</div>
-    <a class="btn-google" id="btnGoogle" href="#">
-      <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.7 0 6.8 5.4 3 13.3l7.8 6C12.7 13.1 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 6.9-10 6.9-17z"/><path fill="#FBBC05" d="M10.8 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6A24 24 0 0 0 0 24c0 3.9.9 7.5 2.5 10.8l8.3-6.1z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.1 0-11.3-3.6-13.2-9.2l-8.3 6.1C6.8 42.6 14.7 48 24 48z"/></svg>
-      Entrar com Google
-    </a>
-  </div>
-</div>
-
 <div class="wrap">
 
 <div class="hdr">
@@ -171,38 +154,40 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa</div>
 </div>
 
+<!-- SELETOR DE MODOS -->
 <div class="modebar">
   <button class="mode-btn active" id="modeBtnA" onclick="setMode('A')"><div class="mode-name">Modo A</div><div class="mode-sub">Preparação de Aula</div></button>
   <button class="mode-btn" id="modeBtnB" onclick="setMode('B')"><div class="mode-name">Modo B</div><div class="mode-sub">Otimizador de Prompts</div></button>
   <button class="mode-btn" id="modeBtnC" onclick="setMode('C')"><div class="mode-name">Modo C</div><div class="mode-sub">Correção e Feedback</div></button>
 </div>
 
-<!-- ============ MODO A ============ -->
+<!-- ============ MODO A — PREPARAÇÃO DE AULA ============ -->
 <div class="mode-panel on" id="modeA">
+
+<!-- CARD 1: IDENTIFICAÇÃO -->
 <div class="card">
   <div class="card-title">Identificação da Semana</div>
   <div class="row112">
     <div class="field"><label>Semana nº</label><input type="text" id="semana" placeholder="ex: 5"></div>
-    <div class="field"><label>Qtd. de aulas</label><input type="text" id="qtd" placeholder="ex: 2" oninput="updateBudget()"></div>
+    <div class="field"><label>Qtd. de aulas</label><input type="text" id="qtd" placeholder="ex: 2"></div>
     <div class="field"><label>Disciplina</label><input type="text" id="disc" placeholder="ex: Literatura Brasileira II"></div>
   </div>
   <div class="field"><label>Nome / Tema da aula</label><input type="text" id="tema" placeholder="ex: O romance como gênero"></div>
   <div class="field">
     <label>Formato da aula</label>
     <div class="fmt-group">
-      <button class="fmt-btn" id="btnFmtA" onclick="setFmt('A')"><div class="fmt-letter">A</div><div class="fmt-desc">Conceitual · teórico</div></button>
-      <button class="fmt-btn" id="btnFmtB" onclick="setFmt('B')"><div class="fmt-letter">B</div><div class="fmt-desc">Literário · analítico</div></button>
-      <button class="fmt-btn" id="btnFmtC" onclick="setFmt('C')"><div class="fmt-letter">C</div><div class="fmt-desc">Misto · 2 DPMs</div></button>
+      <button class="fmt-btn" id="btnFmtA" onclick="setFmt(&#39;A&#39;)"><div class="fmt-letter">A</div><div class="fmt-desc">Conceitual · teórico</div></button>
+      <button class="fmt-btn" id="btnFmtB" onclick="setFmt(&#39;B&#39;)"><div class="fmt-letter">B</div><div class="fmt-desc">Literário · analítico</div></button>
+      <button class="fmt-btn" id="btnFmtC" onclick="setFmt(&#39;C&#39;)"><div class="fmt-letter">C</div><div class="fmt-desc">Misto · 2 DPMs</div></button>
     </div>
-    <div class="budget" id="budget"><table id="btable"></table></div>
   </div>
   <div class="field">
     <label>Textos da semana</label>
     <div class="drop-zone" id="dropzone">
-      <input type="file" id="fileinput" multiple accept=".pdf,.docx,.doc,.txt" style="display:none">
+      <input type="file" id="fileinput" multiple="" accept=".pdf,.docx,.doc,.txt" style="display:none">
       <div class="drop-icon">⊕</div>
       <div class="drop-main">Arraste arquivos aqui ou clique para selecionar</div>
-      <div class="drop-sub">.pdf · .docx · .txt — Word e texto são mais baratos que PDF</div>
+      <div class="drop-sub">.pdf · .docx · .txt — abre formulário de referência ABNT</div>
     </div>
     <div id="fileList"></div>
     <textarea id="textos" rows="3" placeholder="As referências ABNT aparecem aqui. Você também pode digitar diretamente."></textarea>
@@ -210,17 +195,23 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   </div>
 </div>
 
+<!-- CARD 2: TAREFAS -->
 <div class="card">
   <div class="card-title">Tarefas a Entregar</div>
   <div class="tb"><span>Marque o que precisa para esta semana</span><button class="btn-all" id="btnAll" onclick="toggleAll()">Marcar tudo</button></div>
-  <div class="tr" onclick="tick('t1')"><div class="chk" id="t1"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📄</span><span class="tl">DPM Teórico</span><span class="tag">A · C</span></div><div class="ts">alunos + professor · Tese · Contexto · Contradição · Aplicação · Lacuna</div></div></div>
-  <div class="tr" onclick="tick('t2')"><div class="chk" id="t2"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📚</span><span class="tl">DPM Literário</span><span class="tag">B · C</span></div><div class="ts">alunos + professor · Forma · Conteúdo · Contexto · Intertexto · Lacuna</div></div></div>
-  <div class="tr" onclick="tick('t3')"><div class="chk" id="t3"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">⏱</span><span class="tl">Quiz de 10 minutos</span></div><div class="ts">5 questões objetivas · gabarito comentado · Estágio 5</div></div></div>
-  <div class="tr" onclick="tick('t4')"><div class="chk" id="t4"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📝</span><span class="tl">Questões Bimestrais</span><span class="tag">professor</span></div><div class="ts">2–3 questões · 1 por nível · gabarito com justificativa</div></div></div>
+  <div class="tr" onclick="tick(&#39;t1&#39;)"><div class="chk" id="t1"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📄</span><span class="tl">DPM Teórico</span><span class="tag">A · C</span></div><div class="ts">alunos + professor · Tese · Contexto · Contradição · Aplicação · Lacuna</div></div></div>
+  <div class="tr" onclick="tick(&#39;t2&#39;)"><div class="chk" id="t2"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📚</span><span class="tl">DPM Literário</span><span class="tag">B · C</span></div><div class="ts">alunos + professor · Forma · Conteúdo · Contexto · Intertexto · Lacuna</div></div></div>
+  <div class="tr" onclick="tick(&#39;t3&#39;)"><div class="chk" id="t3"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">⏱</span><span class="tl">Quiz de 10 minutos</span></div><div class="ts">5 questões objetivas · gabarito comentado · Estágio 5</div></div></div>
+  <div class="tr" onclick="tick(&#39;t4&#39;)"><div class="chk" id="t4"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📝</span><span class="tl">Questões Bimestrais</span><span class="tag">professor</span></div><div class="ts">2–3 questões · 1 por nível · gabarito com justificativa</div></div></div>
   <hr class="sep">
   <div class="field">
+    <label>Questão-norteadora do debate inicial <span style="font-weight:400;color:#889;font-style:italic">(opcional)</span></label>
+    <textarea id="norteadora" rows="2" placeholder="ex: Em que sentido o Romantismo brasileiro é uma literatura de fundação nacional?"></textarea>
+    <p class="note">Se informada, a Questão 1 do quiz será uma reformulação desta pergunta.</p>
+  </div>
+  <div class="field">
     <label>Observações adicionais</label>
-    <textarea id="obs" rows="2" placeholder="ex: Início de semestre — variantes simplificadas."></textarea>
+    <textarea id="obs" rows="2" placeholder="ex: Início de semestre — variantes simplificadas. Turma com pouco repertório teórico."></textarea>
     <p class="note">Contexto da turma, estágio do semestre, instruções especiais</p>
   </div>
   <div class="warn" id="warnA"></div>
@@ -233,40 +224,58 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
     <div class="api-st" id="apiStA"></div>
   </div>
 </div>
-
+<!-- /CARD 2 -->
 <div id="out">
   <div class="conv-tabs">
     <span>Prompts</span>
     <button class="ctab active" id="ctab1" onclick="showConv(1)">Conversa 1 · DPMs</button>
     <button class="ctab" id="ctab2" onclick="showConv(2)">Conversa 2 · Quiz e demais</button>
   </div>
+
+  <!-- CONVERSA 1 -->
   <div class="conv-panel on" id="cpanel1">
     <div class="conv-header">
       <span class="conv-title">📄 DPMs (alunos + professor num único arquivo)</span>
-      <span class="conv-hint">Anexar o(s) arquivo(s) — .pdf, .docx ou .txt (Word e texto consomem menos tokens)</span>
-      <button class="ltab active" id="ltab1pt" onclick="showLang(1,'pt')">🇧🇷 PT</button>
-      <button class="ltab" id="ltab1en" onclick="showLang(1,'en')">🇺🇸 EN</button>
+      <span class="conv-hint">Anexar o(s) PDF(s) junto com este prompt</span>
+      <button class="ltab active" id="ltab1pt" onclick="showLang(1,&#39;pt&#39;)">🇧🇷 PT</button>
+      <button class="ltab" id="ltab1en" onclick="showLang(1,&#39;en&#39;)">🇺🇸 EN</button>
     </div>
-    <div class="lang-panel on" id="lp1pt"><div class="out-meta" id="meta1pt"></div><div class="out-pre"><button class="btn-cp" id="bcp1pt" onclick="copiarPrompt('p1pt')">Copiar</button><span id="p1pt"></span></div></div>
-    <div class="lang-panel" id="lp1en"><div class="out-meta" id="meta1en"></div><div class="out-pre"><button class="btn-cp" id="bcp1en" onclick="copiarPrompt('p1en')">Copiar</button><span id="p1en"></span></div></div>
-    <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) arquivo(s) (.pdf, .docx ou .txt)</div>
+    <div class="lang-panel on" id="lp1pt">
+      <div class="out-meta" id="meta1pt"></div>
+      <div class="out-pre"><button class="btn-cp" id="bcp1pt" onclick="copiarPrompt(&#39;p1pt&#39;)">Copiar</button><span id="p1pt"></span></div>
+    </div>
+    <div class="lang-panel" id="lp1en">
+      <div class="out-meta" id="meta1en"></div>
+      <div class="out-pre"><button class="btn-cp" id="bcp1en" onclick="copiarPrompt(&#39;p1en&#39;)">Copiar</button><span id="p1en"></span></div>
+    </div>
+    <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) PDF(s)</div>
   </div>
+
+  <!-- CONVERSA 2 -->
   <div class="conv-panel" id="cpanel2">
     <div class="conv-header">
       <span class="conv-title">⏱ Quiz · Bimestral · demais tarefas</span>
-      <span class="conv-hint">Contexto limpo · Anexar arquivo(s) — .pdf, .docx ou .txt</span>
-      <button class="ltab active" id="ltab2pt" onclick="showLang(2,'pt')">🇧🇷 PT</button>
-      <button class="ltab" id="ltab2en" onclick="showLang(2,'en')">🇺🇸 EN</button>
+      <span class="conv-hint">Contexto limpo · Anexar o(s) PDF(s)</span>
+      <button class="ltab active" id="ltab2pt" onclick="showLang(2,&#39;pt&#39;)">🇧🇷 PT</button>
+      <button class="ltab" id="ltab2en" onclick="showLang(2,&#39;en&#39;)">🇺🇸 EN</button>
     </div>
-    <div class="lang-panel on" id="lp2pt"><div class="out-meta" id="meta2pt"></div><div class="out-pre"><button class="btn-cp" id="bcp2pt" onclick="copiarPrompt('p2pt')">Copiar</button><span id="p2pt"></span></div></div>
-    <div class="lang-panel" id="lp2en"><div class="out-meta" id="meta2en"></div><div class="out-pre"><button class="btn-cp" id="bcp2en" onclick="copiarPrompt('p2en')">Copiar</button><span id="p2en"></span></div></div>
-    <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) arquivo(s) (.pdf, .docx ou .txt)</div>
+    <div class="lang-panel on" id="lp2pt">
+      <div class="out-meta" id="meta2pt"></div>
+      <div class="out-pre"><button class="btn-cp" id="bcp2pt" onclick="copiarPrompt(&#39;p2pt&#39;)">Copiar</button><span id="p2pt"></span></div>
+    </div>
+    <div class="lang-panel" id="lp2en">
+      <div class="out-meta" id="meta2en"></div>
+      <div class="out-pre"><button class="btn-cp" id="bcp2en" onclick="copiarPrompt(&#39;p2en&#39;)">Copiar</button><span id="p2en"></span></div>
+    </div>
+    <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) PDF(s)</div>
   </div>
 </div>
+
 </div><!-- /modeA -->
 
-<!-- ============ MODO C ============ -->
+<!-- ============ MODO C — CORREÇÃO E FEEDBACK ============ -->
 <div class="mode-panel" id="modeC">
+
   <div class="card">
     <div class="card-title">Parâmetros da Correção</div>
     <div class="field">
@@ -301,22 +310,25 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       </div>
     </div>
   </div>
+
   <div class="card">
     <div class="card-title">Trabalho do Aluno</div>
     <div class="field">
-      <label>Arquivo do trabalho</label>
+      <label>Arquivo do trabalho <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(para geração via API)</span></label>
       <div class="api-upload" onclick="document.getElementById('cFileInput').click()">
-        <span id="cFileLabel">Clique para selecionar arquivo (.pdf, .docx, .txt) — ou arraste aqui</span>
+        <span id="cFileLabel">Clique para selecionar PDF — ou arraste aqui</span>
       </div>
-      <input type="file" id="cFileInput" accept=".pdf,.docx,.doc,.txt" style="display:none" onchange="handleCFiles(this.files)">
+      <input type="file" id="cFileInput" accept=".pdf,.txt" style="display:none" onchange="handleCFiles(this.files)">
+      <p class="note">Necessário só para "Gerar via API". No modo manual, anexe o arquivo na conversa do Claude.</p>
     </div>
     <div class="field">
       <label>Contexto / trechos (opcional)</label>
-      <textarea id="cTexto" rows="4" placeholder="Cole aqui trechos a comentar ou deixe vazio e anexe o arquivo completo."></textarea>
+      <textarea id="cTexto" rows="4" placeholder="Cole aqui trechos a comentar ou o resumo do trabalho — ou deixe vazio e anexe o arquivo completo na conversa do Claude."></textarea>
+      <p class="note">O ideal é <strong>anexar o trabalho (PDF/DOCX)</strong> junto com o prompt na conversa. Este campo é só para contexto ou trechos pontuais.</p>
     </div>
     <div class="field">
       <label>Foco da devolutiva (opcional)</label>
-      <textarea id="cObs" rows="2" placeholder="ex: priorizar fundamentação teórica e coerência metodológica."></textarea>
+      <textarea id="cObs" rows="2" placeholder="ex: priorizar fundamentação teórica e coerência metodológica; aluno na primeira versão."></textarea>
     </div>
     <div class="btn-row">
       <button class="btn-go" onclick="gerarC()">✦ Gerar prompt de correção</button>
@@ -327,11 +339,12 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <div class="api-st" id="apiStC"></div>
     </div>
   </div>
+
   <div id="outC" style="display:none">
     <div class="conv-tabs"><span>Prompt</span><span class="conv-hint" style="color:rgba(255,255,255,.65)">Devolutiva ao aluno · Modo C</span></div>
     <div class="conv-header">
       <span class="conv-title">📝 Correção e Feedback</span>
-      <span class="conv-hint">Anexar o trabalho do aluno (.pdf, .docx ou .txt) — Word consome menos tokens que PDF</span>
+      <span class="conv-hint">Anexar o trabalho do aluno (PDF/DOCX) junto com este prompt</span>
       <button class="ltab active" id="ltabCpt" onclick="showLangX('C','pt')">🇧🇷 PT</button>
       <button class="ltab" id="ltabCen" onclick="showLangX('C','en')">🇺🇸 EN</button>
     </div>
@@ -339,6 +352,8 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
     <div class="lang-panel" id="lpCen"><div class="out-meta" id="metaCen"></div><div class="out-pre"><button class="btn-cp" id="bcpCen" onclick="copiarPrompt('pCen')">Copiar</button><span id="pCen"></span></div></div>
     <div class="out-hint">Abra conversa nova → cole o prompt → anexe o trabalho do aluno</div>
   </div>
+
+  <!-- saída chat/pdf -->
   <div id="outChat" style="display:none;margin-top:8px">
     <div class="conv-tabs" style="border-radius:10px 10px 0 0"><span id="chatModeLabel">Devolutiva — Chat</span></div>
     <div style="background:#fff;border:1px solid #ccdacc;border-top:none;border-radius:0 0 10px 10px;padding:16px 20px">
@@ -349,10 +364,12 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <div id="chatContent" style="font-family:'EB Garamond',Georgia,serif;font-size:15px;line-height:1.75;max-height:580px;overflow-y:auto;border-top:1px solid #e8f0e8;padding-top:12px"></div>
     </div>
   </div>
+
 </div><!-- /modeC -->
 
-<!-- ============ MODO B ============ -->
+<!-- ============ MODO B — OTIMIZADOR DE PROMPTS ============ -->
 <div class="mode-panel" id="modeB">
+
   <div class="card">
     <div class="card-title">Otimizador de Prompts</div>
     <div class="field">
@@ -380,6 +397,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <div class="api-st" id="apiStB"></div>
     </div>
   </div>
+
   <div id="outB" style="display:none">
     <div class="conv-tabs"><span>Prompt</span><span class="conv-hint" style="color:rgba(255,255,255,.65)">Engenharia de prompt · Modo B</span></div>
     <div class="conv-header">
@@ -392,6 +410,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
     <div class="lang-panel" id="lpBen"><div class="out-meta" id="metaBen"></div><div class="out-pre"><button class="btn-cp" id="bcpBen" onclick="copiarPrompt('pBen')">Copiar</button><span id="pBen"></span></div></div>
     <div class="out-hint">Abra conversa nova → cole o prompt → cole/anexe o material se for grande</div>
   </div>
+
 </div><!-- /modeB -->
 
 </div><!-- /wrap -->
@@ -402,37 +421,37 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <div class="modal-hdr"><h2>Referência ABNT</h2><button class="modal-close" onclick="fecharModal()">✕</button></div>
   <div class="modal-fn" id="modalFn"></div>
   <div class="type-tabs">
-    <button class="type-tab active" id="mtab-artigo" onclick="setTipo('artigo')"><span class="type-icon">📰</span>Artigo</button>
-    <button class="type-tab" id="mtab-livro" onclick="setTipo('livro')"><span class="type-icon">📗</span>Livro</button>
-    <button class="type-tab" id="mtab-capitulo" onclick="setTipo('capitulo')"><span class="type-icon">📑</span>Capítulo</button>
+    <button class="type-tab active" id="mtab-artigo" onclick="setTipo(&#39;artigo&#39;)"><span class="type-icon">📰</span>Artigo</button>
+    <button class="type-tab" id="mtab-livro" onclick="setTipo(&#39;livro&#39;)"><span class="type-icon">📗</span>Livro</button>
+    <button class="type-tab" id="mtab-capitulo" onclick="setTipo(&#39;capitulo&#39;)"><span class="type-icon">📑</span>Capítulo</button>
   </div>
   <div class="msec on" id="msec-artigo">
-    <div class="mfield"><label>Autores *</label><input type="text" id="a-autores" placeholder="MELLO, Cláudio J. A." oninput="atualizarPreview()"><div class="mhint">SOBRENOME, Nome. Separe com ponto-e-vírgula.</div></div>
-    <div class="mfield"><label>Título do artigo *</label><input type="text" id="a-titulo" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>Nome da revista *</label><input type="text" id="a-revista" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Autores *</label><input type="text" id="a-autores" placeholder="MELLO, Cláudio J. A.; OLIVEIRA, Vanderléia S." oninput="atualizarPreview()"><div class="mhint">SOBRENOME, Nome. Separe com ponto-e-vírgula.</div></div>
+    <div class="mfield"><label>Título do artigo *</label><input type="text" id="a-titulo" placeholder="Romance: gênero problemático ou ambivalente?" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Nome da revista *</label><input type="text" id="a-revista" placeholder="Todas as Letras" oninput="atualizarPreview()"></div>
     <div class="mrow3">
-      <div class="mfield"><label>Volume</label><input type="text" id="a-vol" oninput="atualizarPreview()"></div>
-      <div class="mfield"><label>Número</label><input type="text" id="a-num" oninput="atualizarPreview()"></div>
-      <div class="mfield"><label>Ano *</label><input type="text" id="a-ano" oninput="atualizarPreview()"></div>
+      <div class="mfield"><label>Volume</label><input type="text" id="a-vol" placeholder="15" oninput="atualizarPreview()"></div>
+      <div class="mfield"><label>Número</label><input type="text" id="a-num" placeholder="1" oninput="atualizarPreview()"></div>
+      <div class="mfield"><label>Ano *</label><input type="text" id="a-ano" placeholder="2013" oninput="atualizarPreview()"></div>
     </div>
-    <div class="mfield"><label>Páginas</label><input type="text" id="a-pag" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>DOI ou URL (opcional)</label><input type="text" id="a-doi" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Páginas</label><input type="text" id="a-pag" placeholder="172-181" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>DOI ou URL (opcional)</label><input type="text" id="a-doi" placeholder="https://doi.org/..." oninput="atualizarPreview()"></div>
   </div>
   <div class="msec" id="msec-livro">
-    <div class="mfield"><label>Autores *</label><input type="text" id="l-autores" oninput="atualizarPreview()"><div class="mhint">SOBRENOME, Nome.</div></div>
-    <div class="mfield"><label>Título *</label><input type="text" id="l-titulo" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>Subtítulo (opcional)</label><input type="text" id="l-subtit" oninput="atualizarPreview()"></div>
-    <div class="mrow2"><div class="mfield"><label>Cidade *</label><input type="text" id="l-cidade" oninput="atualizarPreview()"></div><div class="mfield"><label>Editora *</label><input type="text" id="l-editora" oninput="atualizarPreview()"></div></div>
-    <div class="mrow2"><div class="mfield"><label>Ano *</label><input type="text" id="l-ano" oninput="atualizarPreview()"></div><div class="mfield"><label>Edição (opcional)</label><input type="text" id="l-edicao" oninput="atualizarPreview()"></div></div>
-    <div class="mfield"><label>Cap./Páginas consultadas (opcional)</label><input type="text" id="l-caps" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Autores *</label><input type="text" id="l-autores" placeholder="SOUZA, Roberto Acízelo de" oninput="atualizarPreview()"><div class="mhint">SOBRENOME, Nome. Separe com ponto-e-vírgula.</div></div>
+    <div class="mfield"><label>Título *</label><input type="text" id="l-titulo" placeholder="História da Literatura: Trajetória, Fundamentos, Problemas" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Subtítulo (opcional)</label><input type="text" id="l-subtit" placeholder="" oninput="atualizarPreview()"></div>
+    <div class="mrow2"><div class="mfield"><label>Cidade *</label><input type="text" id="l-cidade" placeholder="São Paulo" oninput="atualizarPreview()"></div><div class="mfield"><label>Editora *</label><input type="text" id="l-editora" placeholder="É Realizações" oninput="atualizarPreview()"></div></div>
+    <div class="mrow2"><div class="mfield"><label>Ano *</label><input type="text" id="l-ano" placeholder="2014" oninput="atualizarPreview()"></div><div class="mfield"><label>Edição (opcional)</label><input type="text" id="l-edicao" placeholder="2. ed." oninput="atualizarPreview()"></div></div>
+    <div class="mfield"><label>Cap./Páginas consultadas (opcional)</label><input type="text" id="l-caps" placeholder="ex: Caps. 1 e 3." oninput="atualizarPreview()"></div>
   </div>
   <div class="msec" id="msec-capitulo">
-    <div class="mfield"><label>Autores do capítulo *</label><input type="text" id="c-autores" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>Título do capítulo *</label><input type="text" id="c-titulo" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>Organizador(es) *</label><input type="text" id="c-org" oninput="atualizarPreview()"></div>
-    <div class="mfield"><label>Título do livro *</label><input type="text" id="c-livro" oninput="atualizarPreview()"></div>
-    <div class="mrow2"><div class="mfield"><label>Cidade *</label><input type="text" id="c-cidade" oninput="atualizarPreview()"></div><div class="mfield"><label>Editora *</label><input type="text" id="c-editora" oninput="atualizarPreview()"></div></div>
-    <div class="mrow2"><div class="mfield"><label>Ano *</label><input type="text" id="c-ano" oninput="atualizarPreview()"></div><div class="mfield"><label>Páginas *</label><input type="text" id="c-pag" oninput="atualizarPreview()"></div></div>
+    <div class="mfield"><label>Autores do capítulo *</label><input type="text" id="c-autores" placeholder="ANTUNES, L. Z." oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Título do capítulo *</label><input type="text" id="c-titulo" placeholder="Teoria da narrativa" oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Organizador(es) *</label><input type="text" id="c-org" placeholder="ANTUNES, L. Z." oninput="atualizarPreview()"></div>
+    <div class="mfield"><label>Título do livro *</label><input type="text" id="c-livro" placeholder="Estudos de literatura e linguística" oninput="atualizarPreview()"></div>
+    <div class="mrow2"><div class="mfield"><label>Cidade *</label><input type="text" id="c-cidade" placeholder="São Paulo" oninput="atualizarPreview()"></div><div class="mfield"><label>Editora *</label><input type="text" id="c-editora" placeholder="Arte e Ciência" oninput="atualizarPreview()"></div></div>
+    <div class="mrow2"><div class="mfield"><label>Ano *</label><input type="text" id="c-ano" placeholder="1998" oninput="atualizarPreview()"></div><div class="mfield"><label>Páginas *</label><input type="text" id="c-pag" placeholder="180-200" oninput="atualizarPreview()"></div></div>
   </div>
   <div class="ref-preview"><div class="pre-label">Pré-visualização ABNT</div><div id="previewText" style="color:#556;font-style:italic">Preencha os campos acima...</div></div>
   <button class="btn-confirm" onclick="confirmarRef()">✓ Inserir referência</button>
@@ -440,93 +459,952 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 </div>
 
 <script>
-var FMT='',TIDS=['t1','t2','t3','t4'],CHK={t1:0,t2:0,t3:0,t4:0},PENDING=[],DROPPED=[],FILE_CONTENTS={},TIPO_MODAL='artigo',FN_MODAL='';
-var BUDGET={A:{'2':{raw:'100',target:'90',conv:'20',quiz:'10',entrada:'10',grp:'20',reg:'15',cpd:'15'},'3':{raw:'150',target:'120',conv:'30',quiz:'10',entrada:'10',grp:'35',reg:'20',cpd:'15'},'4':{raw:'200',target:'160',conv:'45',quiz:'10',entrada:'15',grp:'50',reg:'25',cpd:'15'}},B:{'2':{raw:'100',target:'90',leit:'30',quiz:'10',grp:'20',reg:'15',cpd:'15'},'3':{raw:'150',target:'120',leit:'45',quiz:'10',grp:'35',reg:'15',cpd:'15'},'4':{raw:'200',target:'160',leit:'65',quiz:'10',grp:'50',reg:'20',cpd:'15'}},C:{'2':{raw:'100',target:'90',conv:'15',lit:'15',quiz:'10',grp:'20',reg:'15',cpd:'15'},'3':{raw:'150',target:'120',conv:'20',lit:'20',quiz:'10',grp:'35',reg:'20',cpd:'15'},'4':{raw:'200',target:'160',conv:'30',lit:'30',quiz:'10',grp:'45',reg:'25',cpd:'20'}}};
-var SEL={papel:'orientador',fase:'inicio',nivel:'artigo',borigem:'painel',cDelivery:'chat'};
-var CFILES=[],_chatTexto='';
-var ENDPOINT='/cla-api';
-
-function setFmt(f){FMT=(FMT===f)?'':f;['A','B','C'].forEach(function(x){document.getElementById('btnFmt'+x).classList.toggle('active',x===FMT)});updateBudget()}
-function updateBudget(){var q=document.getElementById('qtd').value.trim(),el=document.getElementById('budget'),tb=document.getElementById('btable'),b=FMT&&BUDGET[FMT]?BUDGET[FMT][q]:null;if(!b){el.classList.remove('on');return}el.classList.add('on');var rows=[];rows.push(['Aula real → computado',b.raw+' → '+b.target+' min']);if(FMT==='A'){rows.push(['1. Conversa · Pergunta-Norteadora',b.conv+' min']);rows.push(['2. Quiz',b.quiz+' min']);rows.push(['3. Parágrafo de Entrada',b.entrada+' min']);rows.push(['4. Atividade em Grupo',b.grp+' min']);rows.push(['5. Leitura dos Registros',b.reg+' min']);rows.push(['6. Parágrafo de Saída + Visto',b.cpd+' min'])}else if(FMT==='B'){rows.push(['1. Leitura e Discussão Literária',b.leit+' min']);rows.push(['2. Quiz',b.quiz+' min']);rows.push(['3. Atividade em Grupo',b.grp+' min']);rows.push(['4. Leitura dos Registros',b.reg+' min']);rows.push(['5. Parágrafo de Saída',b.cpd+' min'])}else if(FMT==='C'){rows.push(['1. Conversa · Pergunta-Norteadora',b.conv+' min']);rows.push(['2. Análise de Textos',b.lit+' min']);rows.push(['3. Quiz',b.quiz+' min']);rows.push(['4. Atividade em Grupo',b.grp+' min — 2 perguntas/grupo']);rows.push(['5. Leitura dos Registros',b.reg+' min']);rows.push(['6. Parágrafo de Saída',b.cpd+' min — 2 parágrafos/aluno'])}tb.innerHTML=rows.map(function(r){return'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'}).join('')}
-function tick(id){CHK[id]=CHK[id]?0:1;document.getElementById(id).classList.toggle('on',!!CHK[id]);var row=document.querySelector('[onclick="tick(\''+id+'\')"]');if(row)row.classList.toggle('on',!!CHK[id]);syncAll()}
-function syncAll(){var all=TIDS.every(function(id){return CHK[id]});document.getElementById('btnAll').textContent=all?'Desmarcar tudo':'Marcar tudo'}
-function toggleAll(){var all=TIDS.every(function(id){return CHK[id]});TIDS.forEach(function(id){CHK[id]=all?0:1;document.getElementById(id).classList.toggle('on',!all);var row=document.querySelector('[onclick="tick(\''+id+'\')"]');if(row)row.classList.toggle('on',!all)});syncAll()}
-function adicionarArquivos(files){Array.from(files).forEach(function(f){if(DROPPED.indexOf(f.name)<0)PENDING.push(f.name);if(!FILE_CONTENTS[f.name]){if(f.size>4*1024*1024){alert('Arquivo "'+f.name+'" tem '+Math.round(f.size/1024/1024*10)/10+'MB. O ideal é usar arquivos até 2MB. Word (.docx) consome ~35% menos tokens que PDF. Para PDFs grandes, comprima em ilovepdf.com/compress_pdf.');} var r=new FileReader();r.onload=function(e){FILE_CONTENTS[f.name]={name:f.name,media_type:f.type||'application/pdf',data:e.target.result.split(',')[1]}};r.readAsDataURL(f)}});proximoArquivo()}
-function proximoArquivo(){if(PENDING.length===0)return;abrirModal(PENDING[0])}
-function abrirModal(filename){FN_MODAL=filename;var name=filename.replace(/\.(pdf|docx?|txt)$/i,'').replace(/[_-]/g,' ').trim();var ym=name.match(/\b(19|20)\d{2}\b/);var year=ym?ym[0]:'';var title=name.replace(/\b(19|20)\d{2}\b/g,'').trim();document.getElementById('modalFn').textContent='Arquivo: '+filename;['a','l','c'].forEach(function(p){document.getElementById(p+'-titulo').value=title});document.getElementById('a-ano').value=year;document.getElementById('l-ano').value=year;document.getElementById('c-ano').value=year;['a-autores','a-revista','a-vol','a-num','a-pag','a-doi','l-autores','l-subtit','l-cidade','l-editora','l-edicao','l-caps','c-autores','c-org','c-livro','c-cidade','c-editora','c-pag'].forEach(function(id){document.getElementById(id).value=''});setTipo('artigo');atualizarPreview();document.getElementById('modalBg').classList.add('on');setTimeout(function(){document.getElementById('a-autores').focus()},100)}
-function fecharModal(){PENDING.shift();document.getElementById('modalBg').classList.remove('on')}
-function setTipo(t){TIPO_MODAL=t;['artigo','livro','capitulo'].forEach(function(x){document.getElementById('mtab-'+x).classList.toggle('active',x===t);document.getElementById('msec-'+x).classList.toggle('on',x===t)});atualizarPreview()}
-function vf(id){return document.getElementById(id).value.trim()}
-function buildRefABNT(){if(TIPO_MODAL==='artigo'){var au=vf('a-autores'),ti=vf('a-titulo'),rv=vf('a-revista'),vol=vf('a-vol'),num=vf('a-num'),ano=vf('a-ano'),pag=vf('a-pag'),doi=vf('a-doi');if(!au&&!ti&&!rv)return null;var r=(au||'[Autores]')+'. '+(ti||'[Titulo]')+'. ';if(rv)r+=rv;if(vol)r+=', v. '+vol;if(num)r+=', n. '+num;if(pag)r+=', p. '+pag;if(ano)r+=', '+ano;r+='.';if(doi)r+=' Disponivel em: '+doi+'.';return r}else if(TIPO_MODAL==='livro'){var au=vf('l-autores'),ti=vf('l-titulo'),sub=vf('l-subtit'),ed=vf('l-edicao'),ci=vf('l-cidade'),ev=vf('l-editora'),ano=vf('l-ano'),caps=vf('l-caps');if(!au&&!ti)return null;var r=(au||'[Autores]')+'. '+ti+(sub?': '+sub:'')+'. ';if(ed)r+=ed+'. ';r+=(ci||'[Cidade]')+': '+(ev||'[Editora]')+', '+(ano||'[ano]')+'.';if(caps)r+=' '+caps;return r}else{var au=vf('c-autores'),ti=vf('c-titulo'),org=vf('c-org'),lv=vf('c-livro'),ci=vf('c-cidade'),ev=vf('c-editora'),ano=vf('c-ano'),pag=vf('c-pag');if(!au&&!ti)return null;var r=(au||'[Autores]')+'. '+(ti||'[Titulo]')+'. In: '+(org||'[Org.]')+' (org.). '+(lv||'[Livro]')+'. '+(ci||'[Cidade]')+': '+(ev||'[Editora]')+', '+(ano||'[ano]')+'.';if(pag)r+=' p. '+pag+'.';return r}}
-function atualizarPreview(){var ref=buildRefABNT(),el=document.getElementById('previewText');if(!ref){el.style.fontStyle='italic';el.style.color='#556';el.textContent='Preencha os campos acima...'}else{el.style.fontStyle='normal';el.style.color='#1a2e1a';el.textContent=ref}}
-function confirmarRef(){var ref=buildRefABNT();if(!ref){alert('Preencha pelo menos autores e titulo.');return}var ta=document.getElementById('textos'),cur=ta.value.trim();ta.value=cur?cur+'\n'+ref:ref;DROPPED.push(FN_MODAL);adicionarChip(FN_MODAL);PENDING.shift();document.getElementById('modalBg').classList.remove('on');setTimeout(proximoArquivo,200)}
-function adicionarChip(filename){var chips=document.querySelectorAll('.chip');chips.forEach(function(c){if(c.getAttribute('data-fn')===filename)c.remove()});var chip=document.createElement('span');chip.className='chip';chip.setAttribute('data-fn',filename);var short=filename.replace(/\.(pdf|docx?|txt)$/i,'').substring(0,50);chip.innerHTML='📄 '+short+' <span class="chip-x" onclick="removerRef(this)">✕</span>';document.getElementById('fileList').appendChild(chip)}
-function removerRef(btn){var chip=btn.parentNode,fn=chip.getAttribute('data-fn');DROPPED=DROPPED.filter(function(x){return x!==fn});chip.remove()}
-function showConv(n){[1,2].forEach(function(i){document.getElementById('cpanel'+i).classList.toggle('on',i===n);document.getElementById('ctab'+i).classList.toggle('active',i===n)})}
-function showLang(conv,lang){var pt=lang==='pt';document.getElementById('lp'+conv+'pt').classList.toggle('on',pt);document.getElementById('lp'+conv+'en').classList.toggle('on',!pt);document.getElementById('ltab'+conv+'pt').classList.toggle('active',pt);document.getElementById('ltab'+conv+'en').classList.toggle('active',!pt)}
-function copiarPrompt(spanId){var text=document.getElementById(spanId).textContent;var span=document.getElementById(spanId);var btn=span?span.parentNode.querySelector('.btn-cp'):null;navigator.clipboard.writeText(text).then(function(){if(btn){var orig=btn.textContent;btn.textContent='✓ Copiado';btn.classList.add('done');setTimeout(function(){btn.textContent=orig;btn.classList.remove('done')},2200)}})}
-document.addEventListener('DOMContentLoaded',function(){var dz=document.getElementById('dropzone'),fi=document.getElementById('fileinput');document.body.addEventListener('dragover',function(e){e.preventDefault()});document.body.addEventListener('drop',function(e){e.preventDefault()});dz.addEventListener('dragover',function(e){e.preventDefault();e.stopPropagation();dz.classList.add('over')});dz.addEventListener('dragleave',function(e){e.preventDefault();e.stopPropagation();dz.classList.remove('over')});dz.addEventListener('drop',function(e){e.preventDefault();e.stopPropagation();dz.classList.remove('over');adicionarArquivos(e.dataTransfer.files)});dz.addEventListener('click',function(e){e.stopPropagation();fi.click()});fi.addEventListener('change',function(){if(this.files.length>0){adicionarArquivos(this.files);this.value=''}});document.getElementById('modalBg').addEventListener('click',function(e){if(e.target===this)fecharModal()})});
+// ── estado global ──────────────────────────────────────────────────────────
+var FMT = '';
+var TIDS = ['t1','t2','t3','t4'];
+var CHK = {t1:0,t2:0,t3:0,t4:0};
+var PENDING = [];
+var DROPPED = [];
+var FILE_CONTENTS = {}; // filename → {name, media_type, data(base64)} para uso na API
+var TIPO_MODAL = 'artigo';
+var FN_MODAL = '';
 
 
-
-var DPM_STRUCT_PT=['PT-BR. Citações: (SOBRENOME, ano, p. X). Não inventar.','','**Identidade visual IFF — cabeçalho obrigatório (tabela 2 linhas × 2 colunas, fonte Arial, A4):**','Linha 1 esquerda (~60%): fundo verde #B3E5A0, texto preto — INSTITUTO FEDERAL FLUMINENSE (negrito) / Campus Campos Centro · Licenciatura em Letras — Português e Literaturas / Disciplina: [valor] / Professor: Felipe Vigneron Azevedo / Semana: [valor]','Linha 1 direita (~40%): fundo branco, texto preto negrito centralizado — nome do documento (ex: DPM Teórico)','Linha 2 esquerda: Nome do(a) Estudante: _______________________________________','Linha 2 direita: Data: _____ / _____ / _______','','**Versão professor:** sem cabeçalho institucional — iniciar com faixa largura total, fundo #8B0000, texto branco centralizado: VERSÃO PROFESSOR — CONFIDENCIAL — NÃO DISTRIBUIR AOS ALUNOS','','**Separador obrigatório entre versões:** linha horizontal + texto centralizado negrito vermelho escuro: ✂ SEPARAR AQUI — A partir daqui: DPM PROFESSOR (CONFIDENCIAL) + linha horizontal','','**Estrutura DPM:**','DPM ALUNOS: S1 Tese (2–4 frases + ≥1 citação direta) · S2 Conceitos-chave (tabela Conceito+pág | Explicação 2–3 frases) · S3 Parágrafos centrais (3–6 citações diretas integrais, não parafrasear) · S4 Perguntas de grupo (G1 Tese · G2 Contexto · G3 Contradição · G4 Aplicação · G5 Lacuna)','DPM PROFESSOR: SP1 Corrente teórica · SP2 Respostas esperadas (tabela Grupo | Resposta | Páginas)','Entregar como arquivo .docx gerado via Node.js + docx-js.'];
-var DPM_STRUCT_EN=['PT-BR for ALL deliverables. Quotes: (SURNAME, year, p. X). Never invent.','','**IFF Visual Identity — mandatory header (2×2 table, Arial, A4):**','Row 1 left (~60%): green #B3E5A0 background, black text — INSTITUTO FEDERAL FLUMINENSE (bold) / Campus Campos Centro · Licenciatura em Letras — Português e Literaturas / Disciplina: [value] / Professor: Felipe Vigneron Azevedo / Semana: [value]','Row 1 right (~40%): white background, black bold centered — document name (e.g. DPM Teórico)','Row 2 left: Nome do(a) Estudante: _______________________________________','Row 2 right: Data: _____ / _____ / _______','','**Professor version:** no institutional header — start with full-width banner, #8B0000 background, white centered text: VERSÃO PROFESSOR — CONFIDENCIAL — NÃO DISTRIBUIR AOS ALUNOS','','**Mandatory separator:** horizontal rule + bold dark-red centered text: ✂ SEPARAR AQUI — A partir daqui: DPM PROFESSOR (CONFIDENCIAL) + horizontal rule','','**DPM structure:**','STUDENT: S1 Thesis (2–4 sentences + ≥1 direct quote) · S2 Key concepts (table Concept+page | Explanation 2–3 sentences) · S3 Central paragraphs (3–6 integral direct quotes, no paraphrase) · S4 Group questions (G1 Thesis · G2 Context · G3 Contradiction · G4 Application · G5 Gap)','PROFESSOR: SP1 Theoretical tradition · SP2 Expected answers (table Group | Answer | Pages)','Deliver as .docx file generated via Node.js + docx-js.'];
-
-function cabecalhoDados(disc,semana,qtd,tema,textos,budget,sel,isEN){var L=[];var linha=[];if(disc)linha.push((isEN?'Subj: ':'Disc: ')+disc);if(semana)linha.push((isEN?'Wk ':'Sem ')+semana);if(qtd)linha.push((isEN?'Classes: ':'Aulas: ')+qtd);if(tema)linha.push((isEN?'Topic: ':'Tema: ')+tema);L.push(linha.join(' | '));if(textos){var txs=textos.split('\n').filter(function(x){return x.trim()});if(txs.length)L.push((isEN?'Text: ':'Texto: ')+txs[0]+(txs.length>1?' [+'+(txs.length-1)+']':''))}return L}
-function instrGerais(isEN){var L=[];if(isEN){L.push('PT-BR for ALL deliverables.');L.push('**Tone:** experienced teacher, no AI filler. Cite exact page numbers.');L.push('**Rules:** never invent citations, pages, dates or authors. Use [a confirmar] or omit.')}else{L.push('**Lingua:** PT-BR em todas as entregas.');L.push('**Tom:** professor experiente, sem marcadores de IA. Citações com página exata.');L.push('**Regras:** nunca inventar citações, páginas, datas ou autores. Usar [a confirmar] ou omitir.')}return L}
-function buildConv1(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,isEN){var hasDPM=sel.indexOf('t1')>=0||sel.indexOf('t2')>=0;if(!hasDPM)return isEN?'(No DPMs requested)':'(Nenhum DPM solicitado)';var L=cabecalhoDados(disc,semana,qtd,tema,textos,budget,sel,isEN);L.push('');instrGerais(isEN).forEach(function(l){L.push(l)});L.push('');(isEN?DPM_STRUCT_EN:DPM_STRUCT_PT).forEach(function(l){L.push(l)});if(sel.indexOf('t1')>=0)L.push(isEN?'Generate: DPM Teórico (student+professor, single file with separator)':'Gerar: DPM Teórico (alunos+professor, único arquivo com separador)');if(sel.indexOf('t2')>=0)L.push(isEN?'Generate: DPM Literário (student+professor, single file with separator)':'Gerar: DPM Literário (alunos+professor, único arquivo com separador)');if(obs)L.push('\n'+(isEN?'Note: ':'Obs.: ')+obs);return L.join('\n')}
-
-function buildConv2(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,isEN){var sel2=sel.filter(function(id){return['t3','t4'].indexOf(id)>=0});if(sel2.length===0)return isEN?'(No tasks for Conversation 2)':'(Nenhuma tarefa para a Conversa 2)';var L=[];var cab=disc+(semana?' | Sem '+semana:'')+(tema?' | '+tema:'')+(textos?'\nTexto: '+textos.split('\n')[0]:'');L.push(isEN?'CLA · IFF – CONV 2 | '+cab:'CLA · IFF – CONV 2 | '+cab);L.push('PT-BR. Sem cabecalho, sem cores. Nao inventar citacoes — usar [a confirmar] ou omitir.');L.push('');if(sel2.indexOf('t3')>=0){L.push(isEN?'## Quiz\n5 questions A-D. Format: number, question, A/B/C/D, blank line. After Q5: answer key with comment (SURNAME, year, p. X).':'## Quiz\n5 questoes A-D. Formato: numero, enunciado, A/B/C/D, linha em branco. Apos Q5: gabarito com comentario (SOBRENOME, ano, p. X).');L.push('')}if(sel2.indexOf('t4')>=0){L.push(isEN?'## Bimonthly\n2 questions A-D: Q1 comprehension, Q2 interpretation. Answer key with comment. Professor version.':'## Bimestral\n2 questoes A-D: Q1 compreensao, Q2 interpretacao. Gabarito comentado. Versao professor.');L.push('')}if(obs)L.push((isEN?'Note: ':'Obs.: ')+obs);return L.join('\n')}
-function buildNomes(sel,semana){var n=[],s=semana||'X';if(sel.indexOf('t1')>=0)n.push('DPM_Teorico_Sem'+s+'.docx');if(sel.indexOf('t2')>=0)n.push('DPM_Literario_Sem'+s+'.docx');if(sel.indexOf('t3')>=0)n.push('Quiz_Sem'+s+'.docx');if(sel.indexOf('t4')>=0)n.push('Bimestral_Sem'+s+'.docx');return n}
-
-function gerar(){var disc=document.getElementById('disc').value.trim(),semana=document.getElementById('semana').value.trim(),qtd=document.getElementById('qtd').value.trim(),tema=document.getElementById('tema').value.trim(),textos=document.getElementById('textos').value.trim(),obs=document.getElementById('obs').value.trim(),budget=BUDGET[qtd],sel=TIDS.filter(function(id){return!!CHK[id]}),nomes=buildNomes(sel,semana),wA=document.getElementById('warnA');if(sel.length===0){wA.textContent='Marque ao menos uma tarefa antes de gerar.';wA.classList.add('on');return}var needFmt=sel.indexOf('t1')>=0||sel.indexOf('t2')>=0;if(needFmt&&!FMT){wA.textContent='Selecione o formato da aula (A, B ou C) — os DPMs dependem dele.';wA.classList.add('on');return}wA.classList.remove('on');var p1pt=buildConv1(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,false),p1en=buildConv1(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,true),p2pt=buildConv2(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,false),p2en=buildConv2(disc,semana,qtd,tema,textos,obs,budget,sel,nomes,true);function set(id,text){document.getElementById(id).textContent=text}function meta(id,text){document.getElementById(id).textContent=text.length.toLocaleString('pt-BR')+' car.'}set('p1pt',p1pt);meta('meta1pt',p1pt);set('p1en',p1en);meta('meta1en',p1en);set('p2pt',p2pt);meta('meta2pt',p2pt);set('p2en',p2en);meta('meta2en',p2en);var hasC2=sel.some(function(id){return['t3','t4'].indexOf(id)>=0});document.getElementById('ctab2').style.opacity=hasC2?'1':'0.4';document.getElementById('out').classList.add('on');var hasC1=sel.some(function(id){return['t1','t2'].indexOf(id)>=0});showConv(hasC1?1:2);showLang(1,'pt');showLang(2,'pt');setTimeout(function(){document.getElementById('out').scrollIntoView({behavior:'smooth'})},80)}
-function limpar(){['disc','semana','qtd','tema','textos','obs'].forEach(function(id){document.getElementById(id).value=''});FMT='';['A','B','C'].forEach(function(x){document.getElementById('btnFmt'+x).classList.remove('active')});document.getElementById('budget').classList.remove('on');TIDS.forEach(function(id){CHK[id]=0;document.getElementById(id).classList.remove('on');var row=document.querySelector('[onclick="tick(\''+id+'\')"]');if(row)row.classList.remove('on')});syncAll();DROPPED=[];PENDING=[];FILE_CONTENTS={};document.getElementById('fileList').innerHTML='';document.getElementById('out').classList.remove('on');var _w=document.getElementById('warnA');if(_w)_w.classList.remove('on')}
-function setMode(m){['A','B','C'].forEach(function(x){document.getElementById('mode'+x).classList.toggle('on',x===m);document.getElementById('modeBtn'+x).classList.toggle('active',x===m)});window.scrollTo({top:0,behavior:'smooth'})}
-function setOpt(group,val){SEL[group]=val;var map={papel:['orientador','banca'],fase:['inicio','andamento','concluido'],nivel:['artigo','dissertacao','tese'],borigem:['painel','outro'],cDelivery:['chat','word','pdf']};map[group].forEach(function(v){var el=document.getElementById(group+'-'+v);if(el)el.classList.toggle('active',v===val)});if(group==='papel'){var ff=document.getElementById('fieldFase');if(val==='banca')ff.classList.add('opt-disabled');else ff.classList.remove('opt-disabled')}}
-function showLangX(tag,lang){var pt=lang==='pt';document.getElementById('lp'+tag+'pt').classList.toggle('on',pt);document.getElementById('lp'+tag+'en').classList.toggle('on',!pt);document.getElementById('ltab'+tag+'pt').classList.toggle('active',pt);document.getElementById('ltab'+tag+'en').classList.toggle('active',!pt)}
-
-function buildModoC(isEN){var L=[],ctx=document.getElementById('cTexto').value.trim(),foco=document.getElementById('cObs').value.trim(),papel=SEL.papel==='banca'?'banca (avaliativa)':'orientador (formativa)',fase={inicio:'inicio',andamento:'andamento',concluido:'concluido (pre-banca)'}[SEL.fase]||'',nivel={artigo:'artigo/TCC',dissertacao:'dissertacao',tese:'tese'}[SEL.nivel]||SEL.nivel;L.push(isEN?'# Academic Correction and Feedback — CLA - IFF - Mode C':'# Correcao e Feedback Academico — CLA · IFF · Modo C');L.push('Prof. Felipe Vigneron Azevedo');L.push('');if(isEN)L.push('WARNING: WRITE THE ENTIRE FEEDBACK IN BRAZILIAN PORTUGUESE (PT-BR).');L.push('');L.push('## '+(isEN?'Task':'Tarefa'));L.push(isEN?'Act as the student\'s '+papel+'. Correct and return academic feedback in SECOND PERSON, qualitatively, WITHOUT a grade. Student work is ATTACHED (PDF/DOCX).':'Voce e o '+papel+' do trabalho. Corrija e devolva feedback em SEGUNDA PESSOA, qualitativamente, SEM nota. Trabalho ANEXADO (PDF/DOCX).');L.push('');L.push('## '+(isEN?'Parameters':'Parametros'));L.push('- PAPEL: '+papel);if(SEL.papel!=='banca')L.push('- FASE: '+fase);L.push('- NIVEL: '+nivel);L.push('');L.push('## '+(isEN?'Criteria by weight':'Criterios por peso'));L.push('1) Cumprimento dos objetivos 2) Originalidade 3) Fundamentacao teorica 4) Correcao conceitual · Clareza · Consistencia · ABNT');L.push('');L.push('## '+(isEN?'Output structure':'Estrutura da devolutiva'));L.push('1 — Leitura geral (2–4 frases)');L.push('2 — Pontos por criterio');L.push('3 — Apontamentos cirurgicos: trecho → problema → sugestao → fonte');L.push('4 — Prioridades (2–3 providencias)');L.push('5 — Proximo passo');if(foco){L.push('');L.push('## '+(isEN?'Focus requested':'Foco da devolutiva'));L.push(foco)}if(ctx){L.push('');L.push('## '+(isEN?'Context / passages':'Contexto / trechos'));L.push(ctx)}return L.join('\n')}
-function gerarC(){var ppt=buildModoC(false),pen=buildModoC(true);document.getElementById('pCpt').textContent=ppt;document.getElementById('pCen').textContent=pen;document.getElementById('metaCpt').textContent=ppt.length.toLocaleString('pt-BR')+' car.';document.getElementById('metaCen').textContent=pen.length.toLocaleString('pt-BR')+' car.';document.getElementById('outC').style.display='block';showLangX('C','pt');setTimeout(function(){document.getElementById('outC').scrollIntoView({behavior:'smooth'})},80)}
-function limparC(){document.getElementById('cTexto').value='';document.getElementById('cObs').value='';document.getElementById('outC').style.display='none'}
-function buildModoB(isEN){var L=[],mat=document.getElementById('bPrompt').value.trim(),q=document.getElementById('bQueixa').value.trim(),dop=SEL.borigem==='painel';L.push(isEN?'# Prompt Optimizer — CLA - IFF - Mode B':'# Otimizador de Prompts — CLA · IFF · Modo B');L.push('Prof. Felipe Vigneron Azevedo');L.push('');L.push('## '+(isEN?'Task':'Tarefa'));L.push(isEN?'Act as a PROMPT ENGINEER. Diagnose, optimize, and explain changes.':'Voce atua como ENGENHEIRO DE PROMPTS. Diagnostique, otimize e explique o que mudou.');L.push('');L.push('## '+(isEN?'Rules':'Regras'));L.push(isEN?'- Preserve the author\'s intention and tone.':'- Preserve a intencao e o tom do autor.');L.push(isEN?'- Do not inflate tokens.':'- Nao infle tokens.');L.push(isEN?'- When there are alternatives, point out which is best and why.':'- Havendo alternativas, aponte explicitamente qual e a melhor e por que.');if(dop)L.push(isEN?'- Indicate in which document (Instrucoes or Background) and section to insert the new version.':'- Indique em qual documento (Instrucoes ou Background) e secao inserir a versao nova.');L.push('');L.push('## '+(isEN?'Complaint / goal':'Queixa / objetivo'));L.push(q||(isEN?'(not provided)':'(nao informado)'));L.push('');L.push('## '+(isEN?'Material to optimize':'Material a otimizar'));L.push(mat);return L.join('\n')}
-function gerarB(){var wB=document.getElementById('warnB');if(!document.getElementById('bPrompt').value.trim()){wB.textContent='Cole o material a otimizar antes de gerar.';wB.classList.add('on');return}wB.classList.remove('on');var ppt=buildModoB(false),pen=buildModoB(true);document.getElementById('pBpt').textContent=ppt;document.getElementById('pBen').textContent=pen;document.getElementById('metaBpt').textContent=ppt.length.toLocaleString('pt-BR')+' car.';document.getElementById('metaBen').textContent=pen.length.toLocaleString('pt-BR')+' car.';document.getElementById('outB').style.display='block';showLangX('B','pt');setTimeout(function(){document.getElementById('outB').scrollIntoView({behavior:'smooth'})},80)}
-function limparB(){document.getElementById('bPrompt').value='';document.getElementById('bQueixa').value='';document.getElementById('warnB').classList.remove('on');document.getElementById('outB').style.display='none'}
-
-function handleCFiles(files){CFILES=[];var label=document.getElementById('cFileLabel');Array.from(files).forEach(function(f){var r=new FileReader();r.onload=function(e){CFILES.push({name:f.name,media_type:f.type||'application/pdf',data:e.target.result.split(',')[1]});if(label)label.textContent=CFILES.map(function(x){return x.name}).join(', ')};r.readAsDataURL(f)})}
-function setApiStatus(id,type,msg){var el=document.getElementById(id);if(!el)return;el.className='api-st '+type;el.textContent=msg}
-function downloadDocx(b64,filename){var a=document.createElement('a');a.href='data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,'+b64;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a)}
-function getSessionToken(){var m=document.cookie.match(/cla_session=([^;]+)/);return m?m[1]:''}
-function chamarAPI(body){
-  // Usar FormData para evitar limite de 6MB do Netlify com base64 em JSON
-  var fd=new FormData();
-  var files=body.files||[];
-  var bodySemFiles=Object.assign({},body,{files:[]});
-  fd.append('payload',JSON.stringify(bodySemFiles));
-  files.forEach(function(f){
-    var bytes=atob(f.data);
-    var arr=new Uint8Array(bytes.length);
-    for(var i=0;i<bytes.length;i++)arr[i]=bytes.charCodeAt(i);
-    var blob=new Blob([arr],{type:f.media_type||'application/pdf'});
-    fd.append('files',blob,f.name);
+// ── formato da aula ────────────────────────────────────────────────────────
+function setFmt(f) {
+  FMT = (FMT === f) ? '' : f;
+  ['A','B','C'].forEach(function(x) {
+    document.getElementById('btnFmt'+x).classList.toggle('active', x === FMT);
   });
-  return fetch(ENDPOINT,{method:'POST',credentials:'include',body:fd}).then(function(r){
-    if(r.status===401){window.location.reload();throw new Error('Sessão expirada. Faça login novamente.')}
-    var ct=r.headers.get('content-type')||'';
-    if(!ct.includes('application/json')){throw new Error('Resposta inválida do servidor (status '+r.status+').')}
-    return r.json().then(function(data){if(!r.ok)throw new Error(data.error||('Erro '+r.status));return data})
-  })
 }
 
-function gerarViaAPI_A(){var disc=document.getElementById('disc').value.trim(),semana=document.getElementById('semana').value.trim(),qtd=document.getElementById('qtd').value.trim(),tema=document.getElementById('tema').value.trim(),refs=document.getElementById('textos').value.trim(),obs=document.getElementById('obs').value.trim(),sel=TIDS.filter(function(id){return!!CHK[id]}),wA=document.getElementById('warnA');if(sel.length===0){wA.textContent='Marque ao menos uma tarefa.';wA.classList.add('on');return}var needFmt=sel.indexOf('t1')>=0||sel.indexOf('t2')>=0;if(needFmt&&!FMT){wA.textContent='Selecione o formato da aula.';wA.classList.add('on');return}wA.classList.remove('on');var files=Object.keys(FILE_CONTENTS).map(function(k){return FILE_CONTENTS[k]}),inputs={disciplina:disc,semana:semana,formato:FMT,nAulas:qtd,tema:tema,obs:obs,referencias:refs},taskMap={t1:'dpm_teorico',t2:'dpm_literario',t3:'quiz',t4:'bimestral'},btn=document.getElementById('btnApiA');btn.disabled=true;var chain=Promise.resolve(),n=0,total=sel.filter(function(id){return taskMap[id]}).length;sel.forEach(function(tid){var task=taskMap[tid];if(!task)return;n++;var idx=n;chain=chain.then(function(){setApiStatus('apiStA','loading','Gerando '+task.replace('_',' ')+' ('+idx+'/'+total+')…');return chamarAPI({mode:'A',task:task,inputs:inputs,files:files}).then(function(data){downloadDocx(data.docx,data.filename);var w=data.warnings&&data.warnings.length?' ⚠ '+data.warnings.join('; '):'';setApiStatus('apiStA','ok','✓ '+data.filename+' baixado.'+w)}).catch(function(e){setApiStatus('apiStA','error','✗ Erro em '+task+': '+e.message);return Promise.reject(e)})})});chain.catch(function(){}).then(function(){btn.disabled=false})}
+// ── checkboxes ─────────────────────────────────────────────────────────────
+function tick(id) {
+  CHK[id] = CHK[id] ? 0 : 1;
+  document.getElementById(id).classList.toggle('on', !!CHK[id]);
+  var row = document.querySelector('[onclick="tick(\'' + id + '\')"]');
+  if (row) row.classList.toggle('on', !!CHK[id]);
+  syncAll();
+}
 
-function gerarViaAPI_B(){var prompt=document.getElementById('bPrompt').value.trim();if(!prompt){document.getElementById('warnB').textContent='Cole o material a otimizar.';document.getElementById('warnB').classList.add('on');return}document.getElementById('warnB').classList.remove('on');var btn=document.getElementById('btnApiB');btn.disabled=true;setApiStatus('apiStB','loading','Otimizando via API…');chamarAPI({mode:'B',inputs:{prompt:prompt,queixa:document.getElementById('bQueixa').value.trim(),origem:SEL.borigem}}).then(function(data){document.getElementById('pBpt').textContent=data.text||'';document.getElementById('metaBpt').textContent=((data.text||'').length).toLocaleString('pt-BR')+' car.';document.getElementById('outB').style.display='block';showLangX('B','pt');setApiStatus('apiStB','ok','✓ Prompt otimizado. Modelo: '+(data.model||'')+'.');setTimeout(function(){document.getElementById('outB').scrollIntoView({behavior:'smooth'})},80)}).catch(function(e){setApiStatus('apiStB','error','✗ Erro: '+e.message)}).then(function(){btn.disabled=false})}
+function syncAll() {
+  var all = TIDS.every(function(id) { return CHK[id]; });
+  document.getElementById('btnAll').textContent = all ? 'Desmarcar tudo' : 'Marcar tudo';
+}
 
-function renderMarkdown(txt){return txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/^## (.+)$/gm,'<h3 style="font-family:\'Crimson Pro\',serif;color:#2E6B3E;margin:18px 0 6px">$1</h3>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/\n/g,'<br>')}
-function copiarChat(){if(!_chatTexto)return;navigator.clipboard.writeText(_chatTexto).then(function(){var btn=document.querySelector('#outChat .btn-cp');if(btn){btn.textContent='Copiado!';setTimeout(function(){btn.textContent='Copiar texto'},1800)}})}
-function abrirComoPDF(){if(!_chatTexto)return;var papel=SEL.papel==='banca'?'Banca':'Orientador',nivel={artigo:'Artigo / TCC',dissertacao:'Dissertação',tese:'Tese'}[SEL.nivel]||SEL.nivel,fase=SEL.papel!=='banca'?' · '+{inicio:'Início',andamento:'Andamento',concluido:'Concluído'}[SEL.fase]:'';var w=window.open('','_blank');w.document.write('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Devolutiva</title><style>body{font-family:Georgia,serif;font-size:15px;line-height:1.8;max-width:720px;margin:40px auto;padding:0 20px;color:#222}h2{font-size:13px;font-weight:normal;color:#555;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:20px}h3{color:#2E6B3E;margin:22px 0 6px;font-size:16px}@media print{body{margin:20px}}</style></head><body><h2>Devolutiva Acadêmica · '+papel+fase+' · '+nivel+'</h2>'+renderMarkdown(_chatTexto)+'<br><br></body></html>');w.document.close();setTimeout(function(){w.print()},400)}
+function toggleAll() {
+  var all = TIDS.every(function(id) { return CHK[id]; });
+  TIDS.forEach(function(id) {
+    CHK[id] = all ? 0 : 1;
+    document.getElementById(id).classList.toggle('on', !all);
+    var row = document.querySelector('[onclick="tick(\'' + id + '\')"]');
+    if (row) row.classList.toggle('on', !all);
+  });
+  syncAll();
+}
 
-function gerarViaAPI_C(){var btn=document.getElementById('btnApiC');btn.disabled=true;var delivery=SEL.cDelivery,label=document.getElementById('chatModeLabel');document.getElementById('outC').style.display='none';document.getElementById('outChat').style.display='none';if(delivery==='word'){setApiStatus('apiStC','loading','Gerando devolutiva (Word) via API…');chamarAPI({mode:'C',task:undefined,inputs:{papel:SEL.papel,fase:SEL.papel==='banca'?null:SEL.fase,nivel:SEL.nivel,contexto:document.getElementById('cTexto').value.trim(),foco:document.getElementById('cObs').value.trim()},files:CFILES}).then(function(data){downloadDocx(data.docx,data.filename);var w=data.warnings&&data.warnings.length?' ⚠ '+data.warnings.join('; '):'';setApiStatus('apiStC','ok','✓ '+data.filename+' baixado.'+w)}).catch(function(e){setApiStatus('apiStC','error','✗ Erro: '+e.message)}).then(function(){btn.disabled=false})}else{setApiStatus('apiStC','loading',delivery==='pdf'?'Gerando devolutiva para PDF…':'Gerando devolutiva…');chamarAPI({mode:'C',task:'chat',inputs:{papel:SEL.papel,fase:SEL.papel==='banca'?null:SEL.fase,nivel:SEL.nivel,contexto:document.getElementById('cTexto').value.trim(),foco:document.getElementById('cObs').value.trim()},files:CFILES}).then(function(data){_chatTexto=data.text||'';if(label)label.textContent=delivery==='pdf'?'Devolutiva — PDF':'Devolutiva — Chat';document.getElementById('chatContent').innerHTML=renderMarkdown(_chatTexto);document.getElementById('outChat').style.display='block';setApiStatus('apiStC','ok','✓ Devolutiva gerada.');setTimeout(function(){document.getElementById('outChat').scrollIntoView({behavior:'smooth'})},80);if(delivery==='pdf')setTimeout(abrirComoPDF,600)}).catch(function(e){setApiStatus('apiStC','error','✗ Erro: '+e.message)}).then(function(){btn.disabled=false})}}
+// ── drag and drop ──────────────────────────────────────────────────────────
+function adicionarArquivos(files) {
+  Array.from(files).forEach(function(f) {
+    if (DROPPED.indexOf(f.name) < 0) PENDING.push(f.name);
+    if (!FILE_CONTENTS[f.name]) {
+      var r = new FileReader();
+      r.onload = function(e) {
+        FILE_CONTENTS[f.name] = { name: f.name, media_type: f.type || 'application/pdf', data: e.target.result.split(',')[1] };
+      };
+      r.readAsDataURL(f);
+    }
+  });
+  proximoArquivo();
+}
 
-(function(){async function checkSession(){try{var r=await fetch('/auth-check',{credentials:'include'});var d=await r.json();if(d.ok){document.getElementById('loginOverlay').classList.remove('on')}else{showLogin(d.authUrl||null)}}catch(e){showLogin(null)}}function showLogin(authUrl){var overlay=document.getElementById('loginOverlay'),btn=document.getElementById('btnGoogle');if(authUrl){btn.href=authUrl}else{btn.onclick=function(){alert('Erro de configuração. Tente novamente.');return false}}overlay.classList.add('on')}document.addEventListener('DOMContentLoaded',checkSession)})();
+function proximoArquivo() {
+  if (PENDING.length === 0) return;
+  abrirModal(PENDING[0]);
+}
+
+// ── modal ABNT ─────────────────────────────────────────────────────────────
+function abrirModal(filename) {
+  FN_MODAL = filename;
+  var name = filename.replace(/\.(pdf|docx?|txt)$/i,'').replace(/[_-]/g,' ').replace(/\s+/g,' ').trim();
+  var ym = name.match(/\b(19|20)\d{2}\b/);
+  var year = ym ? ym[0] : '';
+  var title = name.replace(/\b(19|20)\d{2}\b/g,'').trim();
+  document.getElementById('modalFn').textContent = 'Arquivo: ' + filename;
+  // pre-fill titles
+  ['a','l','c'].forEach(function(p) { document.getElementById(p+'-titulo').value = title; });
+  document.getElementById('a-ano').value = year;
+  document.getElementById('l-ano').value = year;
+  document.getElementById('c-ano').value = year;
+  // clear other fields
+  ['a-autores','a-revista','a-vol','a-num','a-pag','a-doi',
+   'l-autores','l-subtit','l-cidade','l-editora','l-edicao','l-caps',
+   'c-autores','c-org','c-livro','c-cidade','c-editora','c-pag'
+  ].forEach(function(id) { document.getElementById(id).value = ''; });
+  setTipo('artigo');
+  atualizarPreview();
+  document.getElementById('modalBg').classList.add('on');
+  setTimeout(function() { document.getElementById('a-autores').focus(); }, 100);
+}
+
+function fecharModal(confirmed) {
+  // If closed without confirming, remove from queue and process next
+  if (!confirmed && PENDING.length > 0) { PENDING.shift(); }
+  document.getElementById('modalBg').classList.remove('on');
+  FN_MODAL = '';
+  if (!confirmed && PENDING.length > 0) proximoArquivo();
+}
+
+function setTipo(t) {
+  TIPO_MODAL = t;
+  ['artigo','livro','capitulo'].forEach(function(x) {
+    document.getElementById('mtab-' + x).classList.toggle('active', x === t);
+    document.getElementById('msec-' + x).classList.toggle('on', x === t);
+  });
+  atualizarPreview();
+}
+
+function vf(id) { return document.getElementById(id).value.trim(); }
+
+function buildRefABNT() {
+  if (TIPO_MODAL === 'artigo') {
+    var au=vf('a-autores'),ti=vf('a-titulo'),rv=vf('a-revista'),vol=vf('a-vol'),num=vf('a-num'),ano=vf('a-ano'),pag=vf('a-pag'),doi=vf('a-doi');
+    if (!au && !ti && !rv) return null;
+    var r = (au||'[Autores]') + '. ' + (ti||'[Titulo]') + '. ';
+    if (rv) r += rv;
+    if (vol) r += ', v. ' + vol;
+    if (num) r += ', n. ' + num;
+    if (pag) r += ', p. ' + pag;
+    if (ano) r += ', ' + ano;
+    r += '.';
+    if (doi) r += ' Disponivel em: ' + doi + '.';
+    return r;
+  } else if (TIPO_MODAL === 'livro') {
+    var au=vf('l-autores'),ti=vf('l-titulo'),sub=vf('l-subtit'),ed=vf('l-edicao'),ci=vf('l-cidade'),ev=vf('l-editora'),ano=vf('l-ano'),caps=vf('l-caps');
+    if (!au && !ti) return null;
+    var r = (au||'[Autores]') + '. ' + ti + (sub ? ': '+sub : '') + '. ';
+    if (ed) r += ed + '. ';
+    r += (ci||'[Cidade]') + ': ' + (ev||'[Editora]') + ', ' + (ano||'[ano]') + '.';
+    if (caps) r += ' ' + caps;
+    return r;
+  } else {
+    var au=vf('c-autores'),ti=vf('c-titulo'),org=vf('c-org'),lv=vf('c-livro'),ci=vf('c-cidade'),ev=vf('c-editora'),ano=vf('c-ano'),pag=vf('c-pag');
+    if (!au && !ti) return null;
+    var r = (au||'[Autores]') + '. ' + (ti||'[Titulo]') + '. In: ' + (org||'[Org.]') + ' (org.). ' + (lv||'[Livro]') + '. ' + (ci||'[Cidade]') + ': ' + (ev||'[Editora]') + ', ' + (ano||'[ano]') + '.';
+    if (pag) r += ' p. ' + pag + '.';
+    return r;
+  }
+}
+
+function atualizarPreview() {
+  var ref = buildRefABNT();
+  var el = document.getElementById('previewText');
+  if (!ref) { el.style.fontStyle='italic'; el.style.color='#556'; el.textContent='Preencha os campos acima...'; }
+  else { el.style.fontStyle='normal'; el.style.color='#1a2e1a'; el.textContent=ref; }
+}
+
+function confirmarRef() {
+  var ref = buildRefABNT();
+  if (!ref) { alert('Preencha pelo menos autores e titulo.'); return; }
+  var ta = document.getElementById('textos');
+  var cur = ta.value.trim();
+  ta.value = cur ? cur + '\n' + ref : ref;
+  DROPPED.push(FN_MODAL);
+  adicionarChip(FN_MODAL);
+  PENDING.shift();
+  document.getElementById('modalBg').classList.remove('on');
+  setTimeout(proximoArquivo, 200);
+}
+
+function adicionarChip(filename) {
+  var old = document.querySelector('.chip[data-fn]');
+  // find by data attribute safely
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c) { if (c.getAttribute('data-fn') === filename) c.remove(); });
+  var chip = document.createElement('span');
+  chip.className = 'chip';
+  chip.setAttribute('data-fn', filename);
+  var short = filename.replace(/\.(pdf|docx?|txt)$/i,'').substring(0,50);
+  chip.innerHTML = '📄 ' + short + ' <span class="chip-x" onclick="removerRef(this)">✕</span>';
+  document.getElementById('fileList').appendChild(chip);
+}
+
+function removerRef(btn) {
+  var chip = btn.parentNode;
+  var fn = chip.getAttribute('data-fn');
+  DROPPED = DROPPED.filter(function(x) { return x !== fn; });
+  chip.remove();
+}
+
+// ── output navigation ──────────────────────────────────────────────────────
+function showConv(n) {
+  [1,2].forEach(function(i) {
+    document.getElementById('cpanel' + i).classList.toggle('on', i === n);
+    document.getElementById('ctab' + i).classList.toggle('active', i === n);
+  });
+}
+
+function showLang(conv, lang) {
+  var pt = lang === 'pt';
+  document.getElementById('lp' + conv + 'pt').classList.toggle('on', pt);
+  document.getElementById('lp' + conv + 'en').classList.toggle('on', !pt);
+  document.getElementById('ltab' + conv + 'pt').classList.toggle('active', pt);
+  document.getElementById('ltab' + conv + 'en').classList.toggle('active', !pt);
+}
+
+function copiarPrompt(spanId) {
+  var text = document.getElementById(spanId).textContent;
+  var btnId = 'bcp' + spanId.replace('p','');
+  // find the button near this span
+  var btn = document.getElementById(btnId);
+  if (!btn) {
+    // fallback: find btn-cp in same out-pre parent
+    var span = document.getElementById(spanId);
+    if (span) btn = span.parentNode.querySelector('.btn-cp');
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    if (btn) {
+      var orig = btn.textContent;
+      btn.textContent = '✓ Copiado';
+      btn.classList.add('done');
+      setTimeout(function() { btn.textContent = orig; btn.classList.remove('done'); }, 2200);
+    }
+  });
+}
+
+// ── DOM ready ──────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  var dz = document.getElementById('dropzone');
+  var fi = document.getElementById('fileinput');
+
+  document.body.addEventListener('dragover', function(e) { e.preventDefault(); });
+  document.body.addEventListener('drop', function(e) { e.preventDefault(); });
+
+  dz.addEventListener('dragover', function(e) { e.preventDefault(); e.stopPropagation(); dz.classList.add('over'); });
+  dz.addEventListener('dragleave', function(e) { e.preventDefault(); e.stopPropagation(); dz.classList.remove('over'); });
+  dz.addEventListener('drop', function(e) { e.preventDefault(); e.stopPropagation(); dz.classList.remove('over'); adicionarArquivos(e.dataTransfer.files); });
+  dz.addEventListener('click', function(e) { e.stopPropagation(); fi.click(); });
+  fi.addEventListener('change', function() { if (this.files.length > 0) { adicionarArquivos(this.files); this.value = ''; } });
+
+  document.getElementById('modalBg').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
+});
+
+// ── constantes de prompt ───────────────────────────────────────────────────
+var HEADER_PT = [
+  '**Cabecalho — tabela 2×2:**',
+  '- Esquerda superior (60%): fundo #B3E5A0, texto preto: "INSTITUTO FEDERAL FLUMINENSE (negrito) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
+  '- Direita superior (40%): fundo branco, negrito centralizado: nome do documento (tabela abaixo)',
+  '- Esquerda inferior: "Nome do(a) Estudante: _______________"',
+  '- Direita inferior: "Data: ___/___/____"',
+  '- Versao professor: sem cabecalho — inicia com faixa vermelha (#8B0000) largura total, texto branco: VERSAO PROFESSOR — CONFIDENCIAL — NAO DISTRIBUIR AOS ALUNOS',
+  '',
+  '**Nomes dos documentos na coluna direita:**'
+];
+// Nomes adicionados dinamicamente em cabecalhoDados conforme tarefas selecionadas
+
+var HEADER_EN = [
+  '**Header — 2×2 table:**',
+  '- Top-left (60%): #B3E5A0 bg, black text: "INSTITUTO FEDERAL FLUMINENSE (bold) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
+  '- Top-right (40%): white bg, bold centered: document name (see table below)',
+  '- Bottom-left: "Nome do(a) Estudante: _______________"',
+  '- Bottom-right: "Data: ___/___/____"',
+  '- Professor version: no header — starts with full-width dark red (#8B0000) banner, white text: VERSAO PROFESSOR — CONFIDENCIAL — NAO DISTRIBUIR AOS ALUNOS',
+  '',
+  '**Document names (right column):**'
+];
+// Names added dynamically in cabecalhoDados based on selected tasks
+
+var DPM_STRUCT_PT = [
+  '**NORMA GERAL — formatacao ABNT em todos os documentos:** citacoes diretas com (SOBRENOME, ano, p. X). Referencias completas ao final. Nunca inventar referencias.',
+  '',
+  '**DPM VERSAO ALUNOS — ordem e titulos exatos (nao altere):**',
+  '',
+  'SECAO 1 — TESE CENTRAL',
+  '- 2 a 4 frases enunciando a tese principal. Ao menos uma citacao direta com pagina (ABNT).',
+  '',
+  'SECAO 2 — CONCEITOS-CHAVE (tabela)',
+  '- Tabela Conceito | Explicacao didatica. 3 a 7 conceitos na ordem do texto.',
+  '- Conceito: termo exato + pagina (ex.: Heroi problematico, p. 172). Explicacao: 2-3 frases acessiveis.',
+  '- Apenas conceitos que o texto define; nada externo.',
+  '',
+  'SECAO 3 — PARAGRAFOS CENTRAIS DO TEXTO',
+  '- 3 a 6 paragrafos transcritos em citacao direta, com referencia ABNT e pagina.',
+  '- Cobrir: conceitos, argumento, tensoes, dialogo com autores, conclusao. Citacoes literais — nao parafraseie.',
+  '',
+  'SECAO 4 — PERGUNTAS DE GRUPO',
+  '- Uma pergunta discursiva por grupo, nomeados exatamente:',
+  '  Grupo 1 — Tese | Grupo 2 — Mecanismo | Grupo 3 — Tensao | Grupo 4 — Aplicacao | Grupo 5 — Implicacao',
+  '- Cada pergunta respondivel a partir da Secao 2, mas com maior profundidade na leitura integral',
+  '- Grupo 1 — Tese: pedir que o aluno reconstitua o argumento central em no minimo 3 pontos encadeados. A pergunta nao deve ser respondivel em uma linha.',
+  '- Grupo 2 — Mecanismo: pedir que o aluno identifique COMO o texto constroi seu argumento — que recursos usa (exemplos, comparacoes, narrativa, autoridades, dados) e qual a funcao de cada um. Respondivel apenas com o texto.',
+  '- Grupo 3 — Tensao: pedir que o aluno identifique onde o argumento hesita, contradiz uma premissa propria ou deixa uma afirmacao sem sustentacao suficiente. A tensao pode ser produtiva — evitar sugerir que o texto esta simplesmente errado.',
+  '- Grupo 4 — Aplicacao (FORMATO A): a pergunta deve pedir transposicao didatica a partir dos proprios textos e conceitos do DPM. Modelo: "A partir dos conceitos apresentados no texto (ex.: heroi problematico, ambivalencia do genero, crise de representacao), como voce, futuro professor, organizaria uma aula de literatura no ensino medio que levasse os alunos a perceber essas categorias em obras que ja conhecem? Cite ao menos um conceito do texto e descreva brevemente a proposta didatica." — Nao citar nem exigir leitura de obras nao transcritas ou anexadas.',
+  '- Grupo 5 — Implicacao: projetar o que se segue necessariamente do argumento — para o campo literario, para a pratica docente ou para outros textos ja estudados no programa. Nao requer fontes externas.',
+  '',
+  '**DPM VERSAO PROFESSOR — estrutura obrigatoria (NAO repetir o conteudo dos alunos):**',
+  '',
+  'SECAO 1 — CORRENTE TEORICA',
+  '- Tradicao teorica a qual o(s) autor(es) se filiam ou da qual se aproximam',
+  '- Contextualizacao do texto no debate da area',
+  '',
+  'SECAO 2 — EQUIVOCOS ESPERADOS POR GRUPO (tabela)',
+  '- Tabela: Grupo | Equivoco esperado | Como resolver',
+  '- Um equivoco por grupo, respostas ancoradas no texto com pagina',
+  '',
+  'SECAO 3 — REFERENCIAS COMPLEMENTARES (ABNT)',
+  '- Minimo 1, maximo 3 referencias reais e verificaveis (artigos, livros, capitulos)',
+  '- Se DPM Literario: pode incluir poemas e textos literarios relevantes',
+  '- OBRIGATORIO: apenas referencias cuja existencia seja verificavel. Se houver duvida, omitir.',
+  '',
+  'SECAO 4 — PERGUNTAS PARA APROFUNDAMENTO',
+  '- 3 a 5 perguntas com nivel crescente de complexidade',
+  '- Apos cada pergunta: sugestao de resposta baseada no texto (com paginas) e informacoes para o professor',
+  '',
+  '**SEPARADOR OBRIGATORIO entre versao alunos e versao professor no arquivo .docx:**',
+  'Inserir secao visivel com o texto exato: "SEPARAR AQUI — A partir daqui: DPM PROFESSOR (CONFIDENCIAL)" — negrito, fonte vermelha escura, centralizado, com linha horizontal acima e abaixo.',
+  'A versao professor comeca diretamente com a faixa vermelha, seguida da SECAO 1 — CORRENTE TEORICA.'
+];
+
+var DPM_STRUCT_EN = DPM_STRUCT_PT; // entrega sempre em PT-BR
+
+// ── builders de prompt ─────────────────────────────────────────────────────
+function buildNomes(sel, semana) {
+  var n = [], s = semana || 'X';
+  if (sel.indexOf('t1') >= 0) { n.push('DPM_Teorico_Sem'+s+'.docx'); }
+  if (sel.indexOf('t2') >= 0) { n.push('DPM_Literario_Sem'+s+'.docx'); }
+  if (sel.indexOf('t3') >= 0) n.push('Quiz_Sem'+s+'.docx');
+  if (sel.indexOf('t4') >= 0) n.push('Bimestral_Sem'+s+'.docx');
+  return n;
+}
+
+function cabecalhoDados(disc, semana, qtd, tema, textos, budget, sel, isEN) {
+  var L = [];
+  if (isEN) {
+    L.push('# Class Preparation — CLA · IFF Campos Centro');
+    L.push('Portuguese Language and Literature Degree · Prof. Felipe Vigneron Azevedo');
+    L.push(''); L.push('## Class Data');
+    if (disc)   L.push('- **Subject:** ' + disc);
+    if (semana) L.push('- **Week:** ' + semana);
+    if (qtd)    L.push('- **Number of classes:** ' + qtd);
+    if (tema)   L.push('- **Topic:** ' + tema);
+    if (FMT)    L.push('- **Format:** ' + FMT);
+  } else {
+    L.push('# Preparacao de Aula — CLA · IFF Campos Centro');
+    L.push('Licenciatura em Letras · Prof. Felipe Vigneron Azevedo');
+    L.push(''); L.push('## Dados da Semana');
+    if (disc)   L.push('- **Disciplina:** ' + disc);
+    if (semana) L.push('- **Semana:** ' + semana);
+    if (qtd)    L.push('- **Quantidade de aulas:** ' + qtd);
+    if (tema)   L.push('- **Tema da semana:** ' + tema);
+    if (FMT)    L.push('- **Formato:** ' + FMT);
+  }
+  if (textos) {
+    L.push('- **' + (isEN ? 'Texts' : 'Textos') + ':**');
+    textos.split('\n').forEach(function(t) { if (t.trim()) L.push('  - ' + t.trim()); });
+  }
+  return L;
+}
+
+function instrGerais(isEN) {
+  var L = [];
+  if (isEN) {
+    L.push('WARNING: ALL DELIVERABLES IN BRAZILIAN PORTUGUESE (PT-BR). Prompt in English to reduce token consumption.');
+    L.push('');
+    HEADER_EN.forEach(function(l) { L.push(l); });
+    // Conditional document names based on selected tasks
+    if (CHK['t1']) L.push('- DPM Teorico: DOCUMENTO DE PARAGRAFOS MINIMOS · DPM Teorico');
+    if (CHK['t2']) L.push('- DPM Literario: DOCUMENTO DE PARAGRAFOS MINIMOS · DPM Literario');
+    if (CHK['t3']) L.push('- Quiz: QUIZ DE 10 MINUTOS');
+    if (CHK['t4']) L.push('- Bimonthly: QUESTOES BIMESTRAIS');
+    L.push('');
+    L.push('**Tone:** experienced teacher, no AI filler phrases. Always cite exact page numbers.');
+    L.push('**Restrictions:** do not invent citations, pages, dates, titles, or authors. Use [a confirmar] or omit. Follow CLA method strictly.');
+  } else {
+    L.push('**Lingua:** todas as entregas em **portugues (PT-BR)**.');
+    L.push('');
+    HEADER_PT.forEach(function(l) { L.push(l); });
+    // Nomes de documentos condicionais conforme tarefas selecionadas
+    if (CHK['t1']) L.push('- DPM Teorico: DOCUMENTO DE PARAGRAFOS MINIMOS · DPM Teorico');
+    if (CHK['t2']) L.push('- DPM Literario: DOCUMENTO DE PARAGRAFOS MINIMOS · DPM Literario');
+    if (CHK['t3']) L.push('- Quiz: QUIZ DE 10 MINUTOS');
+    if (CHK['t4']) L.push('- Bimestral: QUESTOES BIMESTRAIS');
+    L.push('');
+    L.push('**Tom:** professor experiente, sem marcadores de IA. Citacoes sempre com pagina exata.');
+    L.push('**Restricoes:** nao inventar citacoes, paginas, datas, titulos ou autores. Usar [a confirmar] ou omitir. Seguir o metodo CLA rigorosamente.');
+  }
+  return L;
+}
+
+function buildConv1(disc, semana, qtd, tema, textos, obs, budget, sel, nomes, isEN) {
+  var hasDPM = sel.indexOf('t1') >= 0 || sel.indexOf('t2') >= 0;
+  if (!hasDPM) return isEN ? '(No DPMs requested)' : '(Nenhum DPM solicitado)';
+
+  var L = cabecalhoDados(disc, semana, qtd, tema, textos, budget, sel, isEN);
+  L.push('');
+  L.push('## ' + (isEN ? 'Requested Tasks' : 'Tarefas Solicitadas'));
+  if (sel.indexOf('t1') >= 0) L.push('- ' + (isEN ? 'Theoretical DPM (student + professor in a single file with separator)' : 'DPM Teorico (alunos + professor num unico arquivo com separador)'));
+  if (sel.indexOf('t2') >= 0) L.push('- ' + (isEN ? 'Literary DPM (student + professor in a single file with separator)' : 'DPM Literario (alunos + professor num unico arquivo com separador)'));
+  L.push('');
+  L.push('## ' + (isEN ? 'Execution Instructions' : 'Instrucoes de Execucao'));
+  L.push('');
+  instrGerais(isEN).forEach(function(l) { L.push(l); });
+  L.push('');
+  (isEN ? DPM_STRUCT_EN : DPM_STRUCT_PT).forEach(function(l) { L.push(l); });
+
+  // Inject Formato C instruction only when C is selected
+  if (FMT === 'C') {
+    L.push('');
+    L.push(isEN
+      ? '- Group 4 — Application (FORMAT C): question must articulate the theoretical argument with the literary text transcribed in the Literary DPM.'
+      : '- Grupo 4 — Aplicacao (FORMATO C): a pergunta deve articular o argumento teorico com o texto literario transcrito no DPM Literario.');
+  }
+  L.push('');
+
+  if (FMT === 'A' || FMT === 'C') {
+    var ga = isEN ? 'Thesis · Mechanism · Tension · Application · Implication' : 'Tese · Mecanismo · Tensao · Aplicacao · Implicacao';
+    L.push('- ' + (isEN ? 'Groups A/C: ' : 'Grupos Formato A/C: ') + ga + (budget ? ' (' + (isEN ? 'calibrate to group time: ' : 'calibrar ao tempo de grupo: ') + budget.grp + ')' : ''));
+  }
+  if (FMT === 'B' || FMT === 'C') {
+    var gb = isEN ? 'Form · Content · Context · Intertext · Gap' : 'Forma · Conteudo · Contexto · Intertexto · Lacuna';
+    L.push('- ' + (isEN ? 'Groups B: ' : 'Grupos Formato B: ') + gb);
+  }
+  if (FMT === 'C') L.push('- ' + (isEN ? 'Format C: 2 DPMs, 2 questions/group, 2 CPD paragraphs/student' : 'Formato C: 2 DPMs distintos, 2 perguntas/grupo, 2 paragrafos DPC/aluno'));
+
+  L.push('');
+  var n1 = nomes.filter(function(n) { return n.indexOf('DPM') >= 0; });
+  L.push('**' + (isEN ? 'Delivery' : 'Entrega') + ':** ' + (isEN ? 'generate .docx via Node.js + docx-js.' : 'gerar .docx via Node.js + docx-js e disponibilizar para download.'));
+  if (n1.length) L.push((isEN ? 'Generate ONLY: ' : 'Gerar APENAS: ') + n1.join(' · '));
+  if (obs) { L.push(''); L.push('## ' + (isEN ? 'Additional Notes' : 'Observacoes Adicionais')); L.push(obs); }
+  return L.join('\n').replace(/\n{3,}/g, '\n\n');
+}
+
+function buildConv2(disc, semana, qtd, tema, textos, obs, budget, sel, nomes, isEN) {
+  var sel2 = sel.filter(function(id) { return ['t3','t4'].indexOf(id) >= 0; });
+  if (sel2.length === 0) return isEN ? '(No tasks for Conversation 2)' : '(Nenhuma tarefa para a Conversa 2)';
+
+  var LBL = isEN ? {
+    t3:'10-minute Quiz', t4:'Bimonthly Assessment Questions'
+  } : {
+    t3:'Quiz de 10 minutos', t4:'Questoes Bimestrais'
+  };
+
+  var L = cabecalhoDados(disc, semana, qtd, tema, textos, budget, sel2, isEN);
+  if (isEN) L[0] = '# Class Preparation — CLA · IFF · CONVERSATION 2';
+  else L[0] = '# Preparacao de Aula — CLA · IFF — CONVERSA 2';
+  L.push('');
+  L.push('## ' + (isEN ? 'Requested Tasks' : 'Tarefas Solicitadas'));
+  sel2.forEach(function(id) { L.push('- **' + LBL[id] + '**'); });
+  L.push('');
+  L.push('## ' + (isEN ? 'Instructions' : 'Instrucoes'));
+  L.push('');
+  L.push(isEN ? 'WARNING: ALL DELIVERABLES IN BRAZILIAN PORTUGUESE (PT-BR).' : 'Lingua: todas as entregas em portugues (PT-BR).');
+  L.push(isEN ? 'No headers, no colors, no visual identity — plain .docx only.' : 'Sem cabecalho, sem cores, sem identidade visual — .docx simples.');
+  L.push(isEN ? 'Do not invent citations or page numbers. Use [a confirmar] or omit.' : 'Nao inventar citacoes ou paginas. Usar [a confirmar] ou omitir.');
+  L.push(isEN ? 'Answer key format for all items: (SOBRENOME, ano, p. X) — brief comment + page.' : 'Formato do gabarito em todos os itens: (SOBRENOME, ano, p. X) — comentario breve + pagina.');
+  L.push('');
+
+  if (sel2.indexOf('t3') >= 0) {
+    L.push(isEN
+      ? (function(){
+    var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
+    var nortLine = nort ? ' Opening debate question: "' + nort + '". Question 1 must be a reformulation of this — same theme, different wording.' : ' Question 1 must be at interpretive level.';
+    return '**Quiz:** 5 multiple-choice questions (A-D). No introduction, no color, no header. Format: question number, question text, 4 options (A/B/C/D), blank line. After all 5 questions: answer key with one-line comment per item in format (SOBRENOME, ano, p. X). IMPORTANT:' + nortLine + ' Questions 2-5 may draw freely from text and DPM, without overlapping group questions.';
+  })()
+      : (function(){
+    var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
+    var nortLine = nort ? ' Questao-norteadora do debate: "' + nort + '". A Questao 1 deve ser uma reformulacao desta pergunta — mesma tematica, formulacao diferente.' : ' A Questao 1 deve ser de nivel interpretativo sobre o texto.';
+    return '**Quiz:** 5 questoes de multipla escolha (A-D). Sem introducao, sem cor, sem cabecalho. Formato: numero da questao, enunciado, 4 alternativas (A/B/C/D), linha em branco. Apos as 5 questoes: gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). IMPORTANTE:' + nortLine + ' As Questoes 2 a 5 baseiam-se livremente no texto e no DPM, sem coincidir com as perguntas dos grupos.';
+  })());
+    L.push('');
+  }
+  if (sel2.indexOf('t4') >= 0) {
+    L.push(isEN
+      ? '**Bimonthly Questions:** exactly 2 multiple-choice questions (A-D), no header, no color. One question per level (comprehension and interpretation). Answer key with one-line comment per item in format (SOBRENOME, ano, p. X). Professor version — do not distribute.'
+      : '**Questoes Bimestrais:** exatamente 2 questoes de multipla escolha (A-D), sem cabecalho, sem cor. Uma por nivel (compreensao e interpretacao). Gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). Versao professor — nao distribuir.');
+    L.push('');
+  }
+
+
+
+
+  var n2 = nomes.filter(function(n) { return n.indexOf('DPM') < 0; });
+  L.push('**' + (isEN ? 'Delivery' : 'Entrega') + ':** ' + (isEN ? 'generate .docx via Node.js + docx-js.' : 'gerar .docx via Node.js + docx-js e disponibilizar para download.'));
+  if (n2.length) L.push((isEN ? 'Generate ONLY: ' : 'Gerar APENAS: ') + n2.join(' · '));
+  if (obs) { L.push(''); L.push('## ' + (isEN ? 'Additional Notes' : 'Observacoes Adicionais')); L.push(obs); }
+  return L.join('\n').replace(/\n{3,}/g, '\n\n');
+}
+
+// ── gerar ──────────────────────────────────────────────────────────────────
+function gerar() {
+  var disc   = document.getElementById('disc').value.trim();
+  var semana = document.getElementById('semana').value.trim();
+  var qtd    = document.getElementById('qtd').value.trim();
+  var tema   = document.getElementById('tema').value.trim();
+  var textos = document.getElementById('textos').value.trim();
+  var obs    = document.getElementById('obs').value.trim();
+  var sel    = TIDS.filter(function(id) { return !!CHK[id]; });
+  var nomes  = buildNomes(sel, semana);
+
+  var wA = document.getElementById('warnA');
+  if (sel.length === 0) { wA.textContent = 'Marque ao menos uma tarefa antes de gerar.'; wA.classList.add('on'); return; }
+  var needFmt = sel.indexOf('t1') >= 0 || sel.indexOf('t2') >= 0;
+  if (needFmt && !FMT) { wA.textContent = 'Selecione o formato da aula (A, B ou C) — os DPMs dependem dele.'; wA.classList.add('on'); return; }
+  wA.classList.remove('on');
+
+  var p1pt = buildConv1(disc, semana, qtd, tema, textos, obs, null, sel, nomes, false);
+  var p1en = buildConv1(disc, semana, qtd, tema, textos, obs, null, sel, nomes, true);
+  var p2pt = buildConv2(disc, semana, qtd, tema, textos, obs, null, sel, nomes, false);
+  var p2en = buildConv2(disc, semana, qtd, tema, textos, obs, null, sel, nomes, true);
+
+  function set(id, text) { document.getElementById(id).textContent = text; }
+  function meta(id, text) { document.getElementById(id).textContent = text.length.toLocaleString('pt-BR') + ' car.'; }
+
+  set('p1pt', p1pt); meta('meta1pt', p1pt);
+  set('p1en', p1en); meta('meta1en', p1en);
+  set('p2pt', p2pt); meta('meta2pt', p2pt);
+  set('p2en', p2en); meta('meta2en', p2en);
+
+  // dim conv2 tab if no conv2 tasks
+  var hasC2 = sel.some(function(id) { return ['t3','t4'].indexOf(id) >= 0; });
+  document.getElementById('ctab2').style.opacity = hasC2 ? '1' : '0.4';
+
+  document.getElementById('out').classList.add('on');
+  var hasC1 = sel.some(function(id) { return ['t1','t2'].indexOf(id) >= 0; });
+  showConv(hasC1 ? 1 : 2); showLang(1,'pt'); showLang(2,'pt');
+  setTimeout(function() { document.getElementById('out').scrollIntoView({behavior:'smooth'}); }, 80);
+}
+
+// ── limpar ─────────────────────────────────────────────────────────────────
+function limpar() {
+  ['disc','semana','qtd','tema','textos','norteadora','obs'].forEach(function(id) { document.getElementById(id).value = ''; });
+  FMT = '';
+  ['A','B','C'].forEach(function(x) { document.getElementById('btnFmt'+x).classList.remove('active'); });
+  TIDS.forEach(function(id) {
+    CHK[id] = 0;
+    document.getElementById(id).classList.remove('on');
+    var row = document.querySelector('[onclick="tick(\'' + id + '\')"]');
+    if (row) row.classList.remove('on');
+  });
+  syncAll();
+  DROPPED = []; PENDING = []; FILE_CONTENTS = {};
+  document.getElementById('fileList').innerHTML = '';
+  document.getElementById('out').classList.remove('on');
+  var _w = document.getElementById('warnA'); if (_w) _w.classList.remove('on');
+}
+
+/* ===================== MODOS — troca e seleções ===================== */
+var SEL = { papel:'orientador', fase:'inicio', nivel:'artigo', borigem:'painel', cDelivery:'chat' };
+
+function setMode(m) {
+  ['A','B','C'].forEach(function(x) {
+    document.getElementById('mode' + x).classList.toggle('on', x === m);
+    document.getElementById('modeBtn' + x).classList.toggle('active', x === m);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setOpt(group, val) {
+  SEL[group] = val;
+  var map = {
+    papel:     ['orientador','banca'],
+    fase:      ['inicio','andamento','concluido'],
+    nivel:     ['artigo','dissertacao','tese'],
+    borigem:   ['painel','outro'],
+    cDelivery: ['chat','word','pdf']
+  };
+  map[group].forEach(function(v) {
+    var el = document.getElementById(group + '-' + v);
+    if (el) el.classList.toggle('active', v === val);
+  });
+  if (group === 'papel') {
+    var ff = document.getElementById('fieldFase');
+    if (val === 'banca') ff.classList.add('opt-disabled');
+    else ff.classList.remove('opt-disabled');
+  }
+}
+
+function showLangX(tag, lang) {
+  var pt = lang === 'pt';
+  document.getElementById('lp' + tag + 'pt').classList.toggle('on', pt);
+  document.getElementById('lp' + tag + 'en').classList.toggle('on', !pt);
+  document.getElementById('ltab' + tag + 'pt').classList.toggle('active', pt);
+  document.getElementById('ltab' + tag + 'en').classList.toggle('active', !pt);
+}
+
+/* ===================== MODO C — voz de orientador (perfil_voz_orientador_ModoC.md, destilado) ===================== */
+var VOICE_PT = [
+  '**Voz da devolutiva (obrigatoria):**',
+  '- Segunda pessoa, qualitativo, sem nota. Orientador experiente: impessoal, acolhedor, distancia profissional.',
+  '- Rigor terminologico: nomeie o problema com o termo exato. Aponte afirmacoes sem prova. Ancore no trecho. Sem ironia ou combatividade — neutralidade propositiva.',
+  '- Frase clara e acionavel. Elogio apenas quando merecido e especifico. Sem marcadores de IA, emojis ou exclamacoes.',
+  '- Formulas (adaptar, nao copiar):',
+  '  - Abertura: "O trabalho se propoe a [X]. [Cumpre / cumpre parcialmente / nao cumpre]: o no esta em [Y]."',
+  '  - Problema: "Esta afirmacao e peremptoria — aparece como certa antes de demonstrada." / "Imprecisao: voce usa [termo] como [A], mas a fonte o emprega como [B]."',
+  '  - Reescrita: "Sugiro: [...]. O ganho e [...]." — caminho e criterio, nao o paragrafo pronto.',
+  '  - Plagio: "Este trecho destoa; confira a fonte e cite em ABNT se for de terceiros. Nao afirmo copia."',
+  '  - Fechamento: "Resolva nesta ordem: (1) [...]; (2) [...]"'
+];
+var VOICE_EN = VOICE_PT; // voz e fraseado permanecem em PT-BR (a devolutiva e sempre em portugues)
+
+function papelDesc(isEN) {
+  if (SEL.papel === 'banca') return isEN ? 'banca (avaliativa — merito e lacunas que serao arguidas)' : 'banca (devolutiva avaliativa, voltada ao merito e as lacunas que serao arguidas)';
+  return isEN ? 'orientador (formativa — voltada a melhoria)' : 'orientador (devolutiva formativa, voltada a melhoria)';
+}
+function faseDesc() {
+  return { inicio:'inicio (foco em rumo, problema e objetivos)', andamento:'andamento (consistencia e progressao)', concluido:'concluido (exigencia maxima, como pre-banca)' }[SEL.fase];
+}
+function nivelDesc() {
+  return { artigo:'artigo/TCC', dissertacao:'dissertacao', tese:'tese' }[SEL.nivel];
+}
+
+function buildModoC(isEN) {
+  var L = [];
+  var ctx = document.getElementById('cTexto').value.trim();
+  var foco = document.getElementById('cObs').value.trim();
+
+  L.push(isEN ? '# Academic Correction and Feedback — CLA - IFF - Mode C' : '# Correcao e Feedback Academico — CLA · IFF · Modo C');
+  L.push('Prof. Felipe Vigneron Azevedo');
+  L.push('');
+  L.push(isEN ? 'WARNING: WRITE THE ENTIRE FEEDBACK IN BRAZILIAN PORTUGUESE (PT-BR). Prompt in English to save tokens.' : '');
+  if (isEN) L.push('');
+  L.push('## ' + (isEN ? 'Task' : 'Tarefa'));
+  L.push(isEN
+    ? 'Act as the student\u2019s ' + papelDesc(true) + '. Correct and return academic feedback to the student, in the SECOND PERSON (direct to the student), qualitatively, WITHOUT a grade. The student work is ATTACHED to this prompt (PDF/DOCX).'
+    : 'Voce e o ' + papelDesc(false) + ' do trabalho. Corrija e devolva feedback academico ao estudante, em SEGUNDA PESSOA (devolutiva direta ao aluno), de forma qualitativa, SEM nota. O trabalho do aluno esta ANEXADO a este prompt (PDF/DOCX).');
+  L.push('');
+
+  L.push('## ' + (isEN ? 'Parameters' : 'Parametros'));
+  L.push('- PAPEL: ' + papelDesc(isEN));
+  if (SEL.papel === 'orientador') L.push('- FASE: ' + faseDesc());
+  L.push('- NIVEL: ' + nivelDesc());
+  L.push(isEN
+    ? 'Calibration: the higher the level (tese > dissertacao > artigo/TCC) and the more advanced the phase (concluido > andamento > inicio), the more assertive on the priority criteria. At the start of advising or for artigo/TCC, be less assertive and more guiding.'
+    : 'Calibracao: quanto mais alto o nivel (tese > dissertacao > artigo/TCC) e mais avancada a fase (concluido > andamento > inicio), mais taxativo nos criterios prioritarios. Em inicio de orientacao ou em artigo/TCC, ser menos taxativo e mais orientador.');
+  L.push('');
+
+  L.push('## ' + (isEN ? 'Criteria, by weight' : 'Criterios, por ordem de peso'));
+  L.push(isEN
+    ? '1 (highest) — Competent fulfillment of objectives: does the work accomplish what it set out to do? Locate the objectives in the introduction (or at the start of each chapter, when well written) and check whether they are competently met. If they are not stated, point that out before anything else.'
+    : '1 (maior peso) — Cumprimento competente dos objetivos: o trabalho realiza o que se propos? Localize os objetivos na introducao (ou no inicio de cada capitulo, quando bem escrito) e verifique se sao cumpridos com competencia. Se nao estiverem expostos, aponte isso antes de tudo.');
+  // Originalidade: critério obrigatório só para tese
+  if (SEL.nivel === 'tese') {
+    L.push(isEN ? '2 — Originality (mandatory criterion for tese; high weight).' : '2 — Originalidade (criterio obrigatorio para tese; peso alto).');
+  } else {
+    L.push(isEN ? '2 — Originality: NOT a mandatory criterion at this level. May be noted when clearly present, but should not be used to penalize.' : '2 — Originalidade: NAO e criterio obrigatorio neste nivel. Pode ser apontada quando presente de forma clara, mas nao deve ser usada para penalizar.');
+  }
+  L.push(isEN ? '3 — Theoretical grounding.' : '3 — Fundamentacao teorica.');
+  L.push(isEN
+    ? 'Remaining criteria (equivalent among themselves): conceptual accuracy; clarity; theoretical/methodological consistency; coherence between method and text; adequacy of form to the level; ABNT.'
+    : 'Demais criterios (equivalentes entre si): correcao conceitual; clareza; consistencia teorica e metodologica; coerencia entre o metodo aplicado e o texto; adequacao da forma ao nivel; ABNT.');
+  L.push('');
+
+  L.push('## ' + (isEN ? 'Nature of the feedback' : 'Natureza do feedback'));
+  L.push(isEN
+    ? 'Propositive and surgical: for each relevant problem, point to the passage, name the problem, briefly explain why it is a problem, and offer a concrete rewriting/solution suggestion. Be concise; select what matters most; do not drown the student. Preserve authorship — suggest and teach; do NOT write the work for the student.'
+    : 'Propositivo e cirurgico: para cada problema relevante, indique o trecho, nomeie o problema, explique brevemente por que e problema e ofereca sugestao concreta de reescrita ou solucao. Seja enxuto; selecione o que mais importa; nao afogue o aluno. Preserve a autoria — sugira e ensine; NAO redija o trabalho pelo aluno.');
+  L.push('');
+
+  L.push('## ' + (isEN ? 'Mandatory checks' : 'Verificacoes obrigatorias'));
+  L.push(isEN
+    ? 'Form; content; method (coherence between declared method and what the text does); plagiarism (flag indications without accusing — point and guide verification); sources (always cite the sources that support the feedback; when confronting data, indicate how to verify it in reliable bases).'
+    : 'Forma; conteudo; metodo (coerencia entre o metodo declarado e o que o texto faz); plagio (sinalizar indicios sem acusar — apontar e orientar a verificacao); fontes (sempre citar as que sustentam o feedback; ao confrontar dados, indicar como verifica-los em bases confiaveis).');
+  L.push('');
+  L.push('## ' + (isEN ? 'Anti-hallucination' : 'Anti-alucinacao'));
+  L.push(isEN
+    ? 'Do not invent citations, data, authors, pages, or references. When in doubt, say it must be verified and where. Real and verifiable sources only.'
+    : 'Nao inventar citacoes, dados, autores, paginas ou referencias. Na duvida, dizer que e preciso verificar e indicar onde. Fontes reais e verificaveis.');
+  L.push('');
+
+  (isEN ? VOICE_EN : VOICE_PT).forEach(function(l) { L.push(l); });
+  L.push('');
+
+  L.push('## ' + (isEN ? 'Output structure' : 'Estrutura da devolutiva'));
+  L.push(isEN ? '1 — General reading (2-4 sentences): what the work achieves and the central knot, in light of the objectives.' : '1 — Leitura geral (2 a 4 frases): o que o trabalho realiza e o no central, a luz do cumprimento dos objetivos.');
+  L.push(isEN ? '2 — Points by criterion, in order of weight, only where there is something to say.' : '2 — Pontos por criterio, na ordem de peso, so onde ha o que dizer.');
+  L.push(isEN ? '3 — Surgical notes: passage -> problem -> rewriting/solution suggestion -> source, when applicable.' : '3 — Apontamentos cirurgicos: trecho -> problema -> sugestao de reescrita/solucao -> fonte, quando aplicavel.');
+  L.push(isEN ? '4 — Priorities: the 2 or 3 actions to take first.' : '4 — Prioridades: as 2 ou 3 providencias a tomar primeiro.');
+  L.push('');
+  L.push('## ' + (isEN ? 'Final verdict (mandatory)' : 'Veredicto final (obrigatorio)'));
+  L.push(isEN
+    ? 'Close the feedback with a single verdict line, based on fulfillment of objectives and theoretical/methodological correctness:\n(A) Work not yet defensible — critical failures that prevent defense.\n(B) Work requires significant improvement to become defensible.\n(C) Work is defensible — meets the requirements.\n(D) Work exceeds expectations — meets requirements with quality.\n(E) Excellent work.'
+    : 'Encerre o feedback com uma linha de veredicto unico, baseado no cumprimento dos objetivos e na correcao teorica e metodologica:\n(A) Trabalho ainda indefensavel — falhas criticas que impedem a defesa.\n(B) Trabalho exige melhorias para se tornar defensavel.\n(C) Trabalho defensavel, pois cumpre os requisitos.\n(D) Trabalho acima das expectativas, por cumprir com qualidade o que promete.\n(E) Trabalho excelente.');
+  L.push(isEN ? '5 — Next step: clear guidance on what to revise next.' : '5 — Proximo passo: orientacao clara do que revisar a seguir.');
+
+  if (foco) { L.push(''); L.push('## ' + (isEN ? 'Focus requested' : 'Foco da devolutiva')); L.push(foco); }
+  if (ctx)  { L.push(''); L.push('## ' + (isEN ? 'Context / passages provided' : 'Contexto / trechos fornecidos')); L.push(ctx); }
+  return L.join('\n').replace(/\n{3,}/g, '\n\n');
+}
+
+function gerarC() {
+  var ppt = buildModoC(false), pen = buildModoC(true);
+  document.getElementById('pCpt').textContent = ppt;
+  document.getElementById('pCen').textContent = pen;
+  document.getElementById('metaCpt').textContent = ppt.length.toLocaleString('pt-BR') + ' car.';
+  document.getElementById('metaCen').textContent = pen.length.toLocaleString('pt-BR') + ' car.';
+  document.getElementById('outC').style.display = 'block';
+  showLangX('C','pt');
+  setTimeout(function() { document.getElementById('outC').scrollIntoView({ behavior:'smooth' }); }, 80);
+}
+
+function limparC() {
+  document.getElementById('cTexto').value = '';
+  document.getElementById('cObs').value = '';
+  document.getElementById('outC').style.display = 'none';
+}
+
+/* ===================== MODO B — otimizador de prompts ===================== */
+function buildModoB(isEN) {
+  var L = [];
+  var mat = document.getElementById('bPrompt').value.trim();
+  var q   = document.getElementById('bQueixa').value.trim();
+  var dop = SEL.borigem === 'painel';
+
+  L.push(isEN ? '# Prompt Optimizer — CLA - IFF - Mode B' : '# Otimizador de Prompts — CLA · IFF · Modo B');
+  L.push('Prof. Felipe Vigneron Azevedo');
+  L.push('');
+  L.push('## ' + (isEN ? 'Task' : 'Tarefa'));
+  L.push(isEN
+    ? 'Act as a PROMPT ENGINEER, not as a lesson generator. From the material below and the stated complaint/goal: (1) diagnose clarity, ambiguities, gaps, contradictions, and hallucination risks; (2) deliver the optimized version, ready to paste; (3) list in a few lines what changed and why.'
+    : 'Voce atua como ENGENHEIRO DE PROMPTS, nao como gerador de aula. A partir do material abaixo e da queixa/objetivo: (1) diagnostique clareza, ambiguidades, lacunas, contradicoes e riscos de alucinacao; (2) entregue a versao otimizada, pronta para colar; (3) liste em poucas linhas o que mudou e por que.');
+  L.push('');
+  L.push('## ' + (isEN ? 'Rules' : 'Regras'));
+  L.push(isEN ? '- Preserve the author\u2019s intention and tone.' : '- Preserve a intencao e o tom do autor.');
+  L.push(isEN ? '- Do not inflate tokens.' : '- Nao infle tokens.');
+  L.push(isEN ? '- When there are alternatives, explicitly point out which is best and why.' : '- Havendo alternativas, aponte explicitamente qual e a melhor e por que.');
+  L.push(isEN ? '- Flag limitations before acting.' : '- Sinalize limitacoes antes de agir.');
+  if (dop) L.push(isEN
+    ? '- This material belongs to the CLA panel: indicate in which document (Instrucoes or Background) and in which section the new version should be inserted.'
+    : '- O material e deste painel: indique em qual documento (Instrucoes ou Background) e em qual secao inserir a versao nova.');
+  L.push('');
+  L.push('## ' + (isEN ? 'Complaint / goal' : 'Queixa / objetivo'));
+  L.push(q || (isEN ? '(not provided)' : '(nao informado)'));
+  L.push('');
+  L.push('## ' + (isEN ? 'Material to optimize' : 'Material a otimizar'));
+  L.push(mat);
+  return L.join('\n').replace(/\n{3,}/g, '\n\n');
+}
+
+function gerarB() {
+  var wB = document.getElementById('warnB');
+  if (!document.getElementById('bPrompt').value.trim()) { wB.textContent = 'Cole o material a otimizar antes de gerar.'; wB.classList.add('on'); return; }
+  wB.classList.remove('on');
+  var ppt = buildModoB(false), pen = buildModoB(true);
+  document.getElementById('pBpt').textContent = ppt;
+  document.getElementById('pBen').textContent = pen;
+  document.getElementById('metaBpt').textContent = ppt.length.toLocaleString('pt-BR') + ' car.';
+  document.getElementById('metaBen').textContent = pen.length.toLocaleString('pt-BR') + ' car.';
+  document.getElementById('outB').style.display = 'block';
+  showLangX('B','pt');
+  setTimeout(function() { document.getElementById('outB').scrollIntoView({ behavior:'smooth' }); }, 80);
+}
+
+function limparB() {
+  document.getElementById('bPrompt').value = '';
+  document.getElementById('bQueixa').value = '';
+  document.getElementById('warnB').classList.remove('on');
+  document.getElementById('outB').style.display = 'none';
+}
+
+/* ===================== INTEGRAÇÃO COM A API ===================== */
+
+// Aponta para a função Netlify. Em desenvolvimento local com Netlify CLI,
+// este endereço já funciona. Produção: não precisa alterar.
+var ENDPOINT = '/.netlify/functions/cla-api';
+
+var CFILES = []; // arquivos do Modo C para envio à API
+
+function handleCFiles(files) {
+  CFILES = [];
+  var label = document.getElementById('cFileLabel');
+  Array.from(files).forEach(function(f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      CFILES.push({ name: f.name, media_type: f.type || 'application/pdf', data: e.target.result.split(',')[1] });
+      if (label) label.textContent = CFILES.map(function(x) { return x.name; }).join(', ');
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+function setApiStatus(id, type, msg) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'api-st ' + type;
+  el.textContent = msg;
+}
+
+function downloadDocx(b64, filename) {
+  var a = document.createElement('a');
+  a.href = 'data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,' + b64;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function chamarAPI(body) {
+  return fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).then(function(r) {
+    return r.json().then(function(data) {
+      if (!r.ok) throw new Error(data.error || ('Erro ' + r.status));
+      return data;
+    });
+  });
+}
+
+// ---- Modo A ---------------------------------------------------------------
+function gerarViaAPI_A() {
+  var disc   = document.getElementById('disc').value.trim();
+  var semana = document.getElementById('semana').value.trim();
+  var qtd    = document.getElementById('qtd').value.trim();
+  var tema   = document.getElementById('tema').value.trim();
+  var refs   = document.getElementById('textos').value.trim();
+  var obs    = document.getElementById('obs').value.trim();
+  var sel    = TIDS.filter(function(id) { return !!CHK[id]; });
+  var wA     = document.getElementById('warnA');
+
+  if (sel.length === 0) { wA.textContent = 'Marque ao menos uma tarefa.'; wA.classList.add('on'); return; }
+  var needFmt = sel.indexOf('t1') >= 0 || sel.indexOf('t2') >= 0;
+  if (needFmt && !FMT) { wA.textContent = 'Selecione o formato da aula.'; wA.classList.add('on'); return; }
+  wA.classList.remove('on');
+
+  var files = Object.keys(FILE_CONTENTS).map(function(k) { return FILE_CONTENTS[k]; });
+  var inputs = { disciplina: disc, semana: semana, formato: FMT, nAulas: qtd, tema: tema, obs: obs, referencias: refs };
+  var taskMap = { t1: 'dpm_teorico', t2: 'dpm_literario', t3: 'quiz', t4: 'bimestral' };
+  var btn = document.getElementById('btnApiA');
+  btn.disabled = true;
+
+  var chain = Promise.resolve();
+  var n = 0; var total = sel.filter(function(id) { return taskMap[id]; }).length;
+  sel.forEach(function(tid) {
+    var task = taskMap[tid];
+    if (!task) return;
+    n++;
+    var idx = n;
+    chain = chain.then(function() {
+      setApiStatus('apiStA', 'loading', 'Gerando ' + task.replace('_', ' ') + ' (' + idx + '/' + total + ')…');
+      return chamarAPI({ mode: 'A', task: task, inputs: inputs, files: files })
+        .then(function(data) {
+          downloadDocx(data.docx, data.filename);
+          var w = data.warnings && data.warnings.length ? ' ⚠ ' + data.warnings.join('; ') : '';
+          setApiStatus('apiStA', 'ok', '✓ ' + data.filename + ' baixado.' + w);
+        })
+        .catch(function(e) { setApiStatus('apiStA', 'error', '✗ Erro em ' + task + ': ' + e.message); return Promise.reject(e); });
+    });
+  });
+  chain.catch(function() {}).then(function() { btn.disabled = false; });
+}
+
+// ---- Modo B ---------------------------------------------------------------
+function gerarViaAPI_B() {
+  var prompt = document.getElementById('bPrompt').value.trim();
+  if (!prompt) { document.getElementById('warnB').textContent = 'Cole o material a otimizar.'; document.getElementById('warnB').classList.add('on'); return; }
+  document.getElementById('warnB').classList.remove('on');
+  var btn = document.getElementById('btnApiB');
+  btn.disabled = true;
+  setApiStatus('apiStB', 'loading', 'Otimizando via API…');
+  chamarAPI({
+    mode: 'B',
+    inputs: { prompt: prompt, queixa: document.getElementById('bQueixa').value.trim(), origem: SEL.borigem }
+  }).then(function(data) {
+    document.getElementById('pBpt').textContent = data.text || '';
+    document.getElementById('metaBpt').textContent = ((data.text || '').length).toLocaleString('pt-BR') + ' car.';
+    document.getElementById('outB').style.display = 'block';
+    showLangX('B', 'pt');
+    setApiStatus('apiStB', 'ok', '✓ Prompt otimizado. Modelo: ' + (data.model || '') + '.');
+    setTimeout(function() { document.getElementById('outB').scrollIntoView({ behavior: 'smooth' }); }, 80);
+  }).catch(function(e) {
+    setApiStatus('apiStB', 'error', '✗ Erro: ' + e.message);
+  }).then(function() { btn.disabled = false; });
+}
+
+// ---- Modo C ---------------------------------------------------------------
+var _chatTexto = ''; // armazena o último texto gerado para copiar/PDF
+
+function renderMarkdown(txt) {
+  return txt
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^## (.+)$/gm,'<h3 style="font-family:\'Crimson Pro\',serif;color:#2E6B3E;margin:18px 0 6px">$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/\n/g,'<br>');
+}
+
+function copiarChat() {
+  if (!_chatTexto) return;
+  navigator.clipboard.writeText(_chatTexto).then(function() {
+    var btn = document.querySelector('#outChat .btn-cp');
+    if (btn) { btn.textContent = 'Copiado!'; setTimeout(function(){ btn.textContent='Copiar texto'; }, 1800); }
+  });
+}
+
+function abrirComoPDF() {
+  if (!_chatTexto) return;
+  var papel  = SEL.papel === 'banca' ? 'Banca' : 'Orientador';
+  var nivel  = { artigo:'Artigo / TCC', dissertacao:'Dissertação', tese:'Tese' }[SEL.nivel] || SEL.nivel;
+  var fase   = SEL.papel !== 'banca' ? ' · ' + { inicio:'Início', andamento:'Andamento', concluido:'Concluído' }[SEL.fase] : '';
+  var w = window.open('', '_blank');
+  w.document.write('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Devolutiva</title>' +
+    '<style>body{font-family:Georgia,serif;font-size:15px;line-height:1.8;max-width:720px;margin:40px auto;padding:0 20px;color:#222}' +
+    'h2{font-size:13px;font-weight:normal;color:#555;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:20px}' +
+    'h3{color:#2E6B3E;margin:22px 0 6px;font-size:16px}@media print{body{margin:20px}}</style></head><body>' +
+    '<h2>Devolutiva Acadêmica · ' + papel + fase + ' · ' + nivel + '</h2>' +
+    renderMarkdown(_chatTexto) + '<br><br></body></html>');
+  w.document.close();
+  setTimeout(function(){ w.print(); }, 400);
+}
+
+function gerarViaAPI_C() {
+  var btn = document.getElementById('btnApiC');
+  btn.disabled = true;
+  var delivery = SEL.cDelivery;
+  var label = document.getElementById('chatModeLabel');
+
+  // esconder saídas anteriores
+  document.getElementById('outC').style.display = 'none';
+  document.getElementById('outChat').style.display = 'none';
+
+  if (delivery === 'word') {
+    // fluxo existente: JSON → .docx
+    setApiStatus('apiStC', 'loading', 'Gerando devolutiva (Word) via API…');
+    chamarAPI({
+      mode: 'C', task: undefined,
+      inputs: { papel:SEL.papel, fase:SEL.papel==='banca'?null:SEL.fase, nivel:SEL.nivel,
+                contexto:document.getElementById('cTexto').value.trim(),
+                foco:document.getElementById('cObs').value.trim() },
+      files: CFILES
+    }).then(function(data) {
+      downloadDocx(data.docx, data.filename);
+      var w = data.warnings&&data.warnings.length?' ⚠ '+data.warnings.join('; '):'';
+      setApiStatus('apiStC','ok','✓ '+data.filename+' baixado.'+w);
+    }).catch(function(e){ setApiStatus('apiStC','error','✗ Erro: '+e.message); })
+    .then(function(){ btn.disabled=false; });
+
+  } else {
+    // 'chat' e 'pdf' usam o mesmo endpoint de texto
+    setApiStatus('apiStC','loading', delivery==='pdf'?'Gerando devolutiva para PDF…':'Gerando devolutiva…');
+    chamarAPI({
+      mode:'C', task:'chat',
+      inputs:{ papel:SEL.papel, fase:SEL.papel==='banca'?null:SEL.fase, nivel:SEL.nivel,
+               contexto:document.getElementById('cTexto').value.trim(),
+               foco:document.getElementById('cObs').value.trim() },
+      files:CFILES
+    }).then(function(data) {
+      _chatTexto = data.text || '';
+      if (label) label.textContent = delivery==='pdf' ? 'Devolutiva — PDF' : 'Devolutiva — Chat';
+      document.getElementById('chatContent').innerHTML = renderMarkdown(_chatTexto);
+      document.getElementById('outChat').style.display = 'block';
+      setApiStatus('apiStC','ok','✓ Devolutiva gerada.');
+      setTimeout(function(){ document.getElementById('outChat').scrollIntoView({behavior:'smooth'}); }, 80);
+      if (delivery === 'pdf') setTimeout(abrirComoPDF, 600);
+    }).catch(function(e){ setApiStatus('apiStC','error','✗ Erro: '+e.message); })
+    .then(function(){ btn.disabled=false; });
+  }
+}
 </script>
+
+
 </body></html>
