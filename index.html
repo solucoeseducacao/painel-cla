@@ -212,7 +212,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 <div class="hdr">
   <div class="ey">Instituto Federal Fluminense · Campus Campos Centro</div>
   <h1>Painel de Preparação de Aula — CLA</h1>
-  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v65</span></div>
+  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v66</span></div>
 </div>
 
 <!-- SELETOR DE MODOS -->
@@ -521,13 +521,9 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <!-- Card 1: Identificação -->
   <div class="card">
     <div class="card-title">Identificação do Período</div>
-    <div class="field">
-      <label>Tipo de DPM</label>
-      <div class="d-dpm-tabs">
-        <button class="d-dpm-tab active" id="dtab-teorico" onclick="setDTipo('teorico')">📄 Teórico</button>
-        <button class="d-dpm-tab" id="dtab-literario" onclick="setDTipo('literario')">📚 Literário</button>
-        <button class="d-dpm-tab" id="dtab-misto" onclick="setDTipo('misto')">📑 Misto</button>
-      </div>
+    <div class="row2">
+      <div class="field"><label>Disciplina</label><input type="text" id="d-disc" placeholder="ex: Literatura Brasileira II"></div>
+      <div class="field"><label>Total de aulas no período</label><input type="text" id="d-total-aulas" placeholder="ex: 8"></div>
     </div>
     <div class="field">
       <label>Período avaliativo</label>
@@ -536,59 +532,44 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
         <button class="periodo-tab" id="ptab-bimestral" onclick="setPeriodo('bimestral')">Bimestral</button>
       </div>
     </div>
-    <div class="row2">
-      <div class="field"><label>Semanas incluídas</label><input type="text" id="d-semanas" placeholder="ex: 3, 4, 5, 6"></div>
-      <div class="field"><label>Disciplina</label><input type="text" id="d-disc" placeholder="ex: Literatura Brasileira II"></div>
-    </div>
-    <div class="field">
-      <label>Total de aulas no período</label>
-      <input type="text" id="d-total-aulas" placeholder="ex: 8" oninput="recalcularD()">
-    </div>
-    <div class="field">
-      <label>Texto(s) da semana</label>
-      <textarea id="d-textos" rows="2" placeholder="Referência(s) ABNT dos textos trabalhados no período"></textarea>
-    </div>
-    <div class="field">
-      <label>Critério de avaliação <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional — vazio = padrão do DPM)</span></label>
-      <textarea id="d-criterio" rows="2" placeholder="ex: clareza da tese, uso de citação, articulação com conceito do grupo."></textarea>
-    </div>
   </div>
 
-  <!-- Card 2: Grupos + alunos + parágrafos -->
+  <!-- Card 2: Tabela DPMS -->
   <div class="card">
-    <div class="card-title">Grupos, Alunos e Parágrafos</div>
-    <p class="note" style="margin-bottom:14px">Para cada grupo: informe os membros (um nome por linha, ordem qualquer — o painel ordena alfabeticamente) e cole o parágrafo coletivo. Alunos ausentes na semana do DPM não recebem nota de parágrafo.</p>
-    <div id="d-grupos-v63"></div>
-  </div>
-
-  <!-- Card 3: Presença -->
-  <div class="card">
-    <div class="card-title">Lista de Presença</div>
-    <p class="note" style="margin-bottom:12px">Anexe o(s) PDF(s) de lista de presença ou cole os dados manualmente abaixo. O painel identificará faltas por aluno no período.</p>
-    <div class="pdf-upload-area" id="dPresArea" onclick="document.getElementById('dPresInput').click()">
-      <input type="file" id="dPresInput" accept=".pdf" multiple style="display:none" onchange="addPresFiles(this.files)">
+    <div class="card-title">Tabela DPMS — dados das semanas</div>
+    <p class="note" style="margin-bottom:12px">Cole aqui todas as colunas do arquivo DPMS (semanas, datas, textos, grupos e parágrafos dos alunos) — de uma só vez, várias semanas juntas. Ou anexe o arquivo diretamente abaixo.</p>
+    <div class="field">
+      <textarea id="d-dados-dpms" rows="10" placeholder="Cole aqui a tabela DPMS copiada do Word ou planilha — todas as semanas de uma vez.&#10;&#10;Exemplo de formato (pode variar):&#10;Semana | Data  | Texto              | G1 — Tese | G2 — Contexto | ...&#10;  3    | 12/03 | Candido, cap. 2    | parágrafo  | parágrafo     | ...&#10;  4    | 19/03 | Schwarz, p. 40-55  | parágrafo  | ..."></textarea>
+    </div>
+    <div class="pdf-upload-area" id="dFileArea" onclick="document.getElementById('dPresInput').click()" style="margin-top:4px">
+      <input type="file" id="dPresInput" accept=".pdf,.docx,.xlsx,.csv" multiple style="display:none" onchange="addPresFiles(this.files)">
       <div class="pu-icon">📋</div>
-      <div class="pu-main">Clique para anexar lista(s) de presença em PDF</div>
-      <div class="pu-sub">Um ou mais arquivos · enviados à API para leitura</div>
+      <div class="pu-main">Ou clique para anexar arquivos (DPMS, DPM professor, listas de presença…)</div>
+      <div class="pu-sub">.pdf · .docx · .xlsx · .csv · vários arquivos</div>
     </div>
     <div class="pdf-chip-row" id="dPresChips"></div>
-    <div class="field" style="margin-top:14px">
-      <label>Ou cole a presença manualmente <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional — substitui o PDF)</span></label>
-      <textarea id="d-presenca-texto" rows="6" placeholder="Cole aqui a tabela de presença copiada do sistema ou Word/Excel. Formato sugerido:&#10;Nome do aluno | Sem 3 | Sem 4 | Sem 5 | Sem 6&#10;Ana Lima      |  P    |  P    |  F    |  P&#10;Bruno Melo    |  P    |  F    |  F    |  P" oninput="recalcularD()"></textarea>
+  </div>
+
+  <!-- Card 3: Expectativas -->
+  <div class="card">
+    <div class="card-title">Expectativas de resposta — DPM do professor</div>
+    <p class="note" style="margin-bottom:12px">Cole aqui as perguntas e o gabarito esperado do DPM do professor, semana a semana. A IA usa isso como critério para avaliar cada parágrafo.</p>
+    <div class="field">
+      <textarea id="d-expectativas" rows="8" placeholder="Semana 3 — [título do texto]&#10;Grupo 1 — Tese: [pergunta] → Esperado: [o que a resposta deve conter]&#10;Grupo 2 — Contexto: [pergunta] → Esperado: ...&#10;&#10;Semana 4 — ..."></textarea>
     </div>
     <div class="field">
-      <label>Alunos com ausência no dia do DPM <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(nomes, um por linha — não recebem nota de parágrafo)</span></label>
-      <textarea id="d-ausentes-dpm" rows="3" placeholder="Ana Lima&#10;Pedro Souza"></textarea>
+      <label>Critério adicional <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional)</span></label>
+      <textarea id="d-criterio" rows="2" placeholder="ex: penalizar parágrafos sem citação direta, valorizar uso dos conceitos do DPM"></textarea>
     </div>
   </div>
 
   <!-- Card 4: Ações -->
   <div class="card">
-    <div class="card-title">Gerar Correção</div>
-    <p class="note" style="margin-bottom:12px">Fórmula: <strong>Nota final = (presença × 0,5) + (parágrafo × 0,5)</strong>. Aluno ausente no DPM: nota parágrafo = 0. Entrega em ordem alfabética.</p>
+    <div class="card-title">Gerar Avaliação</div>
+    <p class="note" style="margin-bottom:12px">Fórmula: <strong>Nota final = (presença × 0,5) + (parágrafo × 0,5)</strong>. Só quem estava presente no DPM recebe a nota do parágrafo do grupo. Entrega em ordem alfabética.</p>
     <div class="warn" id="warnD"></div>
     <div class="btn-row">
-      <button class="btn-go" id="btnCorrigir" onclick="gerarCorrecaoDPM()">⚡ Corrigir via API</button>
+      <button class="btn-go" id="btnCorrigir" onclick="gerarCorrecaoDPM()">⚡ Avaliar via API</button>
       <button class="btn-prompt" onclick="gerarPromptD()">✦ Gerar prompt manual</button>
       <button class="btn-cl" onclick="limparD()">Limpar</button>
     </div>
@@ -596,14 +577,13 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <div class="api-st" id="apiStD"></div>
     </div>
     <div class="prompt-out" id="promptOutD">
-      <div class="conv-tabs" style="border-radius:10px 10px 0 0;margin-top:10px"><span>Prompt Manual — Corretor DPM</span></div>
-      <div class="conv-header"><span class="conv-title">Cole numa conversa nova do Claude</span></div>
+      <div class="conv-tabs" style="border-radius:10px 10px 0 0;margin-top:10px"><span>Prompt Manual — Avaliador DPM</span></div>
+      <div class="conv-header"><span class="conv-title">Cole numa conversa nova do Claude · Anexe os arquivos se necessário</span></div>
       <div class="out-pre"><button class="btn-cp" onclick="copiarPrompt('promptDtxt')">Copiar</button><span id="promptDtxt"></span></div>
-      <div class="out-hint">Cole o prompt → anexe o(s) PDF(s) de presença se preferir</div>
     </div>
   </div>
 
-  <!-- Resultado em tabela -->
+  <!-- Resultado -->
   <div id="dResultado" style="display:none;margin-top:8px">
     <div class="conv-tabs" style="border-radius:10px 10px 0 0"><span>Resultado — Notas em ordem alfabética</span></div>
     <div style="background:#fff;border:1px solid #ccdacc;border-top:none;border-radius:0 0 10px 10px;padding:16px 20px">
@@ -1020,7 +1000,6 @@ document.addEventListener('DOMContentLoaded', function() {
     gfi.addEventListener('change', function(){ if(this.files.length>0){ addGlobalFiles(this.files); this.value=''; } });
   }
 
-  renderGruposV63();
   atualizarMaxCalc();
 });
 
@@ -1386,7 +1365,7 @@ function setMode(m) {
     if (btn) btn.classList.toggle('active', x === m);
     if (panel) panel.classList.toggle('on', x === m);
   });
-  if (m === 'D') { renderGruposV63(); recalcularD(); }
+  if (m === 'D') { /* modo D não requer inicialização */ }
   if (m === 'E') { atualizarMaxCalc(); }
 }
 
@@ -1799,22 +1778,8 @@ function gerarViaAPI_C() {
 
 /* ===================== MODO D — CORRETOR DPM (v63) ===================== */
 
-var D_TIPO    = 'teorico';
 var D_PERIODO = 'mensal';
 var D_PRES_FILES = [];
-var D_PAPEIS = {
-  teorico:  ['Tese','Contexto','Contradição','Aplicação','Implicação'],
-  literario:['Forma','Conteúdo','Contradição','Transposição','Aplicação'],
-  misto:    ['Tese · Teórico','Contexto · Teórico','Contradição · Misto','Aplicação · Misto','Implicação · Teórico']
-};
-
-function setDTipo(t) {
-  D_TIPO = t;
-  ['teorico','literario','misto'].forEach(function(x) {
-    document.getElementById('dtab-' + x).classList.toggle('active', x === t);
-  });
-  renderGruposV63();
-}
 
 function setPeriodo(p) {
   D_PERIODO = p;
@@ -1823,34 +1788,15 @@ function setPeriodo(p) {
   });
 }
 
-function renderGruposV63() {
-  var papeis = D_PAPEIS[D_TIPO];
-  var cont = document.getElementById('d-grupos-v63');
-  if (!cont) return;
-  cont.innerHTML = '';
-  for (var i = 1; i <= 5; i++) {
-    var papel = papeis[i-1];
-    cont.innerHTML += [
-      '<div class="grp-block">',
-      '  <div class="grp-header">',
-      '    <div class="grp-badge">Grupo ' + i + '</div>',
-      '    <div class="grp-papel">' + papel + '</div>',
-      '  </div>',
-      '  <label style="font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-bottom:3px">Alunos do grupo (um por linha)</label>',
-      '  <textarea class="grp-alunos" id="g-alunos-' + i + '" rows="3" placeholder="Ana Lima&#10;Bruno Melo&#10;Carlos Andrade"></textarea>',
-      '  <label style="font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-top:10px;margin-bottom:3px">Parágrafo coletivo do grupo</label>',
-      '  <textarea class="grp-para" id="g-para-' + i + '" rows="3" placeholder="Cole o parágrafo redigido pelo grupo ' + i + ' — ' + papel + '…"></textarea>',
-      '  <div class="grp-feedback" id="g-fb-' + i + '"></div>',
-      '</div>'
-    ].join('\n');
-  }
-}
-
 function addPresFiles(files) {
   Array.from(files).forEach(function(f) {
     var r = new FileReader();
     r.onload = function(e) {
-      D_PRES_FILES.push({ name: f.name, media_type: 'application/pdf', data: e.target.result.split(',')[1] });
+      var mt = f.name.match(/\.pdf$/i) ? 'application/pdf' :
+               f.name.match(/\.docx$/i) ? 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' :
+               f.name.match(/\.xlsx$/i) ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' :
+               'text/plain';
+      D_PRES_FILES.push({ name: f.name, media_type: mt, data: e.target.result.split(',')[1] });
       addPdfChip('dPresChips', f.name, D_PRES_FILES.length - 1, 'dPres');
     };
     r.readAsDataURL(f);
@@ -1872,51 +1818,34 @@ function removePdfFile(prefix, idx, chipEl) {
   if (chipEl) chipEl.remove();
 }
 
-function recalcularD() { /* live recalc placeholder */ }
-
 function gerarPromptD() {
-  var disc    = document.getElementById('d-disc').value.trim();
-  var semanas = document.getElementById('d-semanas').value.trim();
-  var textos  = document.getElementById('d-textos').value.trim();
-  var crit    = document.getElementById('d-criterio').value.trim();
-  var total   = document.getElementById('d-total-aulas').value.trim();
-  var presText= document.getElementById('d-presenca-texto').value.trim();
-  var ausDPM  = document.getElementById('d-ausentes-dpm').value.trim();
-  var papeis  = D_PAPEIS[D_TIPO];
-  var tipoLabel = {teorico:'Teórico',literario:'Literário',misto:'Misto'}[D_TIPO];
-
-  var gruposStr = '';
-  for (var i = 1; i <= 5; i++) {
-    var alunos = (document.getElementById('g-alunos-' + i) || {}).value || '';
-    var para   = (document.getElementById('g-para-' + i) || {}).value || '';
-    if (!alunos.trim() && !para.trim()) continue;
-    gruposStr += '\nGRUPO ' + i + ' — ' + papeis[i-1] + ':\nAlunos: ' + alunos.trim().replace(/\n/g,', ') + '\nParágrafo: ' + (para.trim() || '[não fornecido]') + '\n';
-  }
+  var disc   = document.getElementById('d-disc').value.trim();
+  var total  = document.getElementById('d-total-aulas').value.trim();
+  var dados  = document.getElementById('d-dados-dpms').value.trim();
+  var expect = document.getElementById('d-expectativas').value.trim();
+  var crit   = document.getElementById('d-criterio').value.trim();
 
   var prompt = [
-    'Você é o Prof. Felipe Vigneron Azevedo, professor de Letras — Português e Literaturas no IFF Campus Campos Centro.',
-    'Corrija os parágrafos DPM ' + tipoLabel + ' abaixo com feedback acadêmico no estilo do professor: segunda pessoa, qualitativo, impessoal, acolhedor, distância profissional. Após o feedback de cada grupo, atribua uma nota de 0 a 10.',
+    'Você é o Prof. Felipe Vigneron Azevedo — Letras, IFF Campus Campos Centro.',
+    'Avalie os parágrafos DPM da tabela abaixo com rigor e acolhimento, no estilo do professor: segunda pessoa, qualitativo, impessoal.',
     '',
-    'DISCIPLINA: ' + (disc || '___') + ' | SEMANAS: ' + (semanas || '___') + ' | TOTAL DE AULAS: ' + (total || '___'),
-    'TEXTO(S): ' + (textos || '___'),
-    (crit ? 'CRITÉRIOS ADICIONAIS: ' + crit : ''),
+    'DISCIPLINA: ' + (disc || '___') + ' | PERÍODO: ' + D_PERIODO + ' | TOTAL DE AULAS: ' + (total || '___'),
     '',
-    '=== GRUPOS ===',
-    gruposStr,
-    '=== ALUNOS AUSENTES NO DIA DO DPM (nota parágrafo = 0) ===',
-    (ausDPM || 'Nenhum informado'),
+    '=== TABELA DPMS (semanas, grupos e parágrafos dos alunos) ===',
+    (dados || '[Cole a tabela DPMS aqui ou anexe o arquivo]'),
     '',
-    '=== LISTA DE PRESENÇA ===',
-    (presText || '[Anexe o PDF de presença ou cole os dados aqui]'),
+    '=== EXPECTATIVAS DE RESPOSTA POR SEMANA (DPM do professor) ===',
+    (expect || '[Cole as expectativas aqui ou anexe o DPM do professor]'),
+    (crit ? '\n=== CRITÉRIOS ADICIONAIS ===\n' + crit : ''),
     '',
-    '=== INSTRUÇÕES DE ENTREGA ===',
-    '1. Para cada grupo: escreva o feedback (2-4 parágrafos) e informe a nota de 0–10.',
-    '2. Em seguida, gere uma TABELA em ordem alfabética estrita com colunas:',
-    '   Nome | Grupo | Papel | Faltas | Nota presença (0–10) | Nota parágrafo (0–10) | Nota final',
-    '3. Fórmula: Nota final = (presença × 0,5) + (parágrafo × 0,5)',
-    '4. Aluno ausente no DPM: nota parágrafo = 0',
-    '5. Nota presença = 10 × (1 − faltas/total_aulas)',
-    '6. Entrega completamente em ordem ALFABÉTICA por nome do aluno.',
+    '=== INSTRUÇÕES ===',
+    '1. Para cada semana e cada grupo: leia o parágrafo, compare com a expectativa, escreva feedback (2–3 frases) e atribua nota 0–10.',
+    '2. Presença: aluno que não consta na coluna da semana = ausente naquela aula.',
+    '3. Apenas quem estava presente no DPM recebe a nota do parágrafo do grupo.',
+    '4. Nota presença = 10 × (1 − faltas / total_aulas).',
+    '5. Nota final = (nota presença × 0,5) + (média das notas de parágrafo × 0,5).',
+    '6. Entregue: (a) feedbacks por semana/grupo; (b) tabela final em ordem alfabética:',
+    '   Nome | Grupo | Faltas | Nota presença | Nota parágrafo (média) | Nota final.',
   ].filter(Boolean).join('\n');
 
   var el = document.getElementById('promptDtxt');
@@ -1927,50 +1856,34 @@ function gerarPromptD() {
 }
 
 function gerarCorrecaoDPM() {
-  var papeis = D_PAPEIS[D_TIPO];
-  var paras = [];
-  var alunos = [];
-  for (var i = 1; i <= 5; i++) {
-    paras.push((document.getElementById('g-para-' + i) || {}).value || '');
-    alunos.push((document.getElementById('g-alunos-' + i) || {}).value || '');
-  }
-  var algum = paras.some(function(p) { return p.length > 0; });
+  var dados  = document.getElementById('d-dados-dpms').value.trim();
   var wD = document.getElementById('warnD');
-  if (!algum) { wD.textContent = 'Cole ao menos um parágrafo antes de corrigir.'; wD.classList.add('on'); return; }
+  if (!dados && D_PRES_FILES.length === 0 && GLOBAL_FILES.length === 0) {
+    wD.textContent = 'Cole a tabela DPMS ou anexe um arquivo antes de avaliar.';
+    wD.classList.add('on'); return;
+  }
   wD.classList.remove('on');
   var btn = document.getElementById('btnCorrigir');
   btn.disabled = true;
-  setApiStatus('apiStD', 'loading', 'Corrigindo parágrafos via API (Sonnet 4.6)…');
+  setApiStatus('apiStD', 'loading', 'Avaliando parágrafos via API (Sonnet 4.6)…');
   var inputs = {
-    tipo: D_TIPO,
-    semanas: document.getElementById('d-semanas').value.trim(),
-    disciplina: document.getElementById('d-disc').value.trim(),
-    total_aulas: document.getElementById('d-total-aulas').value.trim(),
-    textos: document.getElementById('d-textos').value.trim(),
-    criterio: document.getElementById('d-criterio').value.trim(),
-    papeis: papeis,
-    paragrafos: paras,
-    alunos_por_grupo: alunos,
-    ausentes_dpm: document.getElementById('d-ausentes-dpm').value.trim(),
-    presenca_texto: document.getElementById('d-presenca-texto').value.trim(),
-    periodo: D_PERIODO,
-    modelo: 'claude-sonnet-4-6'
+    disciplina:   document.getElementById('d-disc').value.trim(),
+    periodo:      D_PERIODO,
+    total_aulas:  document.getElementById('d-total-aulas').value.trim(),
+    dados_dpms:   dados,
+    expectativas: document.getElementById('d-expectativas').value.trim(),
+    criterio:     document.getElementById('d-criterio').value.trim(),
+    modelo:       'claude-sonnet-4-6'
   };
-  chamarAPI({ mode: 'D', task: 'corretor_dpm_v63', inputs: inputs, files: mergeFiles().concat(D_PRES_FILES) })
+  chamarAPI({ mode: 'D', task: 'avaliador_dpms_v66', inputs: inputs, files: mergeFiles().concat(D_PRES_FILES) })
     .then(function(data) {
-      if (data.feedbacks) {
-        data.feedbacks.forEach(function(fb, idx) {
-          var el = document.getElementById('g-fb-' + (idx+1));
-          if (el) { el.textContent = fb; el.classList.add('on'); }
-        });
-      }
       if (data.tabela_html) {
         document.getElementById('dTabela').innerHTML = data.tabela_html;
         document.getElementById('dResultado').style.display = 'block';
         setTimeout(function(){ document.getElementById('dResultado').scrollIntoView({behavior:'smooth'}); }, 200);
       }
-      setApiStatus('apiStD', 'ok', '✓ Correção concluída · Modelo: Sonnet 4.6');
-      if (data.docx) downloadDocx(data.docx, data.filename || 'DPM_Corrigido.docx');
+      setApiStatus('apiStD', 'ok', '✓ Avaliação concluída · Modelo: Sonnet 4.6');
+      if (data.docx) downloadDocx(data.docx, data.filename || 'DPM_Avaliado.docx');
     })
     .catch(function(e){ setApiStatus('apiStD','error','✗ Erro: ' + e.message); })
     .then(function(){ btn.disabled = false; });
@@ -1988,12 +1901,11 @@ function copiarTabela(id) {
 }
 
 function limparD() {
-  ['d-semanas','d-disc','d-textos','d-criterio','d-total-aulas','d-presenca-texto','d-ausentes-dpm'].forEach(function(id) {
+  ['d-disc','d-total-aulas','d-dados-dpms','d-expectativas','d-criterio'].forEach(function(id) {
     var el = document.getElementById(id); if(el) el.value='';
   });
   D_PRES_FILES = [];
   var chips = document.getElementById('dPresChips'); if(chips) chips.innerHTML='';
-  renderGruposV63();
   document.getElementById('dResultado').style.display='none';
   document.getElementById('promptOutD').classList.remove('on');
   document.getElementById('warnD').classList.remove('on');
