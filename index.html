@@ -212,7 +212,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 <div class="hdr">
   <div class="ey">Instituto Federal Fluminense · Campus Campos Centro</div>
   <h1>Painel de Preparação de Aula — CLA</h1>
-  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v64</span></div>
+  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v65</span></div>
 </div>
 
 <!-- SELETOR DE MODOS -->
@@ -1836,9 +1836,9 @@ function renderGruposV63() {
       '    <div class="grp-badge">Grupo ' + i + '</div>',
       '    <div class="grp-papel">' + papel + '</div>',
       '  </div>',
-      '  <label style="font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-bottom:3px">Alunos do grupo (um por linha)</label>',
+      '  <label style="font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-bottom:3px">Alunos do grupo (um por linha)</label>',
       '  <textarea class="grp-alunos" id="g-alunos-' + i + '" rows="3" placeholder="Ana Lima&#10;Bruno Melo&#10;Carlos Andrade"></textarea>',
-      '  <label style="font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-top:10px;margin-bottom:3px">Parágrafo coletivo do grupo</label>',
+      '  <label style="font-family:inherit;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-top:10px;margin-bottom:3px">Parágrafo coletivo do grupo</label>',
       '  <textarea class="grp-para" id="g-para-' + i + '" rows="3" placeholder="Cole o parágrafo redigido pelo grupo ' + i + ' — ' + papel + '…"></textarea>',
       '  <div class="grp-feedback" id="g-fb-' + i + '"></div>',
       '</div>'
@@ -1862,7 +1862,7 @@ function addPdfChip(containerId, name, idx, prefix) {
   if (!chips) return;
   var chip = document.createElement('div');
   chip.className = 'pdf-chip';
-  chip.innerHTML = '📄 ' + name + ' <span class="pdf-chip-x" onclick="removePdfFile('' + prefix + '',' + idx + ',this.parentNode)">✕</span>';
+  chip.innerHTML = '📄 ' + name + ' <span class="pdf-chip-x" onclick="removePdfFile(\'' + prefix + '\',' + idx + ',this.parentNode)">✕</span>';
   chips.appendChild(chip);
 }
 
