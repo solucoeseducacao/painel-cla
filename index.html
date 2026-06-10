@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF</title>
+<title>Painel CLA — IFF v64</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -142,7 +142,68 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .api-st.ok{display:block;background:#f0fff4;border:1px solid #88cc99;color:#1a4a2a}
 .api-upload{border:1.5px dashed var(--mg);border-radius:8px;padding:10px 14px;cursor:pointer;text-align:center;font-family:'EB Garamond';font-size:13px;color:#559;transition:border-color .15s;background:#fafffe}
 .api-upload:hover{border-color:var(--dg);color:var(--dg)}
-@media(max-width:520px){.row2,.row112,.mrow2,.mrow3{grid-template-columns:1fr}.card{padding:20px 16px}.type-tabs,.fmt-group,.modebar,.opt-group{flex-direction:column}}
+@media(max-width:520px){.row2,.row112,.mrow2,.mrow3{grid-template-columns:1fr}.card{padding:20px 16px}.type-tabs,.fmt-group,.opt-group{flex-direction:column}.modebar{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.mode-sub{display:none}.mode-btn{padding:10px 6px}}
+@media(max-width:380px){.modebar{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.btn-go,.btn-cl,.btn-prompt{width:100%}}
+/* ── Modo D: Corretor DPM + Calculador ─────────────────────────────────── */
+.grp-block{background:#f7fdf7;border:1.5px solid var(--bd);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.grp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.grp-badge{background:var(--dg);color:#fff;font-family:'Crimson Pro',serif;font-size:12px;font-weight:800;padding:3px 10px;border-radius:5px;letter-spacing:.04em;white-space:nowrap}
+.grp-papel{font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:var(--dg)}
+.grp-nota{display:flex;align-items:center;gap:6px;margin-left:auto}
+.grp-nota label{font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#667}
+.grp-nota input{width:52px;border:1.5px solid var(--bd);border-radius:5px;padding:4px 7px;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;color:var(--dg);text-align:center;background:#fff;outline:none}
+.grp-nota input:focus{border-color:var(--dg)}
+.grp-para{width:100%;border:1.5px solid #d0e4d0;border-radius:7px;padding:9px 12px;font-family:'EB Garamond',serif;font-size:13.5px;color:var(--tx);background:#fff;resize:vertical;min-height:70px;outline:none;line-height:1.55}
+.grp-para:focus{border-color:var(--dg)}
+.grp-feedback{display:none;margin-top:10px;background:#f0fff4;border:1px solid #99cc99;border-radius:7px;padding:11px 14px;font-family:'EB Garamond',serif;font-size:13.5px;line-height:1.7;color:#1a3a1a;white-space:pre-wrap}
+.grp-feedback.on{display:block}
+.d-dpm-tabs{display:flex;gap:8px;margin-bottom:16px}
+.d-dpm-tab{flex:1;padding:9px 6px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:#556;text-align:center;transition:all .15s}
+.d-dpm-tab:hover{border-color:var(--mg);background:#f0faf0;color:var(--dg)}
+.d-dpm-tab.active{border-color:var(--dg);background:var(--dg);color:#fff}
+.calc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.calc-field label{display:block;font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);margin-bottom:4px}
+.calc-field input{width:100%;border:1.5px solid var(--bd);border-radius:6px;padding:7px 10px;font-family:'EB Garamond',serif;font-size:14px;color:var(--tx);background:var(--bg);outline:none}
+.calc-field input:focus{border-color:var(--dg)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:12px}
+.media-card{background:#fff;border:1.5px solid var(--bd);border-radius:8px;padding:10px 12px;text-align:center}
+.media-card .mc-grp{font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mg)}
+.media-card .mc-val{font-family:'Crimson Pro',serif;font-size:22px;font-weight:800;color:var(--dg);line-height:1.1;margin:4px 0 2px}
+.media-card .mc-sit{font-size:10.5px;color:#778;font-style:italic}
+.media-card.aprovado{border-color:#5FAD6E}
+.media-card.atencao{border-color:#e0aa44;background:#fffbf0}
+.media-card.reprovado{border-color:#cc5555;background:#fff5f5}
+.nota-badge{display:inline-block;background:var(--dg);color:#fff;font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:4px}
+
+/* ── Modo E: Quiz + extras v63 ──────────────────────────────────────────── */
+.grp-alunos{width:100%;border:1.5px solid #d0e4d0;border-radius:7px;padding:7px 10px;font-family:'EB Garamond',serif;font-size:13px;color:var(--tx);background:#fff;resize:vertical;min-height:54px;outline:none;margin-top:6px}
+.grp-alunos:focus{border-color:var(--dg)}
+.pdf-upload-area{border:2px dashed var(--bd);border-radius:8px;padding:14px 16px;text-align:center;cursor:pointer;background:var(--bg);transition:all .2s}
+.pdf-upload-area:hover{border-color:var(--mg);background:#edf7ed}
+.pdf-upload-area .pu-icon{font-size:24px;line-height:1;margin-bottom:4px}
+.pdf-upload-area .pu-main{font-family:'Crimson Pro',serif;font-size:13px;color:var(--dg);font-weight:600}
+.pdf-upload-area .pu-sub{font-size:11px;color:#889;margin-top:2px;font-style:italic}
+.pdf-chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pdf-chip{display:inline-flex;align-items:center;gap:6px;background:#f0faf0;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);font-family:'EB Garamond',serif}
+.pdf-chip-x{cursor:pointer;color:#999;font-size:14px;line-height:1}
+.pdf-chip-x:hover{color:#c00}
+.periodo-tabs{display:flex;gap:8px;margin-bottom:12px}
+.periodo-tab{flex:1;padding:7px 6px;border:1.5px solid var(--bd);border-radius:7px;background:var(--bg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:12px;font-weight:700;color:#556;text-align:center;transition:all .14s}
+.periodo-tab:hover{border-color:var(--mg);background:#f0faf0;color:var(--dg)}
+.periodo-tab.active{border-color:var(--dg);background:var(--dg);color:#fff}
+.result-table{width:100%;border-collapse:collapse;font-family:'EB Garamond',serif;font-size:13px;margin-top:14px}
+.result-table th{background:var(--dg);color:#fff;padding:7px 10px;font-family:'Crimson Pro',serif;font-weight:700;font-size:12px;text-align:center;border:1px solid var(--dg)}
+.result-table td{padding:6px 10px;border:1px solid #d0e8d0;vertical-align:top}
+.result-table tr:nth-child(even) td{background:#f4fbf4}
+.result-table td.name-col{font-weight:600;color:var(--dg)}
+.result-table td.grade-col{text-align:center;font-family:'Crimson Pro',serif;font-weight:700}
+.result-table td.final-col{text-align:center;font-family:'Crimson Pro',serif;font-weight:800;color:var(--dg);font-size:14px}
+.result-wrap{overflow-x:auto;margin-top:8px}
+.btn-prompt{align-self:flex-start;padding:10px 18px;border:2px solid var(--mg);border-radius:9px;background:#fff;color:var(--dg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;transition:all .18s}
+.btn-prompt:hover{background:var(--mg);color:#fff}
+.prompt-out{display:none;margin-top:10px}
+.prompt-out.on{display:block}
+
 </style>
 </head>
 <body>
@@ -151,7 +212,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 <div class="hdr">
   <div class="ey">Instituto Federal Fluminense · Campus Campos Centro</div>
   <h1>Painel de Preparação de Aula — CLA</h1>
-  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa</div>
+  <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v64</span></div>
 </div>
 
 <!-- SELETOR DE MODOS -->
@@ -159,6 +220,21 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <button class="mode-btn active" id="modeBtnA" onclick="setMode('A')"><div class="mode-name">Modo A</div><div class="mode-sub">Preparação de Aula</div></button>
   <button class="mode-btn" id="modeBtnB" onclick="setMode('B')"><div class="mode-name">Modo B</div><div class="mode-sub">Otimizador de Prompts</div></button>
   <button class="mode-btn" id="modeBtnC" onclick="setMode('C')"><div class="mode-name">Modo C</div><div class="mode-sub">Correção e Feedback</div></button>
+  <button class="mode-btn" id="modeBtnD" onclick="setMode('D')"><div class="mode-name">Modo D</div><div class="mode-sub">Corretor DPM</div></button>
+  <button class="mode-btn" id="modeBtnE" onclick="setMode('E')"><div class="mode-name">Modo E</div><div class="mode-sub">Notas de Quiz</div></button>
+</div>
+
+<!-- ZONA GLOBAL DE ARQUIVOS -->
+<div class="card" id="globalFilesCard" style="padding:16px 20px;margin-bottom:16px">
+  <div class="card-title" style="margin-bottom:10px">📎 Arquivos — disponíveis em todos os modos</div>
+  <div class="drop-zone" id="globalDropzone" style="padding:12px 16px;margin-bottom:6px">
+    <input type="file" id="globalFileinput" multiple accept=".pdf,.docx,.doc,.txt,.pptx,.xlsx,.csv" style="display:none">
+    <div class="drop-icon" style="font-size:20px">📂</div>
+    <div class="drop-main">Arraste arquivos aqui — ou clique para selecionar</div>
+    <div class="drop-sub">.pdf · .docx · .pptx · .xlsx · .csv · .txt · vários arquivos</div>
+  </div>
+  <div class="pdf-chip-row" id="globalFileChips"></div>
+  <p class="note" style="margin-top:6px">Arquivos aqui são incluídos em todas as chamadas à API. No modo manual, anexe-os diretamente na conversa do Claude.</p>
 </div>
 
 <!-- ============ MODO A — PREPARAÇÃO DE AULA ============ -->
@@ -203,6 +279,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <div class="tr" onclick="tick(&#39;t2&#39;)"><div class="chk" id="t2"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📚</span><span class="tl">DPM Literário</span><span class="tag">B · C</span></div><div class="ts">alunos + professor · Forma · Conteúdo · Contexto · Intertexto · Lacuna</div></div></div>
   <div class="tr" onclick="tick(&#39;t3&#39;)"><div class="chk" id="t3"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">⏱</span><span class="tl">Quiz de 10 minutos</span></div><div class="ts">5 questões objetivas · gabarito comentado · Estágio 5</div></div></div>
   <div class="tr" onclick="tick(&#39;t4&#39;)"><div class="chk" id="t4"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📝</span><span class="tl">Questões Bimestrais</span><span class="tag">professor</span></div><div class="ts">2–3 questões · 1 por nível · gabarito com justificativa</div></div></div>
+  <div class="tr" onclick="tick('t5')"><div class="chk" id="t5"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📋</span><span class="tl">Tabela DPM automática</span><span class="tag" style="background:#e8f4ff;color:#336;border:1px solid #aac">novo</span></div><div class="ts">gera perguntas por grupo baseadas no texto e formato · baixa .docx</div></div></div>
   <hr class="sep">
   <div class="field">
     <label>Questão-norteadora do debate inicial <span style="font-weight:400;color:#889;font-style:italic">(opcional)</span></label>
@@ -230,6 +307,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
     <span>Prompts</span>
     <button class="ctab active" id="ctab1" onclick="showConv(1)">Conversa 1 · DPMs</button>
     <button class="ctab" id="ctab2" onclick="showConv(2)">Conversa 2 · Quiz e demais</button>
+    <button class="ctab" id="ctab3" onclick="showConv(3)" style="display:none">Tabela DPM</button>
   </div>
 
   <!-- CONVERSA 1 -->
@@ -268,6 +346,19 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <div class="out-pre"><button class="btn-cp" id="bcp2en" onclick="copiarPrompt(&#39;p2en&#39;)">Copiar</button><span id="p2en"></span></div>
     </div>
     <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) PDF(s)</div>
+  </div>
+
+  <!-- CONVERSA 3 — TABELA DPM (t5) -->
+  <div class="conv-panel" id="cpanel3" style="display:none">
+    <div class="conv-header">
+      <span class="conv-title">📋 Tabela DPM — Folha de Resposta dos Alunos</span>
+      <span class="conv-hint">Cole numa conversa nova → anexe o(s) PDF(s) do texto</span>
+    </div>
+    <div class="lang-panel on" id="lp3pt">
+      <div class="out-meta" id="meta3pt"></div>
+      <div class="out-pre"><button class="btn-cp" id="bcp3pt" onclick="copiarPrompt('p3pt')">Copiar</button><span id="p3pt"></span></div>
+    </div>
+    <div class="out-hint">Claude gera as perguntas e monta a tabela DPMS pronta para impressão (.docx)</div>
   </div>
 </div>
 
@@ -380,8 +471,18 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       </div>
     </div>
     <div class="field">
+      <label>Arquivo do material <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional — alternativa ao campo abaixo)</span></label>
+      <div class="pdf-upload-area" id="bFileArea" onclick="document.getElementById('bFileinput').click()">
+        <input type="file" id="bFileinput" multiple accept=".pdf,.docx,.txt,.md" style="display:none" onchange="addBFiles(this.files)">
+        <div class="pu-icon">📄</div>
+        <div class="pu-main">Clique para anexar — ou arraste aqui</div>
+        <div class="pu-sub">.pdf · .docx · .txt — pode também colar o texto abaixo</div>
+      </div>
+      <div class="pdf-chip-row" id="bFileChips"></div>
+    </div>
+    <div class="field">
       <label>Prompt / instrução / background a otimizar</label>
-      <textarea id="bPrompt" rows="8" placeholder="Cole aqui o texto que quer aprimorar."></textarea>
+      <textarea id="bPrompt" rows="8" placeholder="Cole aqui o texto que quer aprimorar — ou anexe o arquivo acima."></textarea>
     </div>
     <div class="field">
       <label>Queixa ou objetivo</label>
@@ -412,6 +513,172 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   </div>
 
 </div><!-- /modeB -->
+
+
+<!-- ============ MODO D — CORRETOR DPM (v63) ============ -->
+<div class="mode-panel" id="modeD">
+
+  <!-- Card 1: Identificação -->
+  <div class="card">
+    <div class="card-title">Identificação do Período</div>
+    <div class="field">
+      <label>Tipo de DPM</label>
+      <div class="d-dpm-tabs">
+        <button class="d-dpm-tab active" id="dtab-teorico" onclick="setDTipo('teorico')">📄 Teórico</button>
+        <button class="d-dpm-tab" id="dtab-literario" onclick="setDTipo('literario')">📚 Literário</button>
+        <button class="d-dpm-tab" id="dtab-misto" onclick="setDTipo('misto')">📑 Misto</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Período avaliativo</label>
+      <div class="periodo-tabs">
+        <button class="periodo-tab active" id="ptab-mensal" onclick="setPeriodo('mensal')">Mensal</button>
+        <button class="periodo-tab" id="ptab-bimestral" onclick="setPeriodo('bimestral')">Bimestral</button>
+      </div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>Semanas incluídas</label><input type="text" id="d-semanas" placeholder="ex: 3, 4, 5, 6"></div>
+      <div class="field"><label>Disciplina</label><input type="text" id="d-disc" placeholder="ex: Literatura Brasileira II"></div>
+    </div>
+    <div class="field">
+      <label>Total de aulas no período</label>
+      <input type="text" id="d-total-aulas" placeholder="ex: 8" oninput="recalcularD()">
+    </div>
+    <div class="field">
+      <label>Texto(s) da semana</label>
+      <textarea id="d-textos" rows="2" placeholder="Referência(s) ABNT dos textos trabalhados no período"></textarea>
+    </div>
+    <div class="field">
+      <label>Critério de avaliação <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional — vazio = padrão do DPM)</span></label>
+      <textarea id="d-criterio" rows="2" placeholder="ex: clareza da tese, uso de citação, articulação com conceito do grupo."></textarea>
+    </div>
+  </div>
+
+  <!-- Card 2: Grupos + alunos + parágrafos -->
+  <div class="card">
+    <div class="card-title">Grupos, Alunos e Parágrafos</div>
+    <p class="note" style="margin-bottom:14px">Para cada grupo: informe os membros (um nome por linha, ordem qualquer — o painel ordena alfabeticamente) e cole o parágrafo coletivo. Alunos ausentes na semana do DPM não recebem nota de parágrafo.</p>
+    <div id="d-grupos-v63"></div>
+  </div>
+
+  <!-- Card 3: Presença -->
+  <div class="card">
+    <div class="card-title">Lista de Presença</div>
+    <p class="note" style="margin-bottom:12px">Anexe o(s) PDF(s) de lista de presença ou cole os dados manualmente abaixo. O painel identificará faltas por aluno no período.</p>
+    <div class="pdf-upload-area" id="dPresArea" onclick="document.getElementById('dPresInput').click()">
+      <input type="file" id="dPresInput" accept=".pdf" multiple style="display:none" onchange="addPresFiles(this.files)">
+      <div class="pu-icon">📋</div>
+      <div class="pu-main">Clique para anexar lista(s) de presença em PDF</div>
+      <div class="pu-sub">Um ou mais arquivos · enviados à API para leitura</div>
+    </div>
+    <div class="pdf-chip-row" id="dPresChips"></div>
+    <div class="field" style="margin-top:14px">
+      <label>Ou cole a presença manualmente <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(opcional — substitui o PDF)</span></label>
+      <textarea id="d-presenca-texto" rows="6" placeholder="Cole aqui a tabela de presença copiada do sistema ou Word/Excel. Formato sugerido:&#10;Nome do aluno | Sem 3 | Sem 4 | Sem 5 | Sem 6&#10;Ana Lima      |  P    |  P    |  F    |  P&#10;Bruno Melo    |  P    |  F    |  F    |  P" oninput="recalcularD()"></textarea>
+    </div>
+    <div class="field">
+      <label>Alunos com ausência no dia do DPM <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(nomes, um por linha — não recebem nota de parágrafo)</span></label>
+      <textarea id="d-ausentes-dpm" rows="3" placeholder="Ana Lima&#10;Pedro Souza"></textarea>
+    </div>
+  </div>
+
+  <!-- Card 4: Ações -->
+  <div class="card">
+    <div class="card-title">Gerar Correção</div>
+    <p class="note" style="margin-bottom:12px">Fórmula: <strong>Nota final = (presença × 0,5) + (parágrafo × 0,5)</strong>. Aluno ausente no DPM: nota parágrafo = 0. Entrega em ordem alfabética.</p>
+    <div class="warn" id="warnD"></div>
+    <div class="btn-row">
+      <button class="btn-go" id="btnCorrigir" onclick="gerarCorrecaoDPM()">⚡ Corrigir via API</button>
+      <button class="btn-prompt" onclick="gerarPromptD()">✦ Gerar prompt manual</button>
+      <button class="btn-cl" onclick="limparD()">Limpar</button>
+    </div>
+    <div class="api-bar">
+      <div class="api-st" id="apiStD"></div>
+    </div>
+    <div class="prompt-out" id="promptOutD">
+      <div class="conv-tabs" style="border-radius:10px 10px 0 0;margin-top:10px"><span>Prompt Manual — Corretor DPM</span></div>
+      <div class="conv-header"><span class="conv-title">Cole numa conversa nova do Claude</span></div>
+      <div class="out-pre"><button class="btn-cp" onclick="copiarPrompt('promptDtxt')">Copiar</button><span id="promptDtxt"></span></div>
+      <div class="out-hint">Cole o prompt → anexe o(s) PDF(s) de presença se preferir</div>
+    </div>
+  </div>
+
+  <!-- Resultado em tabela -->
+  <div id="dResultado" style="display:none;margin-top:8px">
+    <div class="conv-tabs" style="border-radius:10px 10px 0 0"><span>Resultado — Notas em ordem alfabética</span></div>
+    <div style="background:#fff;border:1px solid #ccdacc;border-top:none;border-radius:0 0 10px 10px;padding:16px 20px">
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+        <button class="btn-cp" onclick="copiarTabela('dTabela')">Copiar tabela</button>
+      </div>
+      <div class="result-wrap"><div id="dTabela"></div></div>
+    </div>
+  </div>
+
+</div><!-- /modeD -->
+
+
+<!-- ============ MODO E — NOTAS DE QUIZ (v63) ============ -->
+<div class="mode-panel" id="modeE">
+
+  <div class="card">
+    <div class="card-title">Configuração dos Quizzes</div>
+    <div class="row2">
+      <div class="field"><label>Disciplina</label><input type="text" id="e-disc" placeholder="ex: Literatura Brasileira II"></div>
+      <div class="field"><label>Período / bimestre</label><input type="text" id="e-periodo" placeholder="ex: 1º Bimestre 2026"></div>
+    </div>
+    <div class="field">
+      <label>Pontuação máxima por quiz</label>
+      <input type="text" id="e-maxnota" value="5" placeholder="5" oninput="calcularQuizzes()">
+      <p class="note">Fórmula final: (soma das notas / quantidade de quizzes) × 0,8. Nota máxima = <span id="e-maxcalc">4,0</span> pontos. Quiz não realizado = 0.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Arquivos de Quiz (Forms)</div>
+    <p class="note" style="margin-bottom:12px">Arraste ou selecione os arquivos .pptx exportados do Microsoft Forms — um por quiz/semana. O painel extrai as notas automaticamente via API.</p>
+    <div class="pdf-upload-area" id="eQuizArea" onclick="document.getElementById('eQuizInput').click()">
+      <input type="file" id="eQuizInput" accept=".pptx,.xlsx,.csv,.pdf" multiple style="display:none" onchange="addQuizFiles(this.files)">
+      <div class="pu-icon">📊</div>
+      <div class="pu-main">Clique para anexar arquivos de quiz do Forms</div>
+      <div class="pu-sub">.pptx · .xlsx · .csv — um arquivo por semana/quiz</div>
+    </div>
+    <div class="pdf-chip-row" id="eQuizChips"></div>
+    <div class="field" style="margin-top:16px">
+      <label>Ou cole os dados manualmente <span style="font-weight:400;font-style:italic;text-transform:none;letter-spacing:0;color:#889">(alternativa ao arquivo)</span></label>
+      <textarea id="e-dados-texto" rows="8" placeholder="Cole aqui os dados de notas copiados do Forms ou Excel. Formato sugerido:&#10;Nome do aluno   | Quiz 1 | Quiz 2 | Quiz 3&#10;Ana Lima        |   5    |   4    |   5&#10;Bruno Melo      |   3    |   0    |   5&#10;Carlos Andrade  |   5    |   5    |   4&#10;&#10;Quizzes não realizados = 0 (deixe 0 ou a célula vazia)."></textarea>
+      <p class="note">Ao colar dados manualmente, a API não é necessária — o cálculo é feito no próprio painel.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Gerar Tabela de Notas</div>
+    <div class="warn" id="warnE"></div>
+    <div class="btn-row">
+      <button class="btn-go" id="btnQuiz" onclick="calcularQuizzesAPI()">⚡ Processar via API</button>
+      <button class="btn-prompt" onclick="calcularQuizzesManuais()">✦ Calcular dados colados</button>
+      <button class="btn-prompt" onclick="gerarPromptE()">✦ Gerar prompt manual</button>
+      <button class="btn-cl" onclick="limparE()">Limpar</button>
+    </div>
+    <div class="api-bar"><div class="api-st" id="apiStE"></div></div>
+    <div class="prompt-out" id="promptOutE">
+      <div class="conv-tabs" style="border-radius:10px 10px 0 0;margin-top:10px"><span>Prompt Manual — Notas de Quiz</span></div>
+      <div class="conv-header"><span class="conv-title">Cole numa conversa nova do Claude</span></div>
+      <div class="out-pre"><button class="btn-cp" onclick="copiarPrompt('promptEtxt')">Copiar</button><span id="promptEtxt"></span></div>
+      <div class="out-hint">Cole o prompt → anexe o(s) arquivo(s) de quiz se necessário</div>
+    </div>
+  </div>
+
+  <div id="eResultado" style="display:none;margin-top:8px">
+    <div class="conv-tabs" style="border-radius:10px 10px 0 0"><span>Resultado — Notas de Quiz em ordem alfabética</span></div>
+    <div style="background:#fff;border:1px solid #ccdacc;border-top:none;border-radius:0 0 10px 10px;padding:16px 20px">
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+        <button class="btn-cp" onclick="copiarTabela('eTabela')">Copiar tabela</button>
+      </div>
+      <div class="result-wrap"><div id="eTabela"></div></div>
+    </div>
+  </div>
+
+</div><!-- /modeE -->
 
 </div><!-- /wrap -->
 
@@ -461,13 +728,67 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 <script>
 // ── estado global ──────────────────────────────────────────────────────────
 var FMT = '';
-var TIDS = ['t1','t2','t3','t4'];
-var CHK = {t1:0,t2:0,t3:0,t4:0};
+var TIDS = ['t1','t2','t3','t4','t5'];
+var CHK = {t1:0,t2:0,t3:0,t4:0,t5:0};
 var PENDING = [];
 var DROPPED = [];
 var FILE_CONTENTS = {}; // filename → {name, media_type, data(base64)} para uso na API
 var TIPO_MODAL = 'artigo';
 var FN_MODAL = '';
+
+// ── arquivos globais (todos os modos) ──────────────────────────────────────────
+var GLOBAL_FILES = [];
+var B_FILES = [];
+
+function mergeFiles() { return GLOBAL_FILES.slice(); }
+
+function addGlobalFiles(files) {
+  Array.from(files).forEach(function(f) {
+    if (GLOBAL_FILES.some(function(x){return x.name===f.name;})) return;
+    var r = new FileReader();
+    r.onload = function(e) {
+      var mt = f.type || (f.name.endsWith('.pdf')?'application/pdf':'application/octet-stream');
+      GLOBAL_FILES.push({name:f.name, media_type:mt, data:e.target.result.split(',')[1]});
+      addGlobalChip(f.name);
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+function addGlobalChip(name) {
+  var chips = document.getElementById('globalFileChips');
+  if (!chips) return;
+  var chip = document.createElement('div');
+  chip.className = 'pdf-chip';
+  var short = name.length > 38 ? name.substring(0,35)+'…' : name;
+  chip.innerHTML = '\u{1F4C4} ' + short + ' <span class="pdf-chip-x" onclick="removeGlobalFile(this,\''+name+'\')">✕</span>';
+  chips.appendChild(chip);
+}
+
+function removeGlobalFile(el, name) {
+  GLOBAL_FILES = GLOBAL_FILES.filter(function(f){return f.name!==name;});
+  el.parentNode.remove();
+}
+
+function addBFiles(files) {
+  B_FILES = [];
+  var chips = document.getElementById('bFileChips');
+  if (chips) chips.innerHTML = '';
+  Array.from(files).forEach(function(f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      B_FILES.push({name:f.name, media_type:f.type||'application/octet-stream', data:e.target.result.split(',')[1]});
+      if (chips) {
+        var chip = document.createElement('div');
+        chip.className = 'pdf-chip';
+        var short = f.name.length>38?f.name.substring(0,35)+'…':f.name;
+        chip.innerHTML = '\u{1F4C4} '+short+' <span class="pdf-chip-x" onclick="this.parentNode.remove()">✕</span>';
+        chips.appendChild(chip);
+      }
+    };
+    r.readAsDataURL(f);
+  });
+}
 
 
 // ── formato da aula ────────────────────────────────────────────────────────
@@ -638,9 +959,9 @@ function removerRef(btn) {
 
 // ── output navigation ──────────────────────────────────────────────────────
 function showConv(n) {
-  [1,2].forEach(function(i) {
-    document.getElementById('cpanel' + i).classList.toggle('on', i === n);
-    document.getElementById('ctab' + i).classList.toggle('active', i === n);
+  [1,2,3].forEach(function(i) {
+    var panel=document.getElementById('cpanel'+i); var tab=document.getElementById('ctab'+i);
+    if(panel)panel.classList.toggle('on',i===n); if(tab)tab.classList.toggle('active',i===n);
   });
 }
 
@@ -687,6 +1008,20 @@ document.addEventListener('DOMContentLoaded', function() {
   fi.addEventListener('change', function() { if (this.files.length > 0) { adicionarArquivos(this.files); this.value = ''; } });
 
   document.getElementById('modalBg').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
+
+  // ── zona global de arquivos ──────────────────────────────────────────────────
+  var gdz = document.getElementById('globalDropzone');
+  var gfi = document.getElementById('globalFileinput');
+  if (gdz && gfi) {
+    gdz.addEventListener('dragover', function(e){ e.preventDefault(); e.stopPropagation(); gdz.classList.add('over'); });
+    gdz.addEventListener('dragleave', function(){ gdz.classList.remove('over'); });
+    gdz.addEventListener('drop', function(e){ e.preventDefault(); e.stopPropagation(); gdz.classList.remove('over'); addGlobalFiles(e.dataTransfer.files); });
+    gdz.addEventListener('click', function(e){ e.stopPropagation(); gfi.click(); });
+    gfi.addEventListener('change', function(){ if(this.files.length>0){ addGlobalFiles(this.files); this.value=''; } });
+  }
+
+  renderGruposV63();
+  atualizarMaxCalc();
 });
 
 // ── constantes de prompt ───────────────────────────────────────────────────
@@ -715,7 +1050,7 @@ var HEADER_EN = [
 // Names added dynamically in cabecalhoDados based on selected tasks
 
 var DPM_STRUCT_PT = [
-  '**NORMA GERAL — formatacao ABNT em todos os documentos:** citacoes diretas com (SOBRENOME, ano, p. X). Referencias completas ao final. Nunca inventar referencias.',
+  '**NORMA GERAL — formatacao ABNT em todos os documentos:** citacoes diretas com (SOBRENOME, ano, p. X). Referencias completas ao final.',
   '',
   '**DPM VERSAO ALUNOS — ordem e titulos exatos (nao altere):**',
   '',
@@ -737,9 +1072,9 @@ var DPM_STRUCT_PT = [
   '- Cada pergunta respondivel a partir da Secao 2, mas com maior profundidade na leitura integral',
   '- Grupo 1 — Tese: pedir que o aluno reconstitua o argumento central em no minimo 3 pontos encadeados. A pergunta nao deve ser respondivel em uma linha.',
   '- Grupo 2 — Mecanismo: pedir que o aluno identifique COMO o texto constroi seu argumento — que recursos usa (exemplos, comparacoes, narrativa, autoridades, dados) e qual a funcao de cada um. Respondivel apenas com o texto.',
-  '- Grupo 3 — Tensao: pedir que o aluno identifique onde o argumento hesita, contradiz uma premissa propria ou deixa uma afirmacao sem sustentacao suficiente. A tensao pode ser produtiva — evitar sugerir que o texto esta simplesmente errado.',
+  '- Grupo 3 — Tensao: onde o argumento hesita, contradiz premissa propria ou deixa afirmacao sem sustentacao. Tensao pode ser produtiva; nao sugerir que o texto esta errado.',
   '- Grupo 4 — Aplicacao (FORMATO A): a pergunta deve pedir transposicao didatica a partir dos proprios textos e conceitos do DPM. Modelo: "A partir dos conceitos apresentados no texto (ex.: heroi problematico, ambivalencia do genero, crise de representacao), como voce, futuro professor, organizaria uma aula de literatura no ensino medio que levasse os alunos a perceber essas categorias em obras que ja conhecem? Cite ao menos um conceito do texto e descreva brevemente a proposta didatica." — Nao citar nem exigir leitura de obras nao transcritas ou anexadas.',
-  '- Grupo 5 — Implicacao: projetar o que se segue necessariamente do argumento — para o campo literario, para a pratica docente ou para outros textos ja estudados no programa. Nao requer fontes externas.',
+  '- Grupo 5 — Implicacao: o que se segue do argumento para o campo literario, a docencia ou textos ja estudados. Sem fontes externas.',
   '',
   '**DPM VERSAO PROFESSOR — estrutura obrigatoria (NAO repetir o conteudo dos alunos):**',
   '',
@@ -760,9 +1095,8 @@ var DPM_STRUCT_PT = [
   '- 3 a 5 perguntas com nivel crescente de complexidade',
   '- Apos cada pergunta: sugestao de resposta baseada no texto (com paginas) e informacoes para o professor',
   '',
-  '**SEPARADOR OBRIGATORIO entre versao alunos e versao professor no arquivo .docx:**',
-  'Inserir secao visivel com o texto exato: "SEPARAR AQUI — A partir daqui: DPM PROFESSOR (CONFIDENCIAL)" — negrito, fonte vermelha escura, centralizado, com linha horizontal acima e abaixo.',
-  'A versao professor comeca diretamente com a faixa vermelha, seguida da SECAO 1 — CORRENTE TEORICA.'
+  '**SEPARADOR OBRIGATORIO (.docx):** Inserir: "SEPARAR AQUI — DPM PROFESSOR (CONFIDENCIAL)" — negrito, vermelha escura, centralizado, linha horizontal acima e abaixo.',
+  'Versao professor: comeca com SECAO 1 — CORRENTE TEORICA apos a faixa.'
 ];
 
 var DPM_STRUCT_EN = DPM_STRUCT_PT; // entrega sempre em PT-BR
@@ -968,9 +1302,57 @@ function gerar() {
   var hasC2 = sel.some(function(id) { return ['t3','t4'].indexOf(id) >= 0; });
   document.getElementById('ctab2').style.opacity = hasC2 ? '1' : '0.4';
 
+  // t5 — Tabela DPM
+  var hasT5 = sel.indexOf('t5') >= 0;
+  var ctab3 = document.getElementById('ctab3');
+  var cpanel3 = document.getElementById('cpanel3');
+  if (ctab3) ctab3.style.display = hasT5 ? '' : 'none';
+  if (cpanel3) cpanel3.style.display = hasT5 ? '' : 'none';
+
+  if (hasT5) {
+    var fmt5 = FMT || '?';
+    var fl5  = {A:'Teórico',B:'Literário',C:'Misto'}[fmt5] || fmt5;
+    var sem5 = document.getElementById('semana').value.trim();
+    var dc5  = document.getElementById('disc').value.trim();
+    var rf5  = document.getElementById('textos').value.trim();
+    var pps5 = {
+      A:['Tese','Contexto','Contradição','Aplicação','Implicação'],
+      B:['Forma','Conteúdo','Contradição','Transposição','Aplicação'],
+      C:['Tese·Teórico + Forma·Literário','Contexto·Teórico + Conteúdo·Literário','Contradição·Misto','Aplicação·Teórico + Transposição·Literário','Implicação·Teórico + Aplicação·Literário']
+    }[fmt5] || [];
+    var nq5 = fmt5 === 'C' ? 2 : 1;
+    var p3lines = [
+      'Você é o Prof. Felipe Vigneron Azevedo — Letras · IFF Campus Campos Centro.',
+      'Gere a FOLHA DE RESPOSTA DPM ' + fl5.toUpperCase() + ' — Semana ' + (sem5||'___') + ' · Disciplina: ' + (dc5||'___') + '.',
+      '',
+      'TEXTO(S) DA SEMANA: ' + (rf5 || '___'),
+      '',
+      '== ENTREGA: arquivo .docx pronto para impressão e distribuição ==',
+      '',
+      '1. CABEÇALHO (tabela 2×2):',
+      '   Sup. esq. (60%): fundo #B3E5A0 · INSTITUTO FEDERAL FLUMINENSE / Campus Campos Centro · Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___',
+      '   Sup. dir. (40%): branco · centralizado: DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM ' + fl5.toUpperCase(),
+      '   Inf. esq.: Nome do(a) Estudante: _______________  |  Inf. dir.: Data: ___/___/____',
+      '',
+      '2. TABELA DPM — 5 grupos:',
+      '   Colunas: Grupo | Papel | Pergunta norteadora | Parágrafo (espaço ≥8 linhas p/ aluno escrever)',
+      '   Papéis: ' + pps5.join(' · '),
+      '   · ' + nq5 + ' pergunta(s) por grupo, gerada(s) a partir do texto da semana.',
+      (fmt5 === 'C' ? '   · DPM Misto: 1 pergunta teórica + 1 literária por grupo.' : ''),
+      '   · Linguagem acadêmica direta. Coluna Parágrafo: espaço generoso (≥8 linhas em branco).',
+      '',
+      '3. RODAPÉ: "Critérios: Presença (50%) + Parágrafo (50%) · Nota final = (presença × 0,5) + (parágrafo × 0,5)"',
+      '',
+      'FORMATO: .docx · A4 retrato · margens ABNT (sup/esq 3cm · inf/dir 2cm) · Times New Roman 12pt.',
+    ].filter(Boolean).join('\n');
+    var el3=document.getElementById('p3pt'); if(el3) el3.textContent=p3lines;
+    var m3=document.getElementById('meta3pt'); if(m3) m3.textContent=p3lines.length.toLocaleString('pt-BR')+' car.';
+  }
+
   document.getElementById('out').classList.add('on');
   var hasC1 = sel.some(function(id) { return ['t1','t2'].indexOf(id) >= 0; });
-  showConv(hasC1 ? 1 : 2); showLang(1,'pt'); showLang(2,'pt');
+  showConv(hasC1 ? 1 : (hasC2 ? 2 : (hasT5 ? 3 : 1)));
+  showLang(1,'pt'); showLang(2,'pt');
   setTimeout(function() { document.getElementById('out').scrollIntoView({behavior:'smooth'}); }, 80);
 }
 
@@ -989,6 +1371,8 @@ function limpar() {
   DROPPED = []; PENDING = []; FILE_CONTENTS = {};
   document.getElementById('fileList').innerHTML = '';
   document.getElementById('out').classList.remove('on');
+  var ct3=document.getElementById('ctab3'); if(ct3) ct3.style.display='none';
+  var cp3=document.getElementById('cpanel3'); if(cp3){cp3.style.display='none';cp3.classList.remove('on');}
   var _w = document.getElementById('warnA'); if (_w) _w.classList.remove('on');
 }
 
@@ -996,11 +1380,14 @@ function limpar() {
 var SEL = { papel:'orientador', fase:'inicio', nivel:'artigo', borigem:'painel', cDelivery:'chat' };
 
 function setMode(m) {
-  ['A','B','C'].forEach(function(x) {
-    document.getElementById('mode' + x).classList.toggle('on', x === m);
-    document.getElementById('modeBtn' + x).classList.toggle('active', x === m);
+  ['A','B','C','D','E'].forEach(function(x) {
+    var btn = document.getElementById('modeBtn' + x);
+    var panel = document.getElementById('mode' + x);
+    if (btn) btn.classList.toggle('active', x === m);
+    if (panel) panel.classList.toggle('on', x === m);
   });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (m === 'D') { renderGruposV63(); recalcularD(); }
+  if (m === 'E') { atualizarMaxCalc(); }
 }
 
 function setOpt(group, val) {
@@ -1078,8 +1465,8 @@ function buildModoC(isEN) {
   if (SEL.papel === 'orientador') L.push('- FASE: ' + faseDesc());
   L.push('- NIVEL: ' + nivelDesc());
   L.push(isEN
-    ? 'Calibration: the higher the level (tese > dissertacao > artigo/TCC) and the more advanced the phase (concluido > andamento > inicio), the more assertive on the priority criteria. At the start of advising or for artigo/TCC, be less assertive and more guiding.'
-    : 'Calibracao: quanto mais alto o nivel (tese > dissertacao > artigo/TCC) e mais avancada a fase (concluido > andamento > inicio), mais taxativo nos criterios prioritarios. Em inicio de orientacao ou em artigo/TCC, ser menos taxativo e mais orientador.');
+    ? 'Calibration: higher level/phase → more assertive on priority criteria. Start of advising or artigo/TCC → more guiding.'
+    : 'Calibracao: nivel e fase mais altos → mais taxativo nos criterios. Inicio ou artigo/TCC → mais orientador.');
   L.push('');
 
   L.push('## ' + (isEN ? 'Criteria, by weight' : 'Criterios, por ordem de peso'));
@@ -1203,6 +1590,8 @@ function limparB() {
   document.getElementById('bQueixa').value = '';
   document.getElementById('warnB').classList.remove('on');
   document.getElementById('outB').style.display = 'none';
+  B_FILES = [];
+  var chips=document.getElementById('bFileChips'); if(chips) chips.innerHTML='';
 }
 
 /* ===================== INTEGRAÇÃO COM A API ===================== */
@@ -1271,9 +1660,9 @@ function gerarViaAPI_A() {
   if (needFmt && !FMT) { wA.textContent = 'Selecione o formato da aula.'; wA.classList.add('on'); return; }
   wA.classList.remove('on');
 
-  var files = Object.keys(FILE_CONTENTS).map(function(k) { return FILE_CONTENTS[k]; });
+  var files = mergeFiles().concat(Object.keys(FILE_CONTENTS).map(function(k) { return FILE_CONTENTS[k]; }));
   var inputs = { disciplina: disc, semana: semana, formato: FMT, nAulas: qtd, tema: tema, obs: obs, referencias: refs };
-  var taskMap = { t1: 'dpm_teorico', t2: 'dpm_literario', t3: 'quiz', t4: 'bimestral' };
+  var taskMap = { t1: 'dpm_teorico', t2: 'dpm_literario', t3: 'quiz', t4: 'bimestral', t5: 'tabela_dpm' }; // v63
   var btn = document.getElementById('btnApiA');
   btn.disabled = true;
 
@@ -1308,6 +1697,7 @@ function gerarViaAPI_B() {
   setApiStatus('apiStB', 'loading', 'Otimizando via API…');
   chamarAPI({
     mode: 'B',
+    files: mergeFiles().concat(B_FILES),
     inputs: { prompt: prompt, queixa: document.getElementById('bQueixa').value.trim(), origem: SEL.borigem }
   }).then(function(data) {
     document.getElementById('pBpt').textContent = data.text || '';
@@ -1375,7 +1765,7 @@ function gerarViaAPI_C() {
       inputs: { papel:SEL.papel, fase:SEL.papel==='banca'?null:SEL.fase, nivel:SEL.nivel,
                 contexto:document.getElementById('cTexto').value.trim(),
                 foco:document.getElementById('cObs').value.trim() },
-      files: CFILES
+      files: mergeFiles().concat(CFILES)
     }).then(function(data) {
       downloadDocx(data.docx, data.filename);
       var w = data.warnings&&data.warnings.length?' ⚠ '+data.warnings.join('; '):'';
@@ -1391,7 +1781,7 @@ function gerarViaAPI_C() {
       inputs:{ papel:SEL.papel, fase:SEL.papel==='banca'?null:SEL.fase, nivel:SEL.nivel,
                contexto:document.getElementById('cTexto').value.trim(),
                foco:document.getElementById('cObs').value.trim() },
-      files:CFILES
+      files:mergeFiles().concat(CFILES)
     }).then(function(data) {
       _chatTexto = data.text || '';
       if (label) label.textContent = delivery==='pdf' ? 'Devolutiva — PDF' : 'Devolutiva — Chat';
@@ -1404,6 +1794,355 @@ function gerarViaAPI_C() {
     .then(function(){ btn.disabled=false; });
   }
 }
+
+
+
+/* ===================== MODO D — CORRETOR DPM (v63) ===================== */
+
+var D_TIPO    = 'teorico';
+var D_PERIODO = 'mensal';
+var D_PRES_FILES = [];
+var D_PAPEIS = {
+  teorico:  ['Tese','Contexto','Contradição','Aplicação','Implicação'],
+  literario:['Forma','Conteúdo','Contradição','Transposição','Aplicação'],
+  misto:    ['Tese · Teórico','Contexto · Teórico','Contradição · Misto','Aplicação · Misto','Implicação · Teórico']
+};
+
+function setDTipo(t) {
+  D_TIPO = t;
+  ['teorico','literario','misto'].forEach(function(x) {
+    document.getElementById('dtab-' + x).classList.toggle('active', x === t);
+  });
+  renderGruposV63();
+}
+
+function setPeriodo(p) {
+  D_PERIODO = p;
+  ['mensal','bimestral'].forEach(function(x) {
+    document.getElementById('ptab-' + x).classList.toggle('active', x === p);
+  });
+}
+
+function renderGruposV63() {
+  var papeis = D_PAPEIS[D_TIPO];
+  var cont = document.getElementById('d-grupos-v63');
+  if (!cont) return;
+  cont.innerHTML = '';
+  for (var i = 1; i <= 5; i++) {
+    var papel = papeis[i-1];
+    cont.innerHTML += [
+      '<div class="grp-block">',
+      '  <div class="grp-header">',
+      '    <div class="grp-badge">Grupo ' + i + '</div>',
+      '    <div class="grp-papel">' + papel + '</div>',
+      '  </div>',
+      '  <label style="font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-bottom:3px">Alunos do grupo (um por linha)</label>',
+      '  <textarea class="grp-alunos" id="g-alunos-' + i + '" rows="3" placeholder="Ana Lima&#10;Bruno Melo&#10;Carlos Andrade"></textarea>',
+      '  <label style="font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);display:block;margin-top:10px;margin-bottom:3px">Parágrafo coletivo do grupo</label>',
+      '  <textarea class="grp-para" id="g-para-' + i + '" rows="3" placeholder="Cole o parágrafo redigido pelo grupo ' + i + ' — ' + papel + '…"></textarea>',
+      '  <div class="grp-feedback" id="g-fb-' + i + '"></div>',
+      '</div>'
+    ].join('\n');
+  }
+}
+
+function addPresFiles(files) {
+  Array.from(files).forEach(function(f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      D_PRES_FILES.push({ name: f.name, media_type: 'application/pdf', data: e.target.result.split(',')[1] });
+      addPdfChip('dPresChips', f.name, D_PRES_FILES.length - 1, 'dPres');
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+function addPdfChip(containerId, name, idx, prefix) {
+  var chips = document.getElementById(containerId);
+  if (!chips) return;
+  var chip = document.createElement('div');
+  chip.className = 'pdf-chip';
+  chip.innerHTML = '📄 ' + name + ' <span class="pdf-chip-x" onclick="removePdfFile('' + prefix + '',' + idx + ',this.parentNode)">✕</span>';
+  chips.appendChild(chip);
+}
+
+function removePdfFile(prefix, idx, chipEl) {
+  if (prefix === 'dPres') D_PRES_FILES.splice(idx, 1);
+  if (prefix === 'eQuiz') E_QUIZ_FILES.splice(idx, 1);
+  if (chipEl) chipEl.remove();
+}
+
+function recalcularD() { /* live recalc placeholder */ }
+
+function gerarPromptD() {
+  var disc    = document.getElementById('d-disc').value.trim();
+  var semanas = document.getElementById('d-semanas').value.trim();
+  var textos  = document.getElementById('d-textos').value.trim();
+  var crit    = document.getElementById('d-criterio').value.trim();
+  var total   = document.getElementById('d-total-aulas').value.trim();
+  var presText= document.getElementById('d-presenca-texto').value.trim();
+  var ausDPM  = document.getElementById('d-ausentes-dpm').value.trim();
+  var papeis  = D_PAPEIS[D_TIPO];
+  var tipoLabel = {teorico:'Teórico',literario:'Literário',misto:'Misto'}[D_TIPO];
+
+  var gruposStr = '';
+  for (var i = 1; i <= 5; i++) {
+    var alunos = (document.getElementById('g-alunos-' + i) || {}).value || '';
+    var para   = (document.getElementById('g-para-' + i) || {}).value || '';
+    if (!alunos.trim() && !para.trim()) continue;
+    gruposStr += '\nGRUPO ' + i + ' — ' + papeis[i-1] + ':\nAlunos: ' + alunos.trim().replace(/\n/g,', ') + '\nParágrafo: ' + (para.trim() || '[não fornecido]') + '\n';
+  }
+
+  var prompt = [
+    'Você é o Prof. Felipe Vigneron Azevedo, professor de Letras — Português e Literaturas no IFF Campus Campos Centro.',
+    'Corrija os parágrafos DPM ' + tipoLabel + ' abaixo com feedback acadêmico no estilo do professor: segunda pessoa, qualitativo, impessoal, acolhedor, distância profissional. Após o feedback de cada grupo, atribua uma nota de 0 a 10.',
+    '',
+    'DISCIPLINA: ' + (disc || '___') + ' | SEMANAS: ' + (semanas || '___') + ' | TOTAL DE AULAS: ' + (total || '___'),
+    'TEXTO(S): ' + (textos || '___'),
+    (crit ? 'CRITÉRIOS ADICIONAIS: ' + crit : ''),
+    '',
+    '=== GRUPOS ===',
+    gruposStr,
+    '=== ALUNOS AUSENTES NO DIA DO DPM (nota parágrafo = 0) ===',
+    (ausDPM || 'Nenhum informado'),
+    '',
+    '=== LISTA DE PRESENÇA ===',
+    (presText || '[Anexe o PDF de presença ou cole os dados aqui]'),
+    '',
+    '=== INSTRUÇÕES DE ENTREGA ===',
+    '1. Para cada grupo: escreva o feedback (2-4 parágrafos) e informe a nota de 0–10.',
+    '2. Em seguida, gere uma TABELA em ordem alfabética estrita com colunas:',
+    '   Nome | Grupo | Papel | Faltas | Nota presença (0–10) | Nota parágrafo (0–10) | Nota final',
+    '3. Fórmula: Nota final = (presença × 0,5) + (parágrafo × 0,5)',
+    '4. Aluno ausente no DPM: nota parágrafo = 0',
+    '5. Nota presença = 10 × (1 − faltas/total_aulas)',
+    '6. Entrega completamente em ordem ALFABÉTICA por nome do aluno.',
+  ].filter(Boolean).join('\n');
+
+  var el = document.getElementById('promptDtxt');
+  if (el) el.textContent = prompt;
+  var out = document.getElementById('promptOutD');
+  if (out) out.classList.add('on');
+  setTimeout(function() { if(out) out.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
+}
+
+function gerarCorrecaoDPM() {
+  var papeis = D_PAPEIS[D_TIPO];
+  var paras = [];
+  var alunos = [];
+  for (var i = 1; i <= 5; i++) {
+    paras.push((document.getElementById('g-para-' + i) || {}).value || '');
+    alunos.push((document.getElementById('g-alunos-' + i) || {}).value || '');
+  }
+  var algum = paras.some(function(p) { return p.length > 0; });
+  var wD = document.getElementById('warnD');
+  if (!algum) { wD.textContent = 'Cole ao menos um parágrafo antes de corrigir.'; wD.classList.add('on'); return; }
+  wD.classList.remove('on');
+  var btn = document.getElementById('btnCorrigir');
+  btn.disabled = true;
+  setApiStatus('apiStD', 'loading', 'Corrigindo parágrafos via API (Sonnet 4.6)…');
+  var inputs = {
+    tipo: D_TIPO,
+    semanas: document.getElementById('d-semanas').value.trim(),
+    disciplina: document.getElementById('d-disc').value.trim(),
+    total_aulas: document.getElementById('d-total-aulas').value.trim(),
+    textos: document.getElementById('d-textos').value.trim(),
+    criterio: document.getElementById('d-criterio').value.trim(),
+    papeis: papeis,
+    paragrafos: paras,
+    alunos_por_grupo: alunos,
+    ausentes_dpm: document.getElementById('d-ausentes-dpm').value.trim(),
+    presenca_texto: document.getElementById('d-presenca-texto').value.trim(),
+    periodo: D_PERIODO,
+    modelo: 'claude-sonnet-4-6'
+  };
+  chamarAPI({ mode: 'D', task: 'corretor_dpm_v63', inputs: inputs, files: mergeFiles().concat(D_PRES_FILES) })
+    .then(function(data) {
+      if (data.feedbacks) {
+        data.feedbacks.forEach(function(fb, idx) {
+          var el = document.getElementById('g-fb-' + (idx+1));
+          if (el) { el.textContent = fb; el.classList.add('on'); }
+        });
+      }
+      if (data.tabela_html) {
+        document.getElementById('dTabela').innerHTML = data.tabela_html;
+        document.getElementById('dResultado').style.display = 'block';
+        setTimeout(function(){ document.getElementById('dResultado').scrollIntoView({behavior:'smooth'}); }, 200);
+      }
+      setApiStatus('apiStD', 'ok', '✓ Correção concluída · Modelo: Sonnet 4.6');
+      if (data.docx) downloadDocx(data.docx, data.filename || 'DPM_Corrigido.docx');
+    })
+    .catch(function(e){ setApiStatus('apiStD','error','✗ Erro: ' + e.message); })
+    .then(function(){ btn.disabled = false; });
+}
+
+function copiarTabela(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var range = document.createRange();
+  range.selectNodeContents(el);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+}
+
+function limparD() {
+  ['d-semanas','d-disc','d-textos','d-criterio','d-total-aulas','d-presenca-texto','d-ausentes-dpm'].forEach(function(id) {
+    var el = document.getElementById(id); if(el) el.value='';
+  });
+  D_PRES_FILES = [];
+  var chips = document.getElementById('dPresChips'); if(chips) chips.innerHTML='';
+  renderGruposV63();
+  document.getElementById('dResultado').style.display='none';
+  document.getElementById('promptOutD').classList.remove('on');
+  document.getElementById('warnD').classList.remove('on');
+  setApiStatus('apiStD','','');
+}
+
+/* ===================== MODO E — NOTAS DE QUIZ (v63) ===================== */
+
+var E_QUIZ_FILES = [];
+
+function atualizarMaxCalc() {
+  var max = parseFloat((document.getElementById('e-maxnota') || {}).value) || 5;
+  var el = document.getElementById('e-maxcalc');
+  if (el) el.textContent = (max * 0.8).toFixed(1).replace('.',',');
+}
+
+function addQuizFiles(files) {
+  Array.from(files).forEach(function(f) {
+    var r = new FileReader();
+    r.onload = function(e) {
+      var mt = f.name.endsWith('.pptx') ? 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+             : f.name.endsWith('.xlsx') ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+             : f.name.endsWith('.csv')  ? 'text/csv'
+             : 'application/pdf';
+      E_QUIZ_FILES.push({ name: f.name, media_type: mt, data: e.target.result.split(',')[1] });
+      addPdfChip('eQuizChips', f.name, E_QUIZ_FILES.length-1, 'eQuiz');
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+function calcularQuizzes() { atualizarMaxCalc(); }
+
+function calcularQuizzesManuais() {
+  var raw = document.getElementById('e-dados-texto').value.trim();
+  var wE  = document.getElementById('warnE');
+  if (!raw) { wE.textContent='Cole os dados de notas antes de calcular.'; wE.classList.add('on'); return; }
+  wE.classList.remove('on');
+
+  var lines = raw.split('\n').filter(function(l){ return l.trim(); });
+  // Detect header line
+  var header = lines[0];
+  var quizCols = [];
+  var headerCells = header.split('|').map(function(c){ return c.trim(); });
+  // first col = name, rest = quizzes
+  for (var j=1; j<headerCells.length; j++) {
+    if (headerCells[j]) quizCols.push(headerCells[j]);
+  }
+  var nQuizzes = quizCols.length;
+  var maxNota = parseFloat(document.getElementById('e-maxnota').value) || 5;
+  var alunos = [];
+  for (var i=1; i<lines.length; i++) {
+    var cells = lines[i].split('|').map(function(c){ return c.trim(); });
+    if (!cells[0]) continue;
+    var nome = cells[0];
+    var notas = [];
+    for (var k=1; k<=nQuizzes; k++) {
+      notas.push(parseFloat(cells[k]) || 0);
+    }
+    var soma = notas.reduce(function(a,b){return a+b;},0);
+    var media = nQuizzes > 0 ? soma/nQuizzes : 0;
+    var final = media * 0.8;
+    alunos.push({ nome: nome, notas: notas, media: media, final: final });
+  }
+  alunos.sort(function(a,b){ return a.nome.localeCompare(b.nome,'pt-BR'); });
+  renderTabelaQuiz(alunos, quizCols);
+  setApiStatus('apiStE','ok','✓ ' + alunos.length + ' alunos calculados localmente.');
+}
+
+function renderTabelaQuiz(alunos, quizCols) {
+  var html = '<table class="result-table"><thead><tr>';
+  html += '<th style="text-align:left">Nome</th>';
+  quizCols.forEach(function(q){ html += '<th>' + q + '</th>'; });
+  html += '<th>Média</th><th>Final (×0,8)</th></tr></thead><tbody>';
+  alunos.forEach(function(a) {
+    html += '<tr><td class="name-col">' + a.nome + '</td>';
+    a.notas.forEach(function(n){ html += '<td class="grade-col">' + n.toFixed(1) + '</td>'; });
+    html += '<td class="grade-col">' + a.media.toFixed(2) + '</td>';
+    html += '<td class="final-col">' + a.final.toFixed(2) + '</td></tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('eTabela').innerHTML = html;
+  document.getElementById('eResultado').style.display = 'block';
+  setTimeout(function(){ document.getElementById('eResultado').scrollIntoView({behavior:'smooth'}); }, 150);
+}
+
+function calcularQuizzesAPI() {
+  var wE = document.getElementById('warnE');
+  if (E_QUIZ_FILES.length === 0) { wE.textContent='Anexe ao menos um arquivo de quiz.'; wE.classList.add('on'); return; }
+  wE.classList.remove('on');
+  var btn = document.getElementById('btnQuiz');
+  btn.disabled = true;
+  setApiStatus('apiStE','loading','Processando quizzes via API…');
+  var maxNota = parseFloat(document.getElementById('e-maxnota').value) || 5;
+  chamarAPI({
+    mode:'E', task:'calcular_quizzes',
+    inputs:{ max_nota: maxNota, disciplina: document.getElementById('e-disc').value.trim(), periodo: document.getElementById('e-periodo').value.trim() },
+    files: mergeFiles().concat(E_QUIZ_FILES)
+  }).then(function(data){
+    if (data.alunos && data.quiz_cols) renderTabelaQuiz(data.alunos, data.quiz_cols);
+    setApiStatus('apiStE','ok','✓ ' + (data.alunos||[]).length + ' alunos processados.');
+  }).catch(function(e){ setApiStatus('apiStE','error','✗ Erro: ' + e.message); })
+  .then(function(){ btn.disabled=false; });
+}
+
+function gerarPromptE() {
+  var disc    = document.getElementById('e-disc').value.trim();
+  var periodo = document.getElementById('e-periodo').value.trim();
+  var maxNota = document.getElementById('e-maxnota').value.trim() || '5';
+  var dados   = document.getElementById('e-dados-texto').value.trim();
+
+  var prompt = [
+    'Você é assistente do Prof. Felipe Vigneron Azevedo — IFF Campus Campos Centro.',
+    'Processe as notas de quiz abaixo e gere uma tabela em ORDEM ALFABÉTICA ESTRITA com as colunas:',
+    '  Nome | [uma coluna por quiz] | Média | Nota final (×0,8)',
+    '',
+    'DISCIPLINA: ' + (disc||'___') + ' | PERÍODO: ' + (periodo||'___'),
+    'Pontuação máxima por quiz: ' + maxNota + ' pontos.',
+    'Fórmula: Nota final = (soma das notas / quantidade de quizzes) × 0,8',
+    'Quiz não realizado = 0 (entra no denominador).',
+    'Nota final máxima possível: ' + (parseFloat(maxNota)*0.8).toFixed(1) + ' pontos.',
+    '',
+    '=== DADOS ===',
+    (dados || '[Anexe aqui o arquivo do Forms ou cole a tabela de notas]'),
+    '',
+    'Entregue APENAS a tabela, em markdown, em ordem alfabética.',
+  ].join('\n');
+
+  var el = document.getElementById('promptEtxt');
+  if (el) el.textContent = prompt;
+  var out = document.getElementById('promptOutE');
+  if (out) out.classList.add('on');
+  setTimeout(function(){ if(out) out.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
+}
+
+function limparE() {
+  ['e-disc','e-periodo','e-dados-texto'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('e-maxnota').value='5';
+  E_QUIZ_FILES=[];
+  var chips=document.getElementById('eQuizChips'); if(chips) chips.innerHTML='';
+  document.getElementById('eResultado').style.display='none';
+  document.getElementById('promptOutE').classList.remove('on');
+  document.getElementById('warnE').classList.remove('on');
+  setApiStatus('apiStE','','');
+  atualizarMaxCalc();
+}
+
+function gerarPromptA() { gerar(); }
+
 </script>
 
 
