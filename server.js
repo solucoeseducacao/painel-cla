@@ -52,7 +52,11 @@ G1 Tese: ≥3 pontos encadeados. G2 Mecanismo: recursos e função. G3 Tensão: 
 
 == VERSÃO PROFESSOR ==
 SP1 — Questão-Norteadora: oral antes do DPM, retomada ao final. Questão + resposta + páginas. ≠ perguntas de grupo.
-SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.`}
+SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.
+SP3 — Parágrafo do aluno: gere UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo trabalhado. Deve ser respondível em 3–5 frases (no máximo 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
+## Parágrafo do aluno
+[enunciado da pergunta, discursivo, sem alternativas]
+**Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
 function promptDPMLiterario(inp){const nd={iniciante:'iniciante',intermediario:'intermediária',avancado:'avançada'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),tipo=isM?'demonstrativo':'literário',g4=f==='C'?'G4 Aplicação: articular com DPM Teórico desta semana.':'G4 Intertexto: relações com outros textos evidenciadas pelo próprio texto.';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Fmt:** ${f} | ${nd}
 **Tema:** ${inp.tema||''} | **Texto:** ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
 Tempos: discussão ${b.lit||b.leit||'—'}min · grupo ${b.grp||'—'}min · saída ${b.cpd||'—'}min
@@ -85,7 +89,11 @@ G1 Forma · G2 Conteúdo · G3 Contexto · ${g4} · G5 Lacuna: o que o DPM não 
 
 == VERSÃO PROFESSOR ==
 SP1 — Questão-Norteadora: oral antes do DPM. Questão + resposta + páginas.
-SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.`}
+SP2 — Tabela: Grupo | Resposta | Páginas. Omitir equívocos e refs. extras.
+SP3 — Parágrafo do aluno: gere UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo trabalhado. Deve ser respondível em 3–5 frases (no máximo 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
+## Parágrafo do aluno
+[enunciado da pergunta, discursivo, sem alternativas]
+**Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
 function promptQuiz(inp){const b=inp.budget;return`Quiz — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.tema||''} | ${inp.referencias||''}
 
 5 questões A–D, sem cabeçalho. Formato: nº + enunciado → A/B/C/D → Gabarito: [letra] → linha em branco.
@@ -104,7 +112,7 @@ function toFileContent(files){const arr=(files||[]).map(f=>{
   return{type:'document',source:{type:'base64',media_type:mt,data:f.data}};
 });if(arr.length)arr[arr.length-1].cache_control={type:'ephemeral'};return arr;}
 function txt(res){const b=((res&&res.content)||[]).find(x=>x.type==='text');return b?b.text:''}
-async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({model:MODEL,max_tokens:3000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=txt(res),si=text.search(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==|(?:^|\n)\s*SP1\s*[—\-:]/i),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/==\s*VERS[ÃA]O\s+ALUNOS\s*==/i,'').trim(),pT=pR.replace(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==/i,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
+async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({model:MODEL,max_tokens:3600,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=txt(res),si=text.search(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==|(?:^|\n)\s*SP1\s*[—\-:]/i),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/==\s*VERS[ÃA]O\s+ALUNOS\s*==/i,'').trim(),pT=pR.replace(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==/i,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
 async function gerarQuizDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:1200,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(txt(res))]))}
 async function gerarBimestralDoc(inp,files){const res=await client.messages.create({model:MODEL_FAST,max_tokens:800,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptBimestral(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(txt(res))]))}
 async function gerarOtimizador(inp){const res=await client.messages.create({model:MODEL,max_tokens:1500,system:SYS_B,messages:[{role:'user',content:`${inp.origem==='painel'?'Material do Painel CLA.\n':''}Queixa/objetivo: ${inp.queixa||'não especificado'}\n\n${inp.prompt}\n\nEntregar: 1) DIAGNÓSTICO 2) VERSÃO OTIMIZADA 3) O QUE MUDOU E POR QUÊ`}]});return txt(res)}
