@@ -210,7 +210,6 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 <div class="wrap">
 
 <div class="hdr">
-  <div class="ey">Instituto Federal Fluminense · Campus Campos Centro</div>
   <h1>Painel de Preparação de Aula — CLA</h1>
   <div class="sb">Licenciatura em Letras · Prof. Felipe Vigneron Azevedo · Ciclo de Leitura Ativa <span style="opacity:.55;font-size:11px">v66</span></div>
   <div id="authBar" style="margin-top:10px;font-size:13px"></div>
@@ -1470,7 +1469,7 @@ function renderAuth(d) {
   if (d && d.ok) {
     el.innerHTML = '<span style="color:#2E6B3E;font-weight:600">✓ Conectado: ' + (d.email || '') + '</span>';
   } else if (d && d.authUrl) {
-    el.innerHTML = '<a href="' + d.authUrl + '" style="display:inline-block;background:#2E6B3E;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">🔒 Entrar com Google</a> <span style="color:#889">— necessário para gerar via API</span>';
+    el.innerHTML = '<a href="' + d.authUrl + '" style="display:inline-block;background:#2E6B3E;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">🔒 Entrar com Google</a>';
   } else {
     el.innerHTML = '';
   }
