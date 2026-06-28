@@ -8,14 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--dg:#2E6B3E;--mg:#5FAD6E;--lg:#B3E5A0;--dg2:#245530;--bd:#c8dfc8;--bg:#f7fdf7;--tx:#1a2e1a}
-body{min-height:100vh;background:linear-gradient(160deg,#f0faf0,#e8f5e8 50%,#f5fdf5);font-family:'EB Garamond',Georgia,serif;padding:30px 16px 80px;color:var(--tx)}
+:root{--dg:#6e1423;--mg:#b07d2b;--lg:#ecdcc2;--dg2:#5a0f1c;--bd:#e7dccf;--bg:#f6efe7;--tx:#2c2420}
+body{min-height:100vh;background:linear-gradient(160deg,#f7efe5,#f1e6d8 50%,#faf4ec);font-family:'EB Garamond',Georgia,serif;padding:30px 16px 80px;color:var(--tx)}
 .wrap{max-width:680px;margin:0 auto}
 .hdr{background:var(--dg);border-radius:12px;padding:22px 28px;margin-bottom:24px;box-shadow:0 4px 24px rgba(46,107,62,.28)}
 .hdr .ey{font-family:'Crimson Pro',serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--lg);margin-bottom:4px}
 .hdr h1{font-family:'Crimson Pro',serif;font-size:24px;font-weight:800;color:#fff;line-height:1.2}
 .hdr .sb{font-size:13px;color:rgba(255,255,255,.68);margin-top:4px}
-.card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,.07);border:1px solid #d8ecd8;margin-bottom:24px}
+.card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,.07);border:1px solid #ecddca;margin-bottom:24px}
 .card-title{font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dg);border-bottom:1px solid var(--bd);padding-bottom:10px;margin-bottom:20px}
 .field{margin-bottom:20px}
 .field label{display:block;font-family:'Crimson Pro',serif;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--dg);margin-bottom:6px}
@@ -26,20 +26,20 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .row112{display:grid;grid-template-columns:1fr 1fr 2fr;gap:16px}
 /* formato */
 .fmt-group{display:flex;gap:10px}
-.fmt-btn{flex:1;padding:10px 8px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#2a4a2a;cursor:pointer;transition:all .18s;font-family:'Crimson Pro',serif;text-align:center}
-.fmt-btn:hover{border-color:var(--mg);background:#f0faf0}
+.fmt-btn{flex:1;padding:10px 8px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#5a2a2e;cursor:pointer;transition:all .18s;font-family:'Crimson Pro',serif;text-align:center}
+.fmt-btn:hover{border-color:var(--mg);background:#f7efe5}
 .fmt-btn.active{border:2px solid var(--dg);background:var(--dg);color:#fff}
 .fmt-letter{font-size:22px;font-weight:800;line-height:1}
 .fmt-desc{font-size:11px;margin-top:3px;opacity:.88}
 
 /* drop zone */
 .drop-zone{border:2px dashed var(--bd);border-radius:8px;padding:18px 16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);margin-bottom:10px;user-select:none}
-.drop-zone:hover,.drop-zone.over{border-color:var(--mg);background:#edf7ed}
+.drop-zone:hover,.drop-zone.over{border-color:var(--mg);background:#f3e9dd}
 .drop-icon{font-size:26px;color:var(--mg);line-height:1;margin-bottom:4px}
 .drop-main{font-family:'Crimson Pro',serif;font-size:14px;color:var(--dg);font-weight:600}
 .drop-sub{font-size:11px;color:#889;margin-top:3px;font-style:italic}
 #fileList{margin-bottom:8px;min-height:4px}
-.chip{display:inline-flex;align-items:center;gap:6px;background:#f0faf0;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);margin:3px 4px 3px 0;font-family:'EB Garamond',serif}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#f7efe5;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);margin:3px 4px 3px 0;font-family:'EB Garamond',serif}
 .chip-x{cursor:pointer;color:#999;font-size:14px;line-height:1}
 .chip-x:hover{color:#c00}
 /* tarefas */
@@ -47,9 +47,9 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .tb span{font-size:12px;color:#888;font-style:italic}
 .btn-all{font-size:11px;padding:3px 10px;background:transparent;border:1px solid var(--mg);border-radius:4px;color:var(--dg);cursor:pointer;font-family:'EB Garamond',serif;transition:all .15s}
 .btn-all:hover{background:var(--lg)}
-.tr{display:flex;align-items:flex-start;gap:12px;padding:11px 13px;border-radius:8px;border:1.5px solid #dce8dc;background:#fafafa;cursor:pointer;transition:all .15s;margin-bottom:7px;user-select:none}
-.tr:hover{border-color:var(--mg);background:#f4faf4}
-.tr.on{border-color:var(--mg);background:#f0faf0}
+.tr{display:flex;align-items:flex-start;gap:12px;padding:11px 13px;border-radius:8px;border:1.5px solid #e7dccf;background:#fafafa;cursor:pointer;transition:all .15s;margin-bottom:7px;user-select:none}
+.tr:hover{border-color:var(--mg);background:#f7f0e7}
+.tr.on{border-color:var(--mg);background:#f7efe5}
 .chk{width:20px;height:20px;border-radius:5px;border:2px solid #bbb;background:#fff;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .chk.on{background:var(--dg);border-color:var(--dg)}
 .chk svg{display:none}
@@ -57,7 +57,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .tl{font-family:'EB Garamond',serif;font-size:14.5px;font-weight:600;color:var(--tx)}
 .ts{font-size:11.5px;color:#667;font-style:italic;margin-top:2px}
 .tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:var(--lg);color:var(--dg);font-weight:700;margin-left:6px;vertical-align:middle;font-style:normal;letter-spacing:.04em}
-.sep{border:none;border-top:1px dashed #d0e8d0;margin:22px 0 18px}
+.sep{border:none;border-top:1px dashed #e7d8c6;margin:22px 0 18px}
 /* buttons */
 .btn-row{display:flex;gap:12px;margin-top:8px}
 .btn-go{flex:1;background:var(--dg);color:#fff;border:none;border-radius:8px;padding:13px 0;font-size:15px;font-weight:700;font-family:'Crimson Pro',serif;letter-spacing:.04em;cursor:pointer;transition:background .2s;box-shadow:0 2px 10px rgba(46,107,62,.25)}
@@ -74,7 +74,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .ctab.active{background:#fff;color:var(--dg)}
 .conv-panel{display:none}
 .conv-panel.on{display:block}
-.conv-header{background:#1a3a1a;padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.conv-header{background:#4a1820;padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .conv-title{font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:#fff}
 .conv-hint{font-size:11px;color:rgba(179,229,160,.7);font-style:italic;flex:1}
 .ltab{padding:3px 10px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:rgba(255,255,255,.1);color:#fff;font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s}
@@ -82,11 +82,11 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .ltab.active{background:#fff;color:var(--dg)}
 .lang-panel{display:none}
 .lang-panel.on{display:block}
-.out-meta{padding:6px 18px;background:#122812;color:rgba(179,229,160,.8);font-family:'EB Garamond',serif;font-size:12px;font-style:italic}
-.out-pre{background:#0e1e0e;color:var(--lg);padding:18px;font-family:'Courier New',monospace;font-size:12.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow-y:auto;position:relative}
+.out-meta{padding:6px 18px;background:#241012;color:rgba(179,229,160,.8);font-family:'EB Garamond',serif;font-size:12px;font-style:italic}
+.out-pre{background:#241012;color:var(--lg);padding:18px;font-family:'Courier New',monospace;font-size:12.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow-y:auto;position:relative}
 .btn-cp{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:5px;color:#fff;font-size:11px;padding:4px 10px;cursor:pointer;font-family:'EB Garamond',serif;transition:all .2s}
 .btn-cp:hover,.btn-cp.done{background:var(--mg)}
-.out-hint{background:#0e1e0e;border-top:1px solid #1a3a1a;border-radius:0 0 10px 10px;padding:8px 18px;font-size:11.5px;color:rgba(179,229,160,.6);font-style:italic}
+.out-hint{background:#241012;border-top:1px solid #4a1820;border-radius:0 0 10px 10px;padding:8px 18px;font-size:11.5px;color:rgba(179,229,160,.6);font-style:italic}
 /* modal */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center;padding:16px}
 .modal-bg.on{display:flex}
@@ -95,10 +95,10 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .modal-hdr h2{font-family:'Crimson Pro',serif;font-size:18px;font-weight:800;color:var(--dg)}
 .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;line-height:1;padding:0 4px}
 .modal-close:hover{color:#555}
-.modal-fn{font-size:12px;color:#667;font-style:italic;margin-bottom:18px;padding:8px 12px;background:#f7fdf7;border-radius:6px;border:1px solid var(--bd);word-break:break-all}
+.modal-fn{font-size:12px;color:#667;font-style:italic;margin-bottom:18px;padding:8px 12px;background:#f6efe7;border-radius:6px;border:1px solid var(--bd);word-break:break-all}
 .type-tabs{display:flex;gap:8px;margin-bottom:20px}
 .type-tab{flex:1;padding:8px 4px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:#555;text-align:center;transition:all .15s}
-.type-tab:hover{border-color:var(--mg);background:#f0faf0;color:var(--dg)}
+.type-tab:hover{border-color:var(--mg);background:#f7efe5;color:var(--dg)}
 .type-tab.active{border-color:var(--dg);background:var(--dg);color:#fff}
 .type-icon{display:block;font-size:18px;margin-bottom:2px}
 .mfield{margin-bottom:14px}
@@ -108,7 +108,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .mhint{font-size:10.5px;color:#889;font-style:italic;margin-top:3px}
 .mrow2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mrow3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.ref-preview{background:#f0faf0;border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin:16px 0 18px;font-family:'EB Garamond',serif;font-size:13px;line-height:1.6;color:#223;min-height:44px}
+.ref-preview{background:#f7efe5;border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin:16px 0 18px;font-family:'EB Garamond',serif;font-size:13px;line-height:1.6;color:#223;min-height:44px}
 .pre-label{font-family:'Crimson Pro',serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mg);margin-bottom:4px}
 .btn-confirm{width:100%;background:var(--dg);color:#fff;border:none;border-radius:8px;padding:12px 0;font-size:15px;font-weight:700;font-family:'Crimson Pro',serif;cursor:pointer;transition:background .2s}
 .btn-confirm:hover{background:var(--dg2)}
@@ -116,7 +116,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 /* ── seletor de modos ── */
 .modebar{display:flex;gap:8px;margin-bottom:22px}
 .mode-btn{flex:1;padding:13px 10px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;cursor:pointer;transition:all .18s;font-family:'Crimson Pro',serif;text-align:center;box-shadow:0 1px 8px rgba(0,0,0,.04)}
-.mode-btn:hover{border-color:var(--mg);background:#f4faf4}
+.mode-btn:hover{border-color:var(--mg);background:#f7f0e7}
 .mode-btn.active{border:2px solid var(--dg);background:var(--dg);color:#fff;box-shadow:0 3px 14px rgba(46,107,62,.25)}
 .mode-name{font-size:15px;font-weight:800;line-height:1.1}
 .mode-sub{font-size:10.5px;margin-top:3px;opacity:.82;letter-spacing:.02em}
@@ -124,28 +124,28 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .mode-panel.on{display:block}
 /* ── seletor de opções (tags PAPEL/FASE/NÍVEL) ── */
 .opt-group{display:flex;gap:8px;flex-wrap:wrap}
-.opt-btn{flex:1;min-width:96px;padding:9px 10px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#2a4a2a;cursor:pointer;transition:all .16s;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;text-align:center}
-.opt-btn:hover{border-color:var(--mg);background:#f0faf0}
+.opt-btn{flex:1;min-width:96px;padding:9px 10px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);color:#5a2a2e;cursor:pointer;transition:all .16s;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;text-align:center}
+.opt-btn:hover{border-color:var(--mg);background:#f7efe5}
 .opt-btn.active{border:2px solid var(--dg);background:var(--dg);color:#fff}
 .opt-btn .os{display:block;font-size:10px;font-weight:400;opacity:.8;margin-top:2px;font-style:italic}
 .opt-disabled{opacity:.4;pointer-events:none}
 .warn{display:none;background:#fff4f4;border:1px solid #e7b8b8;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12.5px;color:#8B0000;font-family:'EB Garamond',serif}
 .warn.on{display:block}
 /* ── API ── */
-.api-bar{margin-top:14px;padding-top:14px;border-top:1px solid #e2ece2;display:flex;flex-direction:column;gap:6px}
+.api-bar{margin-top:14px;padding-top:14px;border-top:1px solid #e7dccf;display:flex;flex-direction:column;gap:6px}
 .btn-api{align-self:flex-start;padding:10px 18px;border:2px solid var(--dg);border-radius:9px;background:#fff;color:var(--dg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;transition:all .18s}
 .btn-api:hover{background:var(--dg);color:#fff}
 .btn-api:disabled{opacity:.45;cursor:not-allowed}
 .api-st{display:none;padding:9px 13px;border-radius:7px;font-family:'EB Garamond',serif;font-size:13px;line-height:1.4}
 .api-st.loading{display:block;background:#f0f7ff;border:1px solid #bbd;color:#336}
 .api-st.error{display:block;background:#fff4f4;border:1px solid #e7b8b8;color:#8B0000}
-.api-st.ok{display:block;background:#f0fff4;border:1px solid #88cc99;color:#1a4a2a}
-.api-upload{border:1.5px dashed var(--mg);border-radius:8px;padding:10px 14px;cursor:pointer;text-align:center;font-family:'EB Garamond';font-size:13px;color:#559;transition:border-color .15s;background:#fafffe}
+.api-st.ok{display:block;background:#f6efe5;border:1px solid #cda96a;color:#5a1f28}
+.api-upload{border:1.5px dashed var(--mg);border-radius:8px;padding:10px 14px;cursor:pointer;text-align:center;font-family:'EB Garamond';font-size:13px;color:#559;transition:border-color .15s;background:#fffdfb}
 .api-upload:hover{border-color:var(--dg);color:var(--dg)}
 @media(max-width:520px){.row2,.row112,.mrow2,.mrow3{grid-template-columns:1fr}.card{padding:20px 16px}.type-tabs,.fmt-group,.opt-group{flex-direction:column}.modebar{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.mode-sub{display:none}.mode-btn{padding:10px 6px}}
 @media(max-width:380px){.modebar{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.btn-go,.btn-cl,.btn-prompt{width:100%}}
 /* ── Modo D: Corretor DPM + Calculador ─────────────────────────────────── */
-.grp-block{background:#f7fdf7;border:1.5px solid var(--bd);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.grp-block{background:#f6efe7;border:1.5px solid var(--bd);border-radius:10px;padding:16px 18px;margin-bottom:12px}
 .grp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
 .grp-badge{background:var(--dg);color:#fff;font-family:'Crimson Pro',serif;font-size:12px;font-weight:800;padding:3px 10px;border-radius:5px;letter-spacing:.04em;white-space:nowrap}
 .grp-papel{font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:var(--dg)}
@@ -153,13 +153,13 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .grp-nota label{font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#667}
 .grp-nota input{width:52px;border:1.5px solid var(--bd);border-radius:5px;padding:4px 7px;font-family:'Crimson Pro',serif;font-size:14px;font-weight:700;color:var(--dg);text-align:center;background:#fff;outline:none}
 .grp-nota input:focus{border-color:var(--dg)}
-.grp-para{width:100%;border:1.5px solid #d0e4d0;border-radius:7px;padding:9px 12px;font-family:'EB Garamond',serif;font-size:13.5px;color:var(--tx);background:#fff;resize:vertical;min-height:70px;outline:none;line-height:1.55}
+.grp-para{width:100%;border:1.5px solid #e7d8c6;border-radius:7px;padding:9px 12px;font-family:'EB Garamond',serif;font-size:13.5px;color:var(--tx);background:#fff;resize:vertical;min-height:70px;outline:none;line-height:1.55}
 .grp-para:focus{border-color:var(--dg)}
-.grp-feedback{display:none;margin-top:10px;background:#f0fff4;border:1px solid #99cc99;border-radius:7px;padding:11px 14px;font-family:'EB Garamond',serif;font-size:13.5px;line-height:1.7;color:#1a3a1a;white-space:pre-wrap}
+.grp-feedback{display:none;margin-top:10px;background:#f6efe5;border:1px solid #cdb98a;border-radius:7px;padding:11px 14px;font-family:'EB Garamond',serif;font-size:13.5px;line-height:1.7;color:#4a1820;white-space:pre-wrap}
 .grp-feedback.on{display:block}
 .d-dpm-tabs{display:flex;gap:8px;margin-bottom:16px}
 .d-dpm-tab{flex:1;padding:9px 6px;border:1.5px solid var(--bd);border-radius:8px;background:var(--bg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:13px;font-weight:700;color:#556;text-align:center;transition:all .15s}
-.d-dpm-tab:hover{border-color:var(--mg);background:#f0faf0;color:var(--dg)}
+.d-dpm-tab:hover{border-color:var(--mg);background:#f7efe5;color:var(--dg)}
 .d-dpm-tab.active{border-color:var(--dg);background:var(--dg);color:#fff}
 .calc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
 .calc-field label{display:block;font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--dg);margin-bottom:4px}
@@ -170,31 +170,31 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .media-card .mc-grp{font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mg)}
 .media-card .mc-val{font-family:'Crimson Pro',serif;font-size:22px;font-weight:800;color:var(--dg);line-height:1.1;margin:4px 0 2px}
 .media-card .mc-sit{font-size:10.5px;color:#778;font-style:italic}
-.media-card.aprovado{border-color:#5FAD6E}
+.media-card.aprovado{border-color:#b07d2b}
 .media-card.atencao{border-color:#e0aa44;background:#fffbf0}
 .media-card.reprovado{border-color:#cc5555;background:#fff5f5}
 .nota-badge{display:inline-block;background:var(--dg);color:#fff;font-family:'Crimson Pro',serif;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:4px}
 
 /* ── Modo E: Quiz + extras v63 ──────────────────────────────────────────── */
-.grp-alunos{width:100%;border:1.5px solid #d0e4d0;border-radius:7px;padding:7px 10px;font-family:'EB Garamond',serif;font-size:13px;color:var(--tx);background:#fff;resize:vertical;min-height:54px;outline:none;margin-top:6px}
+.grp-alunos{width:100%;border:1.5px solid #e7d8c6;border-radius:7px;padding:7px 10px;font-family:'EB Garamond',serif;font-size:13px;color:var(--tx);background:#fff;resize:vertical;min-height:54px;outline:none;margin-top:6px}
 .grp-alunos:focus{border-color:var(--dg)}
 .pdf-upload-area{border:2px dashed var(--bd);border-radius:8px;padding:14px 16px;text-align:center;cursor:pointer;background:var(--bg);transition:all .2s}
-.pdf-upload-area:hover{border-color:var(--mg);background:#edf7ed}
+.pdf-upload-area:hover{border-color:var(--mg);background:#f3e9dd}
 .pdf-upload-area .pu-icon{font-size:24px;line-height:1;margin-bottom:4px}
 .pdf-upload-area .pu-main{font-family:'Crimson Pro',serif;font-size:13px;color:var(--dg);font-weight:600}
 .pdf-upload-area .pu-sub{font-size:11px;color:#889;margin-top:2px;font-style:italic}
 .pdf-chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.pdf-chip{display:inline-flex;align-items:center;gap:6px;background:#f0faf0;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);font-family:'EB Garamond',serif}
+.pdf-chip{display:inline-flex;align-items:center;gap:6px;background:#f7efe5;border:1px solid var(--bd);border-radius:20px;padding:3px 10px 3px 8px;font-size:12px;color:var(--dg);font-family:'EB Garamond',serif}
 .pdf-chip-x{cursor:pointer;color:#999;font-size:14px;line-height:1}
 .pdf-chip-x:hover{color:#c00}
 .periodo-tabs{display:flex;gap:8px;margin-bottom:12px}
 .periodo-tab{flex:1;padding:7px 6px;border:1.5px solid var(--bd);border-radius:7px;background:var(--bg);cursor:pointer;font-family:'Crimson Pro',serif;font-size:12px;font-weight:700;color:#556;text-align:center;transition:all .14s}
-.periodo-tab:hover{border-color:var(--mg);background:#f0faf0;color:var(--dg)}
+.periodo-tab:hover{border-color:var(--mg);background:#f7efe5;color:var(--dg)}
 .periodo-tab.active{border-color:var(--dg);background:var(--dg);color:#fff}
 .result-table{width:100%;border-collapse:collapse;font-family:'EB Garamond',serif;font-size:13px;margin-top:14px}
 .result-table th{background:var(--dg);color:#fff;padding:7px 10px;font-family:'Crimson Pro',serif;font-weight:700;font-size:12px;text-align:center;border:1px solid var(--dg)}
-.result-table td{padding:6px 10px;border:1px solid #d0e8d0;vertical-align:top}
-.result-table tr:nth-child(even) td{background:#f4fbf4}
+.result-table td{padding:6px 10px;border:1px solid #e7d8c6;vertical-align:top}
+.result-table tr:nth-child(even) td{background:#f7f0e7}
 .result-table td.name-col{font-weight:600;color:var(--dg)}
 .result-table td.grade-col{text-align:center;font-family:'Crimson Pro',serif;font-weight:700}
 .result-table td.final-col{text-align:center;font-family:'Crimson Pro',serif;font-weight:800;color:var(--dg);font-size:14px}
@@ -203,6 +203,14 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
 .btn-prompt:hover{background:var(--mg);color:#fff}
 .prompt-out{display:none;margin-top:10px}
 .prompt-out.on{display:block}
+
+/* Seletor de IA (modelo + esforço) — fica acima de cada botão "Gerar via API" */
+.ia-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px;padding:10px 14px;background:#faf2ec;border:1px solid #e7dccf;border-radius:12px}
+.ia-strip-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6e1423;display:flex;align-items:center;gap:6px}
+.ia-strip-tag::before{content:"\2726";color:#b07d2b}
+.ia-strip select{padding:7px 10px;border:1px solid #e7dccf;border-radius:8px;background:#fff;font-size:13px;color:#2c2420;font-family:inherit;cursor:pointer}
+.ia-strip select:focus{outline:none;border-color:#6e1423;box-shadow:0 0 0 3px rgba(110,20,35,.10)}
+.ia-note{font-size:12px;color:#8c7d72;font-style:italic}
 
 </style>
 </head>
@@ -233,29 +241,6 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   </div>
   <div class="pdf-chip-row" id="globalFileChips"></div>
   <p class="note" style="margin-top:6px">Arquivos aqui são incluídos em todas as chamadas à API. No modo manual, anexe-os diretamente na conversa do Claude.</p>
-</div>
-
-<!-- SELETOR GLOBAL DE IA (modelo + esforço) — vale para todos os modos -->
-<div class="card" id="iaCard" style="padding:12px 20px;margin-bottom:16px">
-  <div style="display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap">
-    <div style="display:flex;flex-direction:column;gap:4px">
-      <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.7">Modelo de IA</label>
-      <select id="iaModelo" onchange="iaSync()">
-        <option value="opus">Opus 4.8 — melhor qualidade</option>
-        <option value="sonnet">Sonnet 4.6 — equilíbrio</option>
-        <option value="haiku">Haiku 4.5 — mais rápido/barato</option>
-      </select>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:4px">
-      <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.7">Esforço de raciocínio</label>
-      <select id="iaEsforco" onchange="iaSync()">
-        <option value="baixo">Baixo — rápido</option>
-        <option value="medio">Médio</option>
-        <option value="alto">Alto — mais cuidado</option>
-      </select>
-    </div>
-    <p class="note" id="iaNota" style="margin:0 0 4px;flex:1;min-width:180px"></p>
-  </div>
 </div>
 
 <!-- ============ MODO A — PREPARAÇÃO DE AULA ============ -->
@@ -316,6 +301,20 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <div class="btn-row">
     <button class="btn-go" onclick="gerar()">✦ Gerar prompts</button>
     <button class="btn-cl" onclick="limpar()">Limpar</button>
+  </div>
+  <div class="ia-strip">
+    <span class="ia-strip-tag">Geração por IA</span>
+    <select class="ia-modelo" onchange="iaSync(this)">
+      <option value="opus">Opus 4.8 · melhor qualidade</option>
+      <option value="sonnet">Sonnet 4.6 · equilíbrio</option>
+      <option value="haiku">Haiku 4.5 · mais rápido</option>
+    </select>
+    <select class="ia-esforco" onchange="iaSync(this)">
+      <option value="baixo">Esforço: Baixo</option>
+      <option value="medio">Esforço: Médio</option>
+      <option value="alto">Esforço: Alto</option>
+    </select>
+    <span class="ia-note"></span>
   </div>
   <div class="api-bar">
     <button class="btn-api" id="btnApiA" onclick="gerarViaAPI_A()">⚡ Gerar via API — baixar .docx</button>
@@ -446,6 +445,20 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
       <button class="btn-go" onclick="gerarC()">✦ Gerar prompt de correção</button>
       <button class="btn-cl" onclick="limparC()">Limpar</button>
     </div>
+    <div class="ia-strip">
+      <span class="ia-strip-tag">Geração por IA</span>
+      <select class="ia-modelo" onchange="iaSync(this)">
+        <option value="opus">Opus 4.8 · melhor qualidade</option>
+        <option value="sonnet">Sonnet 4.6 · equilíbrio</option>
+        <option value="haiku">Haiku 4.5 · mais rápido</option>
+      </select>
+      <select class="ia-esforco" onchange="iaSync(this)">
+        <option value="baixo">Esforço: Baixo</option>
+        <option value="medio">Esforço: Médio</option>
+        <option value="alto">Esforço: Alto</option>
+      </select>
+      <span class="ia-note"></span>
+    </div>
     <div class="api-bar">
       <button class="btn-api" id="btnApiC" onclick="gerarViaAPI_C()">⚡ Gerar via API — baixar .docx</button>
       <div class="api-st" id="apiStC"></div>
@@ -513,6 +526,20 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
     <div class="btn-row">
       <button class="btn-go" onclick="gerarB()">✦ Gerar prompt do otimizador</button>
       <button class="btn-cl" onclick="limparB()">Limpar</button>
+    </div>
+    <div class="ia-strip">
+      <span class="ia-strip-tag">Geração por IA</span>
+      <select class="ia-modelo" onchange="iaSync(this)">
+        <option value="opus">Opus 4.8 · melhor qualidade</option>
+        <option value="sonnet">Sonnet 4.6 · equilíbrio</option>
+        <option value="haiku">Haiku 4.5 · mais rápido</option>
+      </select>
+      <select class="ia-esforco" onchange="iaSync(this)">
+        <option value="baixo">Esforço: Baixo</option>
+        <option value="medio">Esforço: Médio</option>
+        <option value="alto">Esforço: Alto</option>
+      </select>
+      <span class="ia-note"></span>
     </div>
     <div class="api-bar">
       <button class="btn-api" id="btnApiB" onclick="gerarViaAPI_B()">⚡ Otimizar via API</button>
@@ -778,7 +805,7 @@ function atualizarPreview() {
   var ref = buildRefABNT();
   var el = document.getElementById('previewText');
   if (!ref) { el.style.fontStyle='italic'; el.style.color='#556'; el.textContent='Preencha os campos acima...'; }
-  else { el.style.fontStyle='normal'; el.style.color='#1a2e1a'; el.textContent=ref; }
+  else { el.style.fontStyle='normal'; el.style.color='#2c2420'; el.textContent=ref; }
 }
 
 function confirmarRef() {
@@ -852,25 +879,27 @@ function copiarPrompt(spanId) {
 
 // ── DOM ready ──────────────────────────────────────────────────────────────
 // ── Seleção de IA (modelo + esforço), persistida nesta surface ────────────
+// Há um seletor de IA (modelo+esforço) acima de cada botão "Gerar via API" (modos A/B/C).
+// Todos compartilham o mesmo estado: mexer em um sincroniza os outros + localStorage.
 function iaGet() {
-  var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco');
+  var m = document.querySelector('.ia-modelo'), e = document.querySelector('.ia-esforco');
   return { modelo: (m && m.value) || 'opus', esforco: (e && e.value) || 'medio' };
 }
-function iaSync() {
-  var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco'), nota = document.getElementById('iaNota');
-  if (!m || !e) return;
-  var haiku = m.value === 'haiku';
-  e.disabled = haiku;                                   // Haiku 4.5 não aceita esforço (API 400)
-  e.style.opacity = haiku ? '.5' : '1';
-  if (nota) nota.textContent = haiku ? 'Haiku 4.5 não usa esforço de raciocínio — gera direto.' : '';
-  try { localStorage.setItem('cla_ia', JSON.stringify({ modelo: m.value, esforco: e.value })); } catch (_) {}
+function iaSync(src) {
+  var strip = src && src.closest ? src.closest('.ia-strip') : null;
+  var modelo = strip ? strip.querySelector('.ia-modelo').value : ((document.querySelector('.ia-modelo') || {}).value || 'opus');
+  var esforco = strip ? strip.querySelector('.ia-esforco').value : ((document.querySelector('.ia-esforco') || {}).value || 'medio');
+  var haiku = modelo === 'haiku';
+  document.querySelectorAll('.ia-modelo').forEach(function (s) { s.value = modelo; });
+  document.querySelectorAll('.ia-esforco').forEach(function (s) { s.value = esforco; s.disabled = haiku; s.style.opacity = haiku ? '.5' : '1'; }); // Haiku 4.5 não aceita esforço (API 400)
+  document.querySelectorAll('.ia-note').forEach(function (n) { n.textContent = haiku ? 'Haiku não usa esforço' : ''; });
+  try { localStorage.setItem('cla_ia', JSON.stringify({ modelo: modelo, esforco: esforco })); } catch (_) {}
 }
 function iaRestore() {
   try {
     var s = JSON.parse(localStorage.getItem('cla_ia') || '{}');
-    var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco');
-    if (s.modelo && m) m.value = s.modelo;
-    if (s.esforco && e) e.value = s.esforco;
+    if (s.modelo) document.querySelectorAll('.ia-modelo').forEach(function (x) { x.value = s.modelo; });
+    if (s.esforco) document.querySelectorAll('.ia-esforco').forEach(function (x) { x.value = s.esforco; });
   } catch (_) {}
   iaSync();
 }
@@ -908,7 +937,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ── constantes de prompt ───────────────────────────────────────────────────
 var HEADER_PT = [
   '**Cabecalho — tabela 2×2:**',
-  '- Esquerda superior (60%): fundo #B3E5A0, texto preto: "INSTITUTO FEDERAL FLUMINENSE (negrito) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
+  '- Esquerda superior (60%): fundo #ecdcc2, texto preto: "INSTITUTO FEDERAL FLUMINENSE (negrito) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
   '- Direita superior (40%): fundo branco, negrito centralizado: nome do documento (tabela abaixo)',
   '- Esquerda inferior: "Nome do(a) Estudante: _______________"',
   '- Direita inferior: "Data: ___/___/____"',
@@ -920,7 +949,7 @@ var HEADER_PT = [
 
 var HEADER_EN = [
   '**Header — 2×2 table:**',
-  '- Top-left (60%): #B3E5A0 bg, black text: "INSTITUTO FEDERAL FLUMINENSE (bold) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
+  '- Top-left (60%): #ecdcc2 bg, black text: "INSTITUTO FEDERAL FLUMINENSE (bold) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
   '- Top-right (40%): white bg, bold centered: document name (see table below)',
   '- Bottom-left: "Nome do(a) Estudante: _______________"',
   '- Bottom-right: "Data: ___/___/____"',
@@ -1211,7 +1240,7 @@ function gerar() {
       '== ENTREGA: arquivo .docx pronto para impressão e distribuição ==',
       '',
       '1. CABEÇALHO (tabela 2×2):',
-      '   Sup. esq. (60%): fundo #B3E5A0 · INSTITUTO FEDERAL FLUMINENSE / Campus Campos Centro · Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___',
+      '   Sup. esq. (60%): fundo #ecdcc2 · INSTITUTO FEDERAL FLUMINENSE / Campus Campos Centro · Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___',
       '   Sup. dir. (40%): branco · centralizado: DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM ' + fl5.toUpperCase(),
       '   Inf. esq.: Nome do(a) Estudante: _______________  |  Inf. dir.: Data: ___/___/____',
       '',
@@ -1515,9 +1544,9 @@ function renderAuth(d) {
   var el = document.getElementById('authBar');
   if (!el) return;
   if (d && d.ok) {
-    el.innerHTML = '<span style="color:#2E6B3E;font-weight:600">✓ Conectado: ' + (d.email || '') + '</span>';
+    el.innerHTML = '<span style="color:#6e1423;font-weight:600">✓ Conectado: ' + (d.email || '') + '</span>';
   } else if (d && d.authUrl) {
-    el.innerHTML = '<a href="' + d.authUrl + '" style="display:inline-block;background:#2E6B3E;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">🔒 Entrar com Google</a>';
+    el.innerHTML = '<a href="' + d.authUrl + '" style="display:inline-block;background:#6e1423;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600">🔒 Entrar com Google</a>';
   } else {
     el.innerHTML = '';
   }
@@ -1622,7 +1651,7 @@ var _chatTexto = ''; // armazena o último texto gerado para copiar/PDF
 function renderMarkdown(txt) {
   return txt
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/^## (.+)$/gm,'<h3 style="font-family:\'Crimson Pro\',serif;color:#2E6B3E;margin:18px 0 6px">$1</h3>')
+    .replace(/^## (.+)$/gm,'<h3 style="font-family:\'Crimson Pro\',serif;color:#6e1423;margin:18px 0 6px">$1</h3>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(/\n/g,'<br>');
@@ -1645,7 +1674,7 @@ function abrirComoPDF() {
   w.document.write('<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Devolutiva</title>' +
     '<style>body{font-family:Georgia,serif;font-size:15px;line-height:1.8;max-width:720px;margin:40px auto;padding:0 20px;color:#222}' +
     'h2{font-size:13px;font-weight:normal;color:#555;border-bottom:1px solid #ddd;padding-bottom:6px;margin-bottom:20px}' +
-    'h3{color:#2E6B3E;margin:22px 0 6px;font-size:16px}@media print{body{margin:20px}}</style></head><body>' +
+    'h3{color:#6e1423;margin:22px 0 6px;font-size:16px}@media print{body{margin:20px}}</style></head><body>' +
     '<h2>Devolutiva Acadêmica · ' + papel + fase + ' · ' + nivel + '</h2>' +
     renderMarkdown(_chatTexto) + '<br><br></body></html>');
   w.document.close();
