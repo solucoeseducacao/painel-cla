@@ -235,6 +235,29 @@ input[type=text]:focus,textarea:focus{border-color:var(--dg)}
   <p class="note" style="margin-top:6px">Arquivos aqui são incluídos em todas as chamadas à API. No modo manual, anexe-os diretamente na conversa do Claude.</p>
 </div>
 
+<!-- SELETOR GLOBAL DE IA (modelo + esforço) — vale para todos os modos -->
+<div class="card" id="iaCard" style="padding:12px 20px;margin-bottom:16px">
+  <div style="display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.7">Modelo de IA</label>
+      <select id="iaModelo" onchange="iaSync()">
+        <option value="opus">Opus 4.8 — melhor qualidade</option>
+        <option value="sonnet">Sonnet 4.6 — equilíbrio</option>
+        <option value="haiku">Haiku 4.5 — mais rápido/barato</option>
+      </select>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <label style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.7">Esforço de raciocínio</label>
+      <select id="iaEsforco" onchange="iaSync()">
+        <option value="baixo">Baixo — rápido</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto — mais cuidado</option>
+      </select>
+    </div>
+    <p class="note" id="iaNota" style="margin:0 0 4px;flex:1;min-width:180px"></p>
+  </div>
+</div>
+
 <!-- ============ MODO A — PREPARAÇÃO DE AULA ============ -->
 <div class="mode-panel on" id="modeA">
 
@@ -828,8 +851,33 @@ function copiarPrompt(spanId) {
 }
 
 // ── DOM ready ──────────────────────────────────────────────────────────────
+// ── Seleção de IA (modelo + esforço), persistida nesta surface ────────────
+function iaGet() {
+  var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco');
+  return { modelo: (m && m.value) || 'opus', esforco: (e && e.value) || 'medio' };
+}
+function iaSync() {
+  var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco'), nota = document.getElementById('iaNota');
+  if (!m || !e) return;
+  var haiku = m.value === 'haiku';
+  e.disabled = haiku;                                   // Haiku 4.5 não aceita esforço (API 400)
+  e.style.opacity = haiku ? '.5' : '1';
+  if (nota) nota.textContent = haiku ? 'Haiku 4.5 não usa esforço de raciocínio — gera direto.' : '';
+  try { localStorage.setItem('cla_ia', JSON.stringify({ modelo: m.value, esforco: e.value })); } catch (_) {}
+}
+function iaRestore() {
+  try {
+    var s = JSON.parse(localStorage.getItem('cla_ia') || '{}');
+    var m = document.getElementById('iaModelo'), e = document.getElementById('iaEsforco');
+    if (s.modelo && m) m.value = s.modelo;
+    if (s.esforco && e) e.value = s.esforco;
+  } catch (_) {}
+  iaSync();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   checkAuth();
+  iaRestore();
   var dz = document.getElementById('dropzone');
   var fi = document.getElementById('fileinput');
 
@@ -1483,6 +1531,8 @@ function checkAuth() {
 }
 
 function chamarAPI(body) {
+  // Injeta modelo + esforço escolhidos (1 ponto cobre todos os modos). Não sobrescreve se já vier definido.
+  try { if (body && body.inputs) { var _ia = iaGet(); if (body.inputs.modelo == null) body.inputs.modelo = _ia.modelo; if (body.inputs.esforco == null) body.inputs.esforco = _ia.esforco; } } catch (_) {}
   return fetch(ENDPOINT, {
     method: 'POST',
     credentials: 'include',
