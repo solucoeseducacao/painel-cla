@@ -1,0 +1,29 @@
+name: keep-warm
+
+# Mantém os serviços Render (free) acordados nas HORAS ATIVAS, para o aluno/professor
+# não pegar o cold start (~30-60s). Roda só ~06h-00h BRT (UTC-3) para respeitar a
+# cota de horas do plano free. Fora desse intervalo, a 1ª visita ainda acorda (esperado).
+#
+# IMPORTANTE: o GitHub desativa workflows agendados após 60 dias sem atividade no repo.
+# Para garantia maior de uptime, considere UptimeRobot (monitor a cada 5 min) ou plano pago.
+
+on:
+  schedule:
+    - cron: '*/10 9-23,0-2 * * *'   # a cada 10 min, das 09:00 UTC às 02:59 UTC (~06h-00h BRT)
+  workflow_dispatch:                 # permite disparar manualmente pela aba Actions
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acordar serviços Render
+        run: |
+          set -e
+          urls=(
+            "https://superappdeploy.onrender.com/"   # Super App (aluno/professor) — prioridade
+            "https://painel-cla.onrender.com/"        # Painel CLA (preparação de aula)
+          )
+          for url in "${urls[@]}"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 75 "$url" || echo "timeout")
+            echo "$url -> $code"
+          done
