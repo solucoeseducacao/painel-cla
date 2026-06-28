@@ -890,11 +890,11 @@ function copiarPrompt(spanId) {
 // Todos compartilham o mesmo estado: mexer em um sincroniza os outros + localStorage.
 function iaGet() {
   var m = document.querySelector('.ia-modelo'), e = document.querySelector('.ia-esforco');
-  return { modelo: (m && m.value) || 'opus', esforco: (e && e.value) || 'medio' };
+  return { modelo: (m && m.value) || 'sonnet', esforco: (e && e.value) || 'medio' };
 }
 function iaSync(src) {
   var strip = src && src.closest ? src.closest('.ia-strip') : null;
-  var modelo = strip ? strip.querySelector('.ia-modelo').value : ((document.querySelector('.ia-modelo') || {}).value || 'opus');
+  var modelo = strip ? strip.querySelector('.ia-modelo').value : ((document.querySelector('.ia-modelo') || {}).value || 'sonnet');
   var esforco = strip ? strip.querySelector('.ia-esforco').value : ((document.querySelector('.ia-esforco') || {}).value || 'medio');
   var haiku = modelo === 'haiku';
   document.querySelectorAll('.ia-modelo').forEach(function (s) { s.value = modelo; });
@@ -905,7 +905,8 @@ function iaSync(src) {
 function iaRestore() {
   try {
     var s = JSON.parse(localStorage.getItem('cla_ia') || '{}');
-    if (s.modelo) document.querySelectorAll('.ia-modelo').forEach(function (x) { x.value = s.modelo; });
+    // Padrão fixo = Sonnet (econômico); Opus só quando escolhido explicitamente.
+    document.querySelectorAll('.ia-modelo').forEach(function (x) { x.value = s.modelo || 'sonnet'; });
     if (s.esforco) document.querySelectorAll('.ia-esforco').forEach(function (x) { x.value = s.esforco; });
   } catch (_) {}
   iaSync();
