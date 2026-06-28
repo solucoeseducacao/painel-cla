@@ -21,7 +21,7 @@ jobs:
           set -e
           urls=(
             "https://superappdeploy.onrender.com/"   # Super App (aluno/professor) — prioridade
-            "https://painel-cla.onrender.com/"        # Painel CLA (preparação de aula)
+            "https://painel-cla.onrender.com/health"  # Painel CLA (preparação de aula)
           )
           for url in "${urls[@]}"; do
             code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 75 "$url" || echo "timeout")
