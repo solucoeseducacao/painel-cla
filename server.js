@@ -28,8 +28,12 @@ const _iaRate=new Map();
 function iaRateOk(email){const now=Date.now(),k=email||'anon',calls=(_iaRate.get(k)||[]).filter(t=>now-t<60000);if(calls.length>=40)return false;calls.push(now);_iaRate.set(k,calls);return true;}
 // Último uso de tokens (preenchido pelo wrapper) → exposto no /cla-api p/ o cliente ver custo/cache.
 let _ultimoUso=null;
+// C13: registra o uso das gerações do CLA no contador central do Super App (GAS __uso_api__).
+// GAS_URL é público (mesmo da aba do aluno); GAS_SENHA é segredo (env). Sem a env → no-op silencioso.
+const GAS_URL_USO = process.env.GAS_URL || 'https://script.google.com/macros/s/AKfycby_pu_oDSP2nJNWIooa1wEl-fVxxvp8KyV_KNbS2ogPcWDshzxYCXSx5v6KtBxztarRxg/exec';
+function _registrarUsoGAS(u){ try{ if(!process.env.GAS_SENHA||!u) return; fetch(GAS_URL_USO,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({acao:'registrarUsoApi',senha:process.env.GAS_SENHA,modelo:u.modelo,in:u.in,out:u.out,custo:u.custo})}).catch(function(){}); }catch(_){} }
 // Prova de prompt-cache nos logs do Render: cacheR>0 ⇒ PDFs reaproveitados do cache.
-(function(){const _create=client.messages.create.bind(client.messages);client.messages.create=async function(opts){const res=await _create(opts);try{const u=(res&&res.usage)||{},m=opts&&opts.model;_ultimoUso={modelo:_nomeModelo(m),modeloId:m,in:u.input_tokens||0,out:u.output_tokens||0,cacheW:u.cache_creation_input_tokens||0,cacheR:u.cache_read_input_tokens||0,custo:Number(_custoIA(m,u).toFixed(4))};console.log('[uso]',m,JSON.stringify(_ultimoUso));}catch(_){}return res;};})();
+(function(){const _create=client.messages.create.bind(client.messages);client.messages.create=async function(opts){const res=await _create(opts);try{const u=(res&&res.usage)||{},m=opts&&opts.model;_ultimoUso={modelo:_nomeModelo(m),modeloId:m,in:u.input_tokens||0,out:u.output_tokens||0,cacheW:u.cache_creation_input_tokens||0,cacheR:u.cache_read_input_tokens||0,custo:Number(_custoIA(m,u).toFixed(4))};console.log('[uso]',m,JSON.stringify(_ultimoUso));_registrarUsoGAS(_ultimoUso);}catch(_){}return res;};})();
 const BUDGET={A:{'2':{conv:20,quiz:10,entrada:10,grp:20,reg:15,cpd:15},'3':{conv:30,quiz:10,entrada:10,grp:35,reg:20,cpd:15},'4':{conv:45,quiz:10,entrada:15,grp:50,reg:25,cpd:15}},B:{'2':{leit:30,quiz:10,grp:20,reg:15,cpd:15},'3':{leit:45,quiz:10,grp:35,reg:15,cpd:15},'4':{leit:65,quiz:10,grp:50,reg:20,cpd:15}},C:{'2':{conv:15,lit:15,quiz:10,grp:20,reg:15,cpd:15},'3':{conv:20,lit:20,quiz:10,grp:35,reg:20,cpd:15},'4':{conv:30,lit:30,quiz:10,grp:45,reg:25,cpd:20}}};
 const A4={size:{width:11906,height:16838},margin:{top:1440,right:1440,bottom:1440,left:1440}};
 const BDR={style:BorderStyle.SINGLE,size:1,color:'999999'},BORDERS={top:BDR,bottom:BDR,left:BDR,right:BDR};
