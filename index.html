@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF v66</title>
+<title>Painel CLA — IFF v67</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -558,6 +558,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
 <div class="modal">
   <div class="modal-hdr"><h2>Referência ABNT</h2><button class="modal-close" onclick="fecharModal()">✕</button></div>
   <div class="modal-fn" id="modalFn"></div>
+  <div id="modalDetect" style="display:none;margin:0 0 10px;padding:7px 11px;border-radius:7px;font-size:13px;line-height:1.35"></div>
   <div class="type-tabs">
     <button class="type-tab active" id="mtab-artigo" onclick="setTipo(&#39;artigo&#39;)"><span class="type-icon">📰</span>Artigo</button>
     <button class="type-tab" id="mtab-livro" onclick="setTipo(&#39;livro&#39;)"><span class="type-icon">📗</span>Livro</button>
@@ -737,6 +738,64 @@ function abrirModal(filename) {
   atualizarPreview();
   document.getElementById('modalBg').classList.add('on');
   setTimeout(function() { document.getElementById('a-autores').focus(); }, 100);
+  detectarRef(filename);
+}
+
+// ── detecção automática da referência (lê a ficha catalográfica via IA) ──────
+function detectStatus(show, type, msg) {
+  var el = document.getElementById('modalDetect');
+  if (!el) return;
+  if (!show) { el.style.display = 'none'; return; }
+  var c = { loading:['#fdf8e6','#e3c98a','#5a3a00'], ok:['#eef7ee','#bcd2bc','#1b5e20'], warn:['#fbf3e6','#e3c98a','#7a5a00'] }[type] || ['#f3f3f3','#ccc','#444'];
+  el.style.display = 'block';
+  el.style.background = c[0]; el.style.border = '1px solid ' + c[1]; el.style.color = c[2];
+  el.textContent = msg;
+}
+
+function preencherRef(ref) {
+  if (!ref) return;
+  setTipo(ref.tipo === 'livro' || ref.tipo === 'capitulo' ? ref.tipo : 'artigo');
+  function S(id, v) { if (v) document.getElementById(id).value = v; }
+  if (TIPO_MODAL === 'artigo') {
+    S('a-autores', ref.autores); S('a-titulo', ref.titulo); S('a-revista', ref.revista);
+    S('a-vol', ref.volume); S('a-num', ref.numero); S('a-ano', ref.ano); S('a-pag', ref.paginas); S('a-doi', ref.doi);
+  } else if (TIPO_MODAL === 'livro') {
+    S('l-autores', ref.autores); S('l-titulo', ref.titulo); S('l-subtit', ref.subtitulo);
+    S('l-cidade', ref.cidade); S('l-editora', ref.editora); S('l-ano', ref.ano); S('l-edicao', ref.edicao);
+  } else {
+    S('c-autores', ref.autores); S('c-titulo', ref.titulo); S('c-org', ref.organizadores); S('c-livro', ref.livro);
+    S('c-cidade', ref.cidade); S('c-editora', ref.editora); S('c-ano', ref.ano); S('c-pag', ref.paginas);
+  }
+  atualizarPreview();
+}
+
+function detectarRef(filename) {
+  // só para PDF/DOCX; .txt não tem ficha catalográfica
+  if (!/\.(pdf|docx?)$/i.test(filename)) { detectStatus(false); return; }
+  detectStatus(true, 'loading', '⏳ Lendo a ficha catalográfica do arquivo…');
+  // o conteúdo é lido de forma assíncrona (FileReader); aguardar até estar pronto
+  var tentativas = 0;
+  (function aguardar() {
+    if (FN_MODAL !== filename) { detectStatus(false); return; }      // modal trocou/fechou
+    var fc = FILE_CONTENTS[filename];
+    if (!fc || !fc.data) {
+      if (++tentativas > 30) { detectStatus(true, 'warn', '⚠ Não consegui ler o arquivo. Preencha os campos manualmente.'); return; }
+      return setTimeout(aguardar, 150);
+    }
+    chamarAPI({ mode: 'ref', files: [fc], inputs: {} })
+      .then(function(data) {
+        if (FN_MODAL !== filename) return;                           // resposta tardia — usuário já saiu
+        preencherRef(data.ref);
+        var r = data.ref || {};
+        if (r.autores || r.titulo) detectStatus(true, 'ok', '✓ Campos preenchidos automaticamente. Confira e ajuste antes de inserir.');
+        else detectStatus(true, 'warn', '⚠ Não encontrei a referência no arquivo. Preencha manualmente.');
+      })
+      .catch(function(e) {
+        if (FN_MODAL !== filename) return;
+        var sess = /sess/i.test(e.message || '');
+        detectStatus(true, 'warn', sess ? '⚠ Entre com Google (topo da página) para a detecção automática. Por ora, preencha manualmente.' : '⚠ Detecção automática indisponível agora — preencha manualmente.');
+      });
+  })();
 }
 
 function fecharModal(confirmed) {
