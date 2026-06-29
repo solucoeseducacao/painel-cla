@@ -87,9 +87,8 @@ G1 Tese: ≥3 pontos encadeados. G2 Mecanismo: recursos e função. G3 Tensão: 
 == VERSÃO PROFESSOR ==
 (Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1.)
 SP1 — Questão-Norteadora: UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Apresente o ENUNCIADO COMPLETO + resposta-guia para o professor conduzir o debate (com páginas).
-SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão ancorada no texto, com página(s). NENHUM grupo sem gabarito.
-SP3 — Equívocos esperados (tabela): Grupo | Equívoco esperado | Como resolver.
-SP4 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
+SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão concisa ancorada no texto, com página(s). NENHUM grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
+SP3 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
 ## Parágrafo do aluno
 [enunciado completo da pergunta, discursivo, sem alternativas]
 **Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
@@ -127,9 +126,8 @@ G1 Forma · G2 Conteúdo · G3 Contexto · ${g4} · G5 Lacuna: o que o DPM não 
 == VERSÃO PROFESSOR ==
 (Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1.)
 SP1 — Questão-Norteadora: UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Apresente o ENUNCIADO COMPLETO + resposta-guia para o professor (com páginas).
-SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão ancorada no texto, com página(s). NENHUM grupo sem gabarito.
-SP3 — Equívocos esperados (tabela): Grupo | Equívoco esperado | Como resolver.
-SP4 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
+SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão concisa ancorada no texto, com página(s). NENHUM grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
+SP3 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
 ## Parágrafo do aluno
 [enunciado completo da pergunta, discursivo, sem alternativas]
 **Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
