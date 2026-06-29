@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF v64</title>
+<title>Painel CLA — IFF v65</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -292,7 +292,6 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
   <div class="tr" onclick="tick(&#39;t2&#39;)"><div class="chk" id="t2"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📚</span><span class="tl">DPM Literário</span><span class="tag">B · C</span></div><div class="ts">alunos + professor · Forma · Conteúdo · Contexto · Intertexto · Lacuna</div></div></div>
   <div class="tr" onclick="tick(&#39;t3&#39;)"><div class="chk" id="t3"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">⏱</span><span class="tl">Quiz de 10 minutos</span></div><div class="ts">5 questões objetivas · gabarito comentado · Estágio 5</div></div></div>
   <div class="tr" onclick="tick(&#39;t4&#39;)"><div class="chk" id="t4"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📝</span><span class="tl">Questões Bimestrais</span><span class="tag">professor</span></div><div class="ts">2–3 questões · 1 por nível · gabarito com justificativa</div></div></div>
-  <div class="tr" onclick="tick('t5')"><div class="chk" id="t5"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📋</span><span class="tl">Tabela DPM automática</span><span class="tag" style="background:#e8f4ff;color:#336;border:1px solid #aac">novo</span></div><div class="ts">gera perguntas por grupo baseadas no texto e formato · baixa .docx</div></div></div>
   <hr class="sep">
   <div class="field">
     <label>Questão-norteadora do debate inicial <span style="font-weight:400;color:#889;font-style:italic">(opcional)</span></label>
@@ -334,7 +333,6 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
     <span>Prompts</span>
     <button class="ctab active" id="ctab1" onclick="showConv(1)">Conversa 1 · DPMs</button>
     <button class="ctab" id="ctab2" onclick="showConv(2)">Conversa 2 · Quiz e demais</button>
-    <button class="ctab" id="ctab3" onclick="showConv(3)" style="display:none">Tabela DPM</button>
   </div>
 
   <!-- CONVERSA 1 -->
@@ -373,19 +371,6 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
       <div class="out-pre"><button class="btn-cp" id="bcp2en" onclick="copiarPrompt(&#39;p2en&#39;)">Copiar</button><span id="p2en"></span></div>
     </div>
     <div class="out-hint">Abra conversa nova → cole o prompt → anexe o(s) PDF(s)</div>
-  </div>
-
-  <!-- CONVERSA 3 — TABELA DPM (t5) -->
-  <div class="conv-panel" id="cpanel3" style="display:none">
-    <div class="conv-header">
-      <span class="conv-title">📋 Tabela DPM — Folha de Resposta dos Alunos</span>
-      <span class="conv-hint">Cole numa conversa nova → anexe o(s) PDF(s) do texto</span>
-    </div>
-    <div class="lang-panel on" id="lp3pt">
-      <div class="out-meta" id="meta3pt"></div>
-      <div class="out-pre"><button class="btn-cp" id="bcp3pt" onclick="copiarPrompt('p3pt')">Copiar</button><span id="p3pt"></span></div>
-    </div>
-    <div class="out-hint">Claude gera as perguntas e monta a tabela DPMS pronta para impressão (.docx)</div>
   </div>
 </div>
 
@@ -619,8 +604,8 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
 <script>
 // ── estado global ──────────────────────────────────────────────────────────
 var FMT = '';
-var TIDS = ['t1','t2','t3','t4','t5'];
-var CHK = {t1:0,t2:0,t3:0,t4:0,t5:0};
+var TIDS = ['t1','t2','t3','t4'];
+var CHK = {t1:0,t2:0,t3:0,t4:0};
 var PENDING = [];
 var DROPPED = [];
 var FILE_CONTENTS = {}; // filename → {name, media_type, data(base64)} para uso na API
@@ -850,7 +835,7 @@ function removerRef(btn) {
 
 // ── output navigation ──────────────────────────────────────────────────────
 function showConv(n) {
-  [1,2,3].forEach(function(i) {
+  [1,2].forEach(function(i) {
     var panel=document.getElementById('cpanel'+i); var tab=document.getElementById('ctab'+i);
     if(panel)panel.classList.toggle('on',i===n); if(tab)tab.classList.toggle('active',i===n);
   });
@@ -996,25 +981,37 @@ var DPM_STRUCT_PT = [
   '',
   '**DPM VERSAO PROFESSOR — estrutura obrigatoria (NAO repetir o conteudo dos alunos):**',
   '',
-  'SECAO 1 — CORRENTE TEORICA',
+  'SECAO 1 — QUESTAO-NORTEADORA (debate oral inicial)',
+  '- UMA pergunta para abrir a aula, debatida oralmente com a turma nos primeiros minutos (nao e respondida por escrito).',
+  '- Deve "acordar" os alunos: provocar discussao sobre o(s) ponto(s) mais importante(s) do texto, sem resposta unica obvia.',
+  '- Ancorada no texto da semana; diferente das perguntas de grupo (Secao 4 dos alunos).',
+  '- A Questao 1 do Quiz desta semana sera derivada desta — mesma tematica, formulada como multipla escolha; nao identica.',
+  '- Apresentar: a pergunta + resposta-guia para o professor conduzir o debate (com paginas).',
+  '',
+  'SECAO 2 — CORRENTE TEORICA',
   '- Tradicao teorica a qual o(s) autor(es) se filiam ou da qual se aproximam',
   '- Contextualizacao do texto no debate da area',
   '',
-  'SECAO 2 — EQUIVOCOS ESPERADOS POR GRUPO (tabela)',
+  'SECAO 3 — EQUIVOCOS ESPERADOS POR GRUPO (tabela)',
   '- Tabela: Grupo | Equivoco esperado | Como resolver',
   '- Um equivoco por grupo, respostas ancoradas no texto com pagina',
   '',
-  'SECAO 3 — REFERENCIAS COMPLEMENTARES (ABNT)',
+  'SECAO 4 — REFERENCIAS COMPLEMENTARES (ABNT)',
   '- Minimo 1, maximo 3 referencias reais e verificaveis (artigos, livros, capitulos)',
   '- Se DPM Literario: pode incluir poemas e textos literarios relevantes',
   '- OBRIGATORIO: apenas referencias cuja existencia seja verificavel. Se houver duvida, omitir.',
   '',
-  'SECAO 4 — PERGUNTAS PARA APROFUNDAMENTO',
+  'SECAO 5 — PERGUNTAS PARA APROFUNDAMENTO',
   '- 3 a 5 perguntas com nivel crescente de complexidade',
   '- Apos cada pergunta: sugestao de resposta baseada no texto (com paginas) e informacoes para o professor',
   '',
+  'SECAO 6 — PARAGRAFO DO ALUNO (questao discursiva)',
+  '- UMA pergunta discursiva unica, que sintetiza os pontos mais importantes do texto e equivale ao paragrafo que cada aluno produz.',
+  '- Dificuldade intermediaria: nem resposta simples e direta, nem complexa demais. Respondivel em UM paragrafo (ate 2000 caracteres). Sem alternativas, sem listas, sem multiplos itens.',
+  '- Apresentar: o enunciado + resposta-modelo sintetica (com paginas) para correcao.',
+  '',
   '**SEPARADOR OBRIGATORIO (.docx):** Inserir: "SEPARAR AQUI — DPM PROFESSOR (CONFIDENCIAL)" — negrito, vermelha escura, centralizado, linha horizontal acima e abaixo.',
-  'Versao professor: comeca com SECAO 1 — CORRENTE TEORICA apos a faixa.'
+  'Versao professor: comeca com SECAO 1 — QUESTAO-NORTEADORA apos a faixa.'
 ];
 
 var DPM_STRUCT_EN = DPM_STRUCT_PT; // entrega sempre em PT-BR
@@ -1159,12 +1156,12 @@ function buildConv2(disc, semana, qtd, tema, textos, obs, budget, sel, nomes, is
     L.push(isEN
       ? (function(){
     var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
-    var nortLine = nort ? ' Opening debate question: "' + nort + '". Question 1 must be a reformulation of this — same theme, different wording.' : ' Question 1 must be at interpretive level.';
+    var nortLine = nort ? ' Opening debate question: "' + nort + '". Question 1 must be a reformulation of this — same theme, different wording.' : ' Question 1 must derive from the guiding question (questao-norteadora) generated in this week\'s DPM (professor version) — same theme, as multiple choice.';
     return '**Quiz:** 5 multiple-choice questions (A-D). No introduction, no color, no header. Format: question number, question text, 4 options (A/B/C/D), blank line. After all 5 questions: answer key with one-line comment per item in format (SOBRENOME, ano, p. X). IMPORTANT:' + nortLine + ' Questions 2-5 may draw freely from text and DPM, without overlapping group questions.';
   })()
       : (function(){
     var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
-    var nortLine = nort ? ' Questao-norteadora do debate: "' + nort + '". A Questao 1 deve ser uma reformulacao desta pergunta — mesma tematica, formulacao diferente.' : ' A Questao 1 deve ser de nivel interpretativo sobre o texto.';
+    var nortLine = nort ? ' Questao-norteadora do debate: "' + nort + '". A Questao 1 deve ser uma reformulacao desta pergunta — mesma tematica, formulacao diferente.' : ' A Questao 1 deve derivar da questao-norteadora gerada no DPM desta semana (versao professor, debate oral inicial) — mesma tematica, em multipla escolha.';
     return '**Quiz:** 5 questoes de multipla escolha (A-D). Sem introducao, sem cor, sem cabecalho. Formato: numero da questao, enunciado, 4 alternativas (A/B/C/D), linha em branco. Apos as 5 questoes: gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). IMPORTANTE:' + nortLine + ' As Questoes 2 a 5 baseiam-se livremente no texto e no DPM, sem coincidir com as perguntas dos grupos.';
   })());
     L.push('');
@@ -1220,56 +1217,9 @@ function gerar() {
   var hasC2 = sel.some(function(id) { return ['t3','t4'].indexOf(id) >= 0; });
   document.getElementById('ctab2').style.opacity = hasC2 ? '1' : '0.4';
 
-  // t5 — Tabela DPM
-  var hasT5 = sel.indexOf('t5') >= 0;
-  var ctab3 = document.getElementById('ctab3');
-  var cpanel3 = document.getElementById('cpanel3');
-  if (ctab3) ctab3.style.display = hasT5 ? '' : 'none';
-  if (cpanel3) cpanel3.style.display = hasT5 ? '' : 'none';
-
-  if (hasT5) {
-    var fmt5 = FMT || '?';
-    var fl5  = {A:'Teórico',B:'Literário',C:'Misto'}[fmt5] || fmt5;
-    var sem5 = document.getElementById('semana').value.trim();
-    var dc5  = document.getElementById('disc').value.trim();
-    var rf5  = document.getElementById('textos').value.trim();
-    var pps5 = {
-      A:['Tese','Contexto','Contradição','Aplicação','Implicação'],
-      B:['Forma','Conteúdo','Contradição','Transposição','Aplicação'],
-      C:['Tese·Teórico + Forma·Literário','Contexto·Teórico + Conteúdo·Literário','Contradição·Misto','Aplicação·Teórico + Transposição·Literário','Implicação·Teórico + Aplicação·Literário']
-    }[fmt5] || [];
-    var nq5 = fmt5 === 'C' ? 2 : 1;
-    var p3lines = [
-      'Você é o Prof. Felipe Vigneron Azevedo — Letras · IFF Campus Campos Centro.',
-      'Gere a FOLHA DE RESPOSTA DPM ' + fl5.toUpperCase() + ' — Semana ' + (sem5||'___') + ' · Disciplina: ' + (dc5||'___') + '.',
-      '',
-      'TEXTO(S) DA SEMANA: ' + (rf5 || '___'),
-      '',
-      '== ENTREGA: arquivo .docx pronto para impressão e distribuição ==',
-      '',
-      '1. CABEÇALHO (tabela 2×2):',
-      '   Sup. esq. (60%): fundo #ecdcc2 · INSTITUTO FEDERAL FLUMINENSE / Campus Campos Centro · Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___',
-      '   Sup. dir. (40%): branco · centralizado: DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM ' + fl5.toUpperCase(),
-      '   Inf. esq.: Nome do(a) Estudante: _______________  |  Inf. dir.: Data: ___/___/____',
-      '',
-      '2. TABELA DPM — 5 grupos:',
-      '   Colunas: Grupo | Papel | Pergunta norteadora | Parágrafo (espaço ≥8 linhas p/ aluno escrever)',
-      '   Papéis: ' + pps5.join(' · '),
-      '   · ' + nq5 + ' pergunta(s) por grupo, gerada(s) a partir do texto da semana.',
-      (fmt5 === 'C' ? '   · DPM Misto: 1 pergunta teórica + 1 literária por grupo.' : ''),
-      '   · Linguagem acadêmica direta. Coluna Parágrafo: espaço generoso (≥8 linhas em branco).',
-      '',
-      '3. RODAPÉ: "Critérios: Presença (50%) + Parágrafo (50%) · Nota final = (presença × 0,5) + (parágrafo × 0,5)"',
-      '',
-      'FORMATO: .docx · A4 retrato · margens ABNT (sup/esq 3cm · inf/dir 2cm) · Times New Roman 12pt.',
-    ].filter(Boolean).join('\n');
-    var el3=document.getElementById('p3pt'); if(el3) el3.textContent=p3lines;
-    var m3=document.getElementById('meta3pt'); if(m3) m3.textContent=p3lines.length.toLocaleString('pt-BR')+' car.';
-  }
-
   document.getElementById('out').classList.add('on');
   var hasC1 = sel.some(function(id) { return ['t1','t2'].indexOf(id) >= 0; });
-  showConv(hasC1 ? 1 : (hasC2 ? 2 : (hasT5 ? 3 : 1)));
+  showConv(hasC1 ? 1 : (hasC2 ? 2 : 1));
   showLang(1,'pt'); showLang(2,'pt');
   setTimeout(function() { document.getElementById('out').scrollIntoView({behavior:'smooth'}); }, 80);
 }
@@ -1289,8 +1239,6 @@ function limpar() {
   DROPPED = []; PENDING = []; FILE_CONTENTS = {};
   document.getElementById('fileList').innerHTML = '';
   document.getElementById('out').classList.remove('on');
-  var ct3=document.getElementById('ctab3'); if(ct3) ct3.style.display='none';
-  var cp3=document.getElementById('cpanel3'); if(cp3){cp3.style.display='none';cp3.classList.remove('on');}
   var _w = document.getElementById('warnA'); if (_w) _w.classList.remove('on');
 }
 
@@ -1604,7 +1552,7 @@ function gerarViaAPI_A() {
   mergeFiles().concat(Object.keys(FILE_CONTENTS).map(function(k) { return FILE_CONTENTS[k]; }))
     .forEach(function(f) { if (f && !_seen[f.name]) { _seen[f.name] = 1; files.push(f); } });
   var inputs = { disciplina: disc, semana: semana, formato: FMT, nAulas: qtd, tema: tema, obs: obs, referencias: refs };
-  var taskMap = { t1: 'dpm_teorico', t2: 'dpm_literario', t3: 'quiz', t4: 'bimestral', t5: 'tabela_dpm' }; // v63
+  var taskMap = { t1: 'dpm_teorico', t2: 'dpm_literario', t3: 'quiz', t4: 'bimestral' }; // v64
   var btn = document.getElementById('btnApiA');
   btn.disabled = true;
 
