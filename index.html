@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF v67</title>
+<title>Painel CLA — IFF v68</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -1121,7 +1121,7 @@ function instrGerais(isEN) {
     if (CHK['t4']) L.push('- Bimonthly: QUESTOES BIMESTRAIS');
     L.push('');
     L.push('**Tone:** experienced teacher, no AI filler phrases. Always cite exact page numbers.');
-    L.push('**Restrictions:** do not invent citations, pages, dates, titles, or authors. Use [a confirmar] or omit. Follow CLA method strictly.');
+    L.push('**REGRA Nº 1 — VERDADE:** nao inventar, nao mentir, nao delirar, nao criar nada. Verificar TUDO nos arquivos anexados, como um cientista obcecado por exatidao. Toda citacao/trecho deve existir LITERALMENTE no anexo. Pagina = numero impresso na obra digitalizada (nao a pagina do leitor de PDF); sem pagina impressa, escrever "p. X, conforme arquivo"; so usar [a confirmar] se for impossivel localizar. Seguir o metodo CLA rigorosamente.');
   } else {
     L.push('**Lingua:** todas as entregas em **portugues (PT-BR)**.');
     L.push('');
@@ -1133,7 +1133,7 @@ function instrGerais(isEN) {
     if (CHK['t4']) L.push('- Bimestral: QUESTOES BIMESTRAIS');
     L.push('');
     L.push('**Tom:** professor experiente, sem marcadores de IA. Citacoes sempre com pagina exata.');
-    L.push('**Restricoes:** nao inventar citacoes, paginas, datas, titulos ou autores. Usar [a confirmar] ou omitir. Seguir o metodo CLA rigorosamente.');
+    L.push('**REGRA Nº 1 — VERDADE:** nao inventar, nao mentir, nao delirar, nao criar nada. Verificar TUDO nos arquivos anexados, como um cientista obcecado por exatidao. Toda citacao/trecho deve existir LITERALMENTE no anexo. Pagina = numero impresso na obra digitalizada (nao a pagina do leitor de PDF); sem pagina impressa, escrever "p. X, conforme arquivo"; so usar [a confirmar] se for impossivel localizar. Seguir o metodo CLA rigorosamente.');
   }
   return L;
 }
@@ -1210,18 +1210,18 @@ function buildConv2(disc, semana, qtd, tema, textos, obs, budget, sel, nomes, is
     L.push(isEN
       ? (function(){
     var nortLine = ' Question 1 must derive from the guiding question (questao-norteadora) generated in this week\'s DPM (professor version) — same theme, as multiple choice.';
-    return '**Quiz:** 5 multiple-choice questions (A-D). No introduction, no color, no header. Format: question number, question text, 4 options (A/B/C/D), blank line. After all 5 questions: answer key with one-line comment per item in format (SOBRENOME, ano, p. X). IMPORTANT:' + nortLine + ' Questions 2-5 may draw freely from text and DPM, without overlapping group questions.';
+    return '**Quiz:** 5 multiple-choice questions (A-D). No introduction, no color, no header. For EACH question, in this order and right BELOW the question itself: number + question text; options A/B/C/D; then "**Gabarito: [letter] — one-line comment (SOBRENOME, ano, p. X) from the attached file.**"; then a blank line. The commented answer key goes immediately below each question, never grouped at the end. IMPORTANT:' + nortLine + ' Questions 2-5 may draw freely from text and DPM, without overlapping group questions.';
   })()
       : (function(){
     var nortLine = ' A Questao 1 deve derivar da questao-norteadora gerada no DPM desta semana (versao professor, debate oral inicial) — mesma tematica, em multipla escolha.';
-    return '**Quiz:** 5 questoes de multipla escolha (A-D). Sem introducao, sem cor, sem cabecalho. Formato: numero da questao, enunciado, 4 alternativas (A/B/C/D), linha em branco. Apos as 5 questoes: gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). IMPORTANTE:' + nortLine + ' As Questoes 2 a 5 baseiam-se livremente no texto e no DPM, sem coincidir com as perguntas dos grupos.';
+    return '**Quiz:** 5 questoes de multipla escolha (A-D). Sem introducao, sem cor, sem cabecalho. Para CADA questao, nesta ordem e logo ABAIXO da propria questao: numero + enunciado; alternativas A/B/C/D; depois "**Gabarito: [letra] — comentario de uma linha (SOBRENOME, ano, p. X) do arquivo anexado.**"; depois uma linha em branco. O gabarito comentado vem imediatamente abaixo de cada questao, nunca agrupado no fim. IMPORTANTE:' + nortLine + ' As Questoes 2 a 5 baseiam-se livremente no texto e no DPM, sem coincidir com as perguntas dos grupos.';
   })());
     L.push('');
   }
   if (sel2.indexOf('t4') >= 0) {
     L.push(isEN
-      ? '**Bimonthly Questions:** exactly 2 multiple-choice questions (A-D), no header, no color. One question per level (comprehension and interpretation). Answer key with one-line comment per item in format (SOBRENOME, ano, p. X). Professor version — do not distribute.'
-      : '**Questoes Bimestrais:** exatamente 2 questoes de multipla escolha (A-D), sem cabecalho, sem cor. Uma por nivel (compreensao e interpretacao). Gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). Versao professor — nao distribuir.');
+      ? '**Bimonthly Questions:** exactly 2 multiple-choice questions (A-D), no header, no color. Q1 comprehension, Q2 interpretation. For EACH question, right BELOW it: statement; options A/B/C/D; then "**Gabarito: [letter] — one-line justification (SOBRENOME, ano, p. X) from the attached file.**"; then a blank line. Answer key immediately below each question, never grouped at the end. Professor version — do not distribute.'
+      : '**Questoes Bimestrais:** exatamente 2 questoes de multipla escolha (A-D), sem cabecalho, sem cor. Q1 compreensao, Q2 interpretacao. Para CADA questao, logo ABAIXO dela: enunciado; alternativas A/B/C/D; depois "**Gabarito: [letra] — justificativa de uma linha (SOBRENOME, ano, p. X) do arquivo anexado.**"; depois uma linha em branco. Gabarito imediatamente abaixo de cada questao, nunca agrupado no fim. Versao professor — nao distribuir.');
     L.push('');
   }
 
