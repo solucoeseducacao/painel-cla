@@ -1,5 +1,5 @@
 'use strict';
-const express=require('express'),cookieParser=require('cookie-parser'),https=require('https'),crypto=require('crypto'),path=require('path'),Anthropic=require('@anthropic-ai/sdk'),{Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,AlignmentType,BorderStyle,WidthType,ShadingType}=require('docx');
+const express=require('express'),cookieParser=require('cookie-parser'),https=require('https'),crypto=require('crypto'),path=require('path'),Anthropic=require('@anthropic-ai/sdk'),{Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,AlignmentType,BorderStyle,WidthType,ShadingType,PageBreak}=require('docx');
 const app=express(),PORT=process.env.PORT||3000;
 function env(n){const v=process.env[n];if(!v)throw new Error(`Env missing: ${n}`);return v}
 function sign(d){return crypto.createHmac('sha256',env('SESSION_SECRET')).update(d).digest('base64url')}
@@ -66,31 +66,37 @@ Tempos: ${ti} · grupo ${b.grp||'—'}min · saída ${b.cpd||'—'}min
 Gere o DPM sem introduções. PT-BR.
 ${REGRA_CIT}
 
+Use os títulos de seção EXATAMENTE como abaixo (sem códigos como "S1", "S2", "SP1" — apenas o nome).
+
 == VERSÃO ALUNOS ==
 [Ref. ABNT antes das seções]
 
-## S1 — Corrente Teórica
+## Corrente Teórica
 Tradição, problema central, método. 3–6 linhas.
 
-## S2 — Tese Central
+## Tese Central
 2–4 frases + ≥1 citação direta entre aspas com (SOBRENOME, ano, p. X) extraída do arquivo.
 
-## S3 — Conceitos-Chave
+## Conceitos-Chave
 Tabela: Conceito (termo + pág. impressa do arquivo) | Explicação (2–3 frases). 3–7 itens, só do próprio texto. Cada conceito com a página onde aparece no arquivo (ou "p. X, conforme arquivo").
 
-## S4 — Parágrafos Centrais
+## Parágrafos Centrais
 3–6 citações diretas integrais entre aspas, cada uma com (SOBRENOME, ano, p. X) do arquivo. Transcrever literalmente do anexo — não parafrasear.
 
-## S5 — Perguntas de Grupo
-G1 Tese: ≥3 pontos encadeados. G2 Mecanismo: recursos e função. G3 Tensão: onde hesita ou contradiz. G4 Aplicação: 2 conceitos do DPM → aula no EM.${g4} G5 Implicação: o que se segue para o campo ou prática docente.
+## Perguntas de Grupo
+Grupo 1 — Tese: ≥3 pontos encadeados. Grupo 2 — Mecanismo: recursos e função. Grupo 3 — Tensão: onde hesita ou contradiz. Grupo 4 — Aplicação: 2 conceitos do DPM → aula no EM.${g4} Grupo 5 — Implicação: o que se segue para o campo ou prática docente.
 
 == VERSÃO PROFESSOR ==
-(Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1.)
-SP1 — Questão-Norteadora: UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Apresente o ENUNCIADO COMPLETO + resposta-guia para o professor conduzir o debate (com páginas).
-SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão concisa ancorada no texto, com página(s). NENHUM grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
-SP3 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
-## Parágrafo do aluno
-[enunciado completo da pergunta, discursivo, sem alternativas]
+(Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1. Não escreva esta linha no documento.)
+
+## Questão-Norteadora
+UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Enunciado COMPLETO + resposta-guia para o professor conduzir o debate (com páginas).
+
+## Gabarito das Perguntas de Grupo
+Para CADA grupo (Tese, Mecanismo, Tensão, Aplicação, Implicação): repita a pergunta + resposta-modelo concisa ancorada no texto, com página(s). Nenhum grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
+
+## Parágrafo do Aluno
+UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Enunciado completo (discursivo, sem alternativas), seguido de:
 **Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
 function promptDPMLiterario(inp){const nd={iniciante:'iniciante',intermediario:'intermediária',avancado:'avançada'}[inferirNivel(inp.disciplina)];const b=inp.budget,f=(inp.formato||'').toUpperCase(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),tipo=isM?'demonstrativo':'literário',g4=f==='C'?'G4 Aplicação: articular com DPM Teórico desta semana.':'G4 Intertexto: relações com outros textos evidenciadas pelo próprio texto.';return`**Disc:** ${inp.disciplina||''} | **Sem:** ${inp.semana||''} | **Fmt:** ${f} | ${nd}
 **Tema:** ${inp.tema||''} | **Texto:** ${inp.referencias||''}${inp.obs?'\nObs.: '+inp.obs:''}
@@ -99,57 +105,65 @@ Tempos: discussão ${b.lit||b.leit||'—'}min · grupo ${b.grp||'—'}min · sa�
 Gere o DPM sem introduções. PT-BR.
 ${REGRA_CIT}
 
+Use os títulos de seção EXATAMENTE como abaixo (sem códigos como "S1", "S2", "SP1" — apenas o nome).
+
 == VERSÃO ALUNOS ==
 [Ref. ABNT antes das seções]
 
-## S1 — Tese Central
+## Tese Central
 2–4 frases com o argumento central do texto ${tipo} + ≥1 citação direta entre aspas com (SOBRENOME, ano, p. X) do arquivo.
 
-## S2 — Forma
+## Forma
 Gênero · estrutura · narrador/voz · tempo · espaço · dicção${isM?' · argumento · metodologia demonstrada':''}.
 
-## S3 — Conteúdo
+## Conteúdo
 Temas · personagens/agentes · conflito · desfecho.
 
-## S4 — Contexto
+## Contexto
 Contexto histórico-literário${isM?'/acadêmico':''} · autor · período.
 
-## S5 — Intertexto
+## Intertexto
 Relações com outros textos evidenciadas pelo próprio texto.
 
-## S6 — Parágrafos Centrais
+## Parágrafos Centrais
 3–5 citações diretas integrais entre aspas, cada uma com (SOBRENOME, ano, p. X) do arquivo. Transcrever literalmente do anexo — não parafrasear.
 
-## S7 — Perguntas de Grupo
-G1 Forma · G2 Conteúdo · G3 Contexto · ${g4} · G5 Lacuna: o que o DPM não cobre.
+## Perguntas de Grupo
+Grupo 1 — Forma · Grupo 2 — Conteúdo · Grupo 3 — Contexto · Grupo 4 — ${g4} · Grupo 5 — Lacuna: o que o DPM não cobre.
 
 == VERSÃO PROFESSOR ==
-(Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1.)
-SP1 — Questão-Norteadora: UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Apresente o ENUNCIADO COMPLETO + resposta-guia para o professor (com páginas).
-SP2 — Gabarito das Perguntas de Grupo: para CADA grupo G1–G5, repita a pergunta e dê a resposta-modelo/sugestão concisa ancorada no texto, com página(s). NENHUM grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
-SP3 — Parágrafo do aluno: UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Formato EXATO:
-## Parágrafo do aluno
-[enunciado completo da pergunta, discursivo, sem alternativas]
+(Obrigatório: TODA questão desta versão vem com gabarito/sugestão de resposta ancorado no arquivo, com páginas conforme a REGRA Nº 1. Não escreva esta linha no documento.)
+
+## Questão-Norteadora
+UMA pergunta para debate ORAL antes da leitura, retomada ao final (≠ perguntas de grupo). Enunciado COMPLETO + resposta-guia para o professor (com páginas).
+
+## Gabarito das Perguntas de Grupo
+Para CADA grupo (Forma, Conteúdo, Contexto, Grupo 4, Lacuna): repita a pergunta + resposta-modelo concisa ancorada no texto, com página(s). Nenhum grupo sem gabarito. Com mais de uma obra anexada, atribua cada citação à obra correta.
+
+## Parágrafo do Aluno
+UMA pergunta discursiva única que contemple os pontos mais importantes do conteúdo. Respondível em 3–5 frases (máx. 2000 caracteres) — nunca exija resposta extensa, listas nem múltiplos itens. Enunciado completo (discursivo, sem alternativas), seguido de:
 **Resposta-modelo (3–5 frases, ≤2000 caracteres):** [resposta sintética com páginas]`}
 function promptQuiz(inp){const b=inp.budget;return`Quiz — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.tema||''} | ${inp.referencias||''}
 ${REGRA_CIT}
 
-5 questões de múltipla escolha A–D, sem cabeçalho. Para CADA questão, NESTA ordem e logo ABAIXO da própria questão:
+5 questões de múltipla escolha A–D, sem cabeçalho. Para CADA questão, nesta ordem:
 nº + enunciado
 A) ... / B) ... / C) ... / D) ...
-**Gabarito: [letra] — comentário de 1 linha, com (SOBRENOME, ano, p. X) do arquivo.**
+Gabarito: [APENAS a letra — SEM comentário]
 (linha em branco)
-Ou seja: o gabarito comentado vem IMEDIATAMENTE ABAIXO de cada questão, nunca agrupado no fim.
-Q1 = reformulação da questão-norteadora gerada no DPM desta semana. Q2–Q5 baseadas no(s) texto(s), sem repetir as perguntas de grupo.`}
+Q1 = reformulação da questão-norteadora gerada no DPM desta semana. Q2–Q5 baseadas no(s) texto(s), sem repetir as perguntas de grupo.
+Depois de TODAS as questões, escreva numa linha isolada EXATAMENTE: %%PAGEBREAK%%
+Em seguida: o título "## Gabarito comentado" e, para cada questão, UM comentário SUCINTO (1 linha) no formato: "1. B — <comentário curto> (SOBRENOME, ano, p. X)". Comentários enxutos.`}
 function promptBimestral(inp){return`Bimestral — ${inp.disciplina||''} | Sem ${inp.semana||''} | ${inp.referencias||''}
 ${REGRA_CIT}
 
-2 questões de múltipla escolha A–D, sem cabeçalho. Q1 (compreensão) · Q2 (interpretação). Para CADA questão, NESTA ordem e logo ABAIXO da própria questão:
+2 questões de múltipla escolha A–D, sem cabeçalho. Q1 (compreensão) · Q2 (interpretação). Para CADA questão, nesta ordem:
 enunciado
 A) ... / B) ... / C) ... / D) ...
-**Gabarito: [letra] — justificativa de 1 linha, com (SOBRENOME, ano, p. X) do arquivo.**
+Gabarito: [APENAS a letra — SEM justificativa]
 (linha em branco)
-O gabarito vem IMEDIATAMENTE ABAIXO de cada questão, nunca agrupado no fim.`}
+Depois das 2 questões, escreva numa linha isolada EXATAMENTE: %%PAGEBREAK%%
+Em seguida: o título "## Gabarito comentado" e, para cada questão, UMA justificativa SUCINTA (1 linha) no formato: "1. B — <justificativa curta> (SOBRENOME, ano, p. X)". Enxuto.`}
 function toFileContent(files){const arr=(files||[]).map(f=>{
   // Normalizar media_type para tipos aceitos pela Anthropic
   let mt=f.media_type||'application/pdf';
@@ -159,9 +173,11 @@ function toFileContent(files){const arr=(files||[]).map(f=>{
   return{type:'document',source:{type:'base64',media_type:mt,data:f.data}};
 });if(arr.length)arr[arr.length-1].cache_control={type:'ephemeral'};return arr;}
 function txt(res){const b=((res&&res.content)||[]).find(x=>x.type==='text');return b?b.text:''}
-async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({..._iaExtra(inp,MODEL),max_tokens:12000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=txt(res),si=text.search(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==|(?:^|\n)\s*SP1\s*[—\-:]/i),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/==\s*VERS[ÃA]O\s+ALUNOS\s*==/i,'').trim(),pT=pR.replace(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==/i,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
-async function gerarQuizDoc(inp,files){const res=await client.messages.create({..._iaExtra(inp,MODEL_FAST),max_tokens:2000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(txt(res))]))}
-async function gerarBimestralDoc(inp,files){const res=await client.messages.create({..._iaExtra(inp,MODEL_FAST),max_tokens:1400,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptBimestral(inp)}]}]});return Packer.toBase64String(makeDoc([...mdToDocx(txt(res))]))}
+// Renderiza markdown com quebra de página onde houver o marcador %%PAGEBREAK%% (gabarito comentado na última página).
+function mdPaged(text){const parts=String(text||'').split(/%%PAGEBREAK%%/),out=[];parts.forEach((pt,i)=>{if(i>0)out.push(new Paragraph({children:[new PageBreak()]}));out.push(...mdToDocx(pt.trim()))});return out}
+async function gerarDPM(inp,files,tipo){const prompt=tipo==='teorico'?promptDPMTeorico(inp):promptDPMLiterario(inp);const res=await client.messages.create({..._iaExtra(inp,MODEL),max_tokens:12000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:prompt}]}]});const text=txt(res),si=text.search(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==|(?:^|\n)#{1,3}\s*Quest[ãa]o-Norteadora/i),aR=si>0?text.slice(0,si):text,pR=si>0?text.slice(si):'',aT=aR.replace(/==\s*VERS[ÃA]O\s+ALUNOS\s*==/i,'').trim(),pT=pR.replace(/==\s*VERS[ÃA]O\s+PROFESSOR\s*==/i,'').trim(),isM=(inp.disciplina||'').toLowerCase().includes('metodologia'),docName=tipo==='teorico'?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Teórico':isM?'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Demonstrativo':'DOCUMENTO DE PARÁGRAFOS MÍNIMOS · DPM Literário',label=tipo==='teorico'?'DPM TEÓRICO':isM?'DPM DEMONSTRATIVO':'DPM LITERÁRIO';const children=[makeHeader(inp.disciplina,inp.semana,docName),p(''),p(`${label} — VERSÃO ALUNOS`,{bold:true,size:28,sb:200}),p(''),...mdToDocx(aT)];if(pT)children.push(...separador(),faixaConf(),p(''),...mdToDocx(pT));return Packer.toBase64String(makeDoc(children))}
+async function gerarQuizDoc(inp,files){const res=await client.messages.create({..._iaExtra(inp,MODEL_FAST),max_tokens:2000,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptQuiz(inp)}]}]});return Packer.toBase64String(makeDoc(mdPaged(txt(res))))}
+async function gerarBimestralDoc(inp,files){const res=await client.messages.create({..._iaExtra(inp,MODEL_FAST),max_tokens:1400,system:SYS_A,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:promptBimestral(inp)}]}]});return Packer.toBase64String(makeDoc(mdPaged(txt(res))))}
 async function gerarOtimizador(inp){const res=await client.messages.create({..._iaExtra(inp,MODEL),max_tokens:1500,system:SYS_B,messages:[{role:'user',content:`${inp.origem==='painel'?'Material do Painel CLA.\n':''}Queixa/objetivo: ${inp.queixa||'não especificado'}\n\n${inp.prompt}\n\nEntregar: 1) DIAGNÓSTICO 2) VERSÃO OTIMIZADA 3) O QUE MUDOU E POR QUÊ`}]});return txt(res)}
 async function gerarDevolutiva(inp,files){const papel=inp.papel==='banca'?'banca (avaliativa)':'orientador (formativa)',fase={inicio:'início',andamento:'andamento',concluido:'concluído (pré-banca)'}[inp.fase]||'',nivel={artigo:'artigo/TCC',dissertacao:'dissertação',tese:'tese'}[inp.nivel]||inp.nivel;const res=await client.messages.create({..._iaExtra(inp,MODEL),max_tokens:2500,system:SYS_C,messages:[{role:'user',content:[...toFileContent(files),{type:'text',text:`Papel: ${papel}${inp.papel!=='banca'?' · Fase: '+fase:''} · Nível: ${nivel}\n${inp.foco?'Foco: '+inp.foco:''}\n${inp.contexto?'Contexto/trechos:\n'+inp.contexto:''}\n${files&&files.length?'Trabalho anexado acima.':'Usar contexto/trechos fornecidos.'}\n\nCritérios (por peso): 1) Cumprimento dos objetivos 2) Originalidade 3) Fundamentação teórica 4) Correção conceitual · Clareza · Consistência · ABNT\n\nEstrutura:\n1 — Leitura geral (2–4 frases)\n2 — Pontos por critério (só onde há algo a dizer)\n3 — Apontamentos cirúrgicos: trecho → problema → sugestão → fonte\n4 — Prioridades (2–3 providências)\n5 — Próximo passo`}]}]});return txt(res)}
 async function gerarDevolutivaDoc(inp,files){const text=await gerarDevolutiva(inp,files),papel=inp.papel==='banca'?'Banca':'Orientador',fase={inicio:'Início',andamento:'Andamento',concluido:'Concluído'}[inp.fase]||'',nivel={artigo:'Artigo/TCC',dissertacao:'Dissertação',tese:'Tese'}[inp.nivel]||inp.nivel;return Packer.toBase64String(makeDoc([p(`Devolutiva · ${papel}${fase?' · '+fase:''} · ${nivel}`,{size:18,color:'555555',sb:0}),p(''),...mdToDocx(text)]))}
