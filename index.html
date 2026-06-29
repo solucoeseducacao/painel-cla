@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF v69</title>
+<title>Painel CLA — IFF v70</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -983,24 +983,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── constantes de prompt ───────────────────────────────────────────────────
 var HEADER_PT = [
-  '**Cabecalho — tabela 2×2:**',
-  '- Esquerda superior (60%): fundo #ecdcc2, texto preto: "INSTITUTO FEDERAL FLUMINENSE (negrito) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
-  '- Direita superior (40%): fundo branco, negrito centralizado: nome do documento (tabela abaixo)',
-  '- Esquerda inferior: "Nome do(a) Estudante: _______________"',
-  '- Direita inferior: "Data: ___/___/____"',
-  '- Versao professor: sem cabecalho — inicia com faixa vermelha (#8B0000) largura total, texto branco: VERSAO PROFESSOR — CONFIDENCIAL — NAO DISTRIBUIR AOS ALUNOS',
+  '**Cabecalho — tabela 2×2 (layout EXATO do IFF, fonte Arial em todo o documento):**',
+  '- Coluna esquerda (~60%, largura 5416 dxa), fundo VERDE #B3E5A0, texto preto, 3 linhas:',
+  '  · linha 1 (negrito, ~11pt): "Licenciatura em Letras — Português e Literaturas"',
+  '  · linha 2 (~10,5pt): "Disciplina: ___" — preencher com a disciplina de "Dados da Semana"',
+  '  · linha 3 (~10,5pt): "Professor: Felipe Vigneron Azevedo  |  Semana: ___" — preencher a semana de "Dados da Semana"',
+  '- Coluna direita (~40%, largura 3610 dxa), fundo branco, negrito centralizado: nome do documento (ver lista abaixo)',
+  '- Linha inferior esquerda: "Nome do(a) Estudante: _______________________________________________"',
+  '- Linha inferior direita: "Data: ___/___/______"',
+  '- Pagina A4. So a VERSAO ALUNOS leva este cabecalho.',
+  '- Versao professor: SEM cabecalho — inicia com faixa vermelha (#8B0000) de largura total, texto branco em negrito centralizado: "VERSÃO PROFESSOR — CONFIDENCIAL — NÃO DISTRIBUIR AOS ALUNOS"',
   '',
   '**Nomes dos documentos na coluna direita:**'
 ];
 // Nomes adicionados dinamicamente em cabecalhoDados conforme tarefas selecionadas
 
 var HEADER_EN = [
-  '**Header — 2×2 table:**',
-  '- Top-left (60%): #ecdcc2 bg, black text: "INSTITUTO FEDERAL FLUMINENSE (bold) / Campus Campos Centro · Licenciatura em Letras / Disciplina: ___ / Prof. Felipe Vigneron Azevedo / Semana: ___"',
-  '- Top-right (40%): white bg, bold centered: document name (see table below)',
-  '- Bottom-left: "Nome do(a) Estudante: _______________"',
-  '- Bottom-right: "Data: ___/___/____"',
-  '- Professor version: no header — starts with full-width dark red (#8B0000) banner, white text: VERSAO PROFESSOR — CONFIDENCIAL — NAO DISTRIBUIR AOS ALUNOS',
+  '**Header — 2×2 table (EXACT IFF layout, Arial font throughout; ALL document text in PT-BR):**',
+  '- Left column (~60%, width 5416 dxa), GREEN background #B3E5A0, black text, 3 lines:',
+  '  · line 1 (bold, ~11pt): "Licenciatura em Letras — Português e Literaturas"',
+  '  · line 2 (~10.5pt): "Disciplina: ___" — fill from "Dados da Semana"',
+  '  · line 3 (~10.5pt): "Professor: Felipe Vigneron Azevedo  |  Semana: ___" — fill the week from "Dados da Semana"',
+  '- Right column (~40%, width 3610 dxa), white background, bold centered: document name (see list below)',
+  '- Bottom-left cell: "Nome do(a) Estudante: _______________________________________________"',
+  '- Bottom-right cell: "Data: ___/___/______"',
+  '- A4 page. Only the STUDENT version carries this header.',
+  '- Professor version: NO header — starts with a full-width dark red (#8B0000) banner, bold white centered text: "VERSÃO PROFESSOR — CONFIDENCIAL — NÃO DISTRIBUIR AOS ALUNOS"',
   '',
   '**Document names (right column):**'
 ];
