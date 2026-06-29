@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel CLA — IFF v65</title>
+<title>Painel CLA — IFF v66</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
@@ -293,11 +293,6 @@ input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(110,20,35,.10)
   <div class="tr" onclick="tick(&#39;t3&#39;)"><div class="chk" id="t3"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">⏱</span><span class="tl">Quiz de 10 minutos</span></div><div class="ts">5 questões objetivas · gabarito comentado · Estágio 5</div></div></div>
   <div class="tr" onclick="tick(&#39;t4&#39;)"><div class="chk" id="t4"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div style="display:flex;align-items:center;gap:7px"><span style="font-size:16px">📝</span><span class="tl">Questões Bimestrais</span><span class="tag">professor</span></div><div class="ts">2–3 questões · 1 por nível · gabarito com justificativa</div></div></div>
   <hr class="sep">
-  <div class="field">
-    <label>Questão-norteadora do debate inicial <span style="font-weight:400;color:#889;font-style:italic">(opcional)</span></label>
-    <textarea id="norteadora" rows="2" placeholder="ex: Em que sentido o Romantismo brasileiro é uma literatura de fundação nacional?"></textarea>
-    <p class="note">Se informada, a Questão 1 do quiz será uma reformulação desta pergunta.</p>
-  </div>
   <div class="field">
     <label>Observações adicionais</label>
     <textarea id="obs" rows="2" placeholder="ex: Início de semestre — variantes simplificadas. Turma com pouco repertório teórico."></textarea>
@@ -1155,13 +1150,11 @@ function buildConv2(disc, semana, qtd, tema, textos, obs, budget, sel, nomes, is
   if (sel2.indexOf('t3') >= 0) {
     L.push(isEN
       ? (function(){
-    var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
-    var nortLine = nort ? ' Opening debate question: "' + nort + '". Question 1 must be a reformulation of this — same theme, different wording.' : ' Question 1 must derive from the guiding question (questao-norteadora) generated in this week\'s DPM (professor version) — same theme, as multiple choice.';
+    var nortLine = ' Question 1 must derive from the guiding question (questao-norteadora) generated in this week\'s DPM (professor version) — same theme, as multiple choice.';
     return '**Quiz:** 5 multiple-choice questions (A-D). No introduction, no color, no header. Format: question number, question text, 4 options (A/B/C/D), blank line. After all 5 questions: answer key with one-line comment per item in format (SOBRENOME, ano, p. X). IMPORTANT:' + nortLine + ' Questions 2-5 may draw freely from text and DPM, without overlapping group questions.';
   })()
       : (function(){
-    var nort = document.getElementById('norteadora') ? document.getElementById('norteadora').value.trim() : '';
-    var nortLine = nort ? ' Questao-norteadora do debate: "' + nort + '". A Questao 1 deve ser uma reformulacao desta pergunta — mesma tematica, formulacao diferente.' : ' A Questao 1 deve derivar da questao-norteadora gerada no DPM desta semana (versao professor, debate oral inicial) — mesma tematica, em multipla escolha.';
+    var nortLine = ' A Questao 1 deve derivar da questao-norteadora gerada no DPM desta semana (versao professor, debate oral inicial) — mesma tematica, em multipla escolha.';
     return '**Quiz:** 5 questoes de multipla escolha (A-D). Sem introducao, sem cor, sem cabecalho. Formato: numero da questao, enunciado, 4 alternativas (A/B/C/D), linha em branco. Apos as 5 questoes: gabarito com comentario de uma linha por item no formato (SOBRENOME, ano, p. X). IMPORTANTE:' + nortLine + ' As Questoes 2 a 5 baseiam-se livremente no texto e no DPM, sem coincidir com as perguntas dos grupos.';
   })());
     L.push('');
@@ -1226,7 +1219,7 @@ function gerar() {
 
 // ── limpar ─────────────────────────────────────────────────────────────────
 function limpar() {
-  ['disc','semana','qtd','tema','textos','norteadora','obs'].forEach(function(id) { document.getElementById(id).value = ''; });
+  ['disc','semana','qtd','tema','textos','obs'].forEach(function(id) { document.getElementById(id).value = ''; });
   FMT = '';
   ['A','B','C'].forEach(function(x) { document.getElementById('btnFmt'+x).classList.remove('active'); });
   TIDS.forEach(function(id) {
